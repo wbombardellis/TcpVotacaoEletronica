@@ -5,9 +5,12 @@
 -Classe AtaVotacao
 	Tipos dos atributos de AtaVotacao
 	Revisar modelo após criação da classe votação
-
+-Classe Sessão
+	Revisar
 
 -Sequencia Votar
+	getVotacoesByEstado -> revisar
 -Sequencia Alterar Voto
 -Sequencia Gerar Ata
 -Sequencia Ler Ata
+
