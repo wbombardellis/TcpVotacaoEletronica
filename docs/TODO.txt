@@ -1,0 +1,13 @@
+-Classe Voto:
+	Tipo do atributo 'autor'
+	Tipo do retorno de getAutor
+	Tipo do parametro autor no construtor
+-Classe AtaVotacao
+	Tipos dos atributos de AtaVotacao
+	Revisar modelo após criação da classe votação
+
+
+-Sequencia Votar
+-Sequencia Alterar Voto
+-Sequencia Gerar Ata
+-Sequencia Ler Ata
