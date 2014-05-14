@@ -7,6 +7,8 @@
 	Revisar modelo após criação da classe votação
 -Classe Sessão
 	Revisar
+-Class Votacao
+	método hasVotoDoAutor: tipo do parametro
 
 -Sequencia Votar
 	getVotacoesByEstado -> revisar
