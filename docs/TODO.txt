@@ -18,5 +18,4 @@
 -Sequencia Gerar Ata Controller
 	getMenbrosQueVotam. Depende do DAO resposáveis pelas pessoas
 	Tipo das Listas de votantes e naoVotantes 
--Sequencia Ler Ata
 
