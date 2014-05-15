@@ -3,6 +3,7 @@
 	Tipo do retorno de getAutor
 	Tipo do parametro autor no construtor
 -Classe AtaVotacao
+	tipos dos atributos do contrutor (List<Pessoa>)
 	Tipos dos atributos de AtaVotacao
 	Revisar modelo após criação da classe votação
 -Classe Sessão
@@ -14,5 +15,8 @@
 	getVotacoesByEstado -> revisar
 -Sequencia Gerar Ata
 	getVotacoesSemAta -> verificar que sejam cotações fechadas
+-Sequencia Gerar Ata Controller
+	getMenbrosQueVotam. Depende do DAO resposáveis pelas pessoas
+	Tipo das Listas de votantes e naoVotantes 
 -Sequencia Ler Ata
 
