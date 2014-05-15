@@ -12,7 +12,7 @@
 
 -Sequencia Votar
 	getVotacoesByEstado -> revisar
--Sequencia Alterar Voto
 -Sequencia Gerar Ata
+	getVotacoesSemAta -> verificar que sejam cotações fechadas
 -Sequencia Ler Ata
 
