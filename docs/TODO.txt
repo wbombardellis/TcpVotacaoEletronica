@@ -8,14 +8,32 @@
 	Revisar modelo após criação da classe votação
 -Classe Sessão
 	Revisar
--Class Votacao
+-Classe Votacao
+	Tipo do atributo 'autor'
 	método hasVotoDoAutor: tipo do parametro
 
 -Sequencia Votar
 	getVotacoesByEstado -> revisar
+	sessão
 -Sequencia Gerar Ata
 	getVotacoesSemAta -> verificar que sejam cotações fechadas
 -Sequencia Gerar Ata Controller
 	getMenbrosQueVotam. Depende do DAO resposáveis pelas pessoas
 	Tipo das Listas de votantes e naoVotantes 
-
+	
+-Sequencia CriaVotacaoCommand
+	condição teste do tipo do usuário -> alterar depois
+	Chamadas de Interface com usuário
+-Sequencia VotacaoCommand
+	leOpcaoListaVotacao
+-Sequencia VotacaoDao
+	getVotacoesByEstado
+	getVotacoesByEstadoNot
+	insert
+	update
+	delete
+-Sequencia MenuHelper
+	imprimeOpcoes
+-Sequencia LiberarVotacaoCommand
+-Sequencia AbrirVotacaoCommand
+-Sequencia FecharVotacaoCommand
