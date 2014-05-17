@@ -29,11 +29,7 @@
 -Sequencia VotacaoDao
 	getVotacoesByEstado
 	getVotacoesByEstadoNot
-	insert
-	update
-	delete
 -Sequencia MenuHelper
 	imprimeOpcoes
--Sequencia LiberarVotacaoCommand
--Sequencia AbrirVotacaoCommand
 -Sequencia FecharVotacaoCommand
+	Stub de Membros: Ajustar
