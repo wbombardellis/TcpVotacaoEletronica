@@ -1,15 +1,4 @@
--Classe Voto:
-	Tipo do atributo 'autor'
-	Tipo do retorno de getAutor
-	Tipo do parametro autor no construtor
--Classe AtaVotacao
-	tipos dos atributos do contrutor (List<Pessoa>)
-	Tipos dos atributos de AtaVotacao
-	Revisar modelo após criação da classe votação
--Classe Sessão
-	Revisar
 -Classe Votacao
-	Tipo do atributo 'autor'
 	método hasVotoDoAutor: tipo do parametro
 
 -Sequencia Votar
