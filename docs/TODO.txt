@@ -1,14 +1,11 @@
+-Implementação VotacaoDao
+	getVotacoesSemAta -> verificar que sejam votações fechadas
+	
 -Classe Votacao
-	método hasVotoDoAutor: tipo do parametro
+	método getVotoDoAutor: remover
 
--Sequencia Votar
-	getVotacoesByEstado -> revisar
-	sessão
--Sequencia Gerar Ata
-	getVotacoesSemAta -> verificar que sejam cotações fechadas
--Sequencia Gerar Ata Controller
-	getMenbrosQueVotam. Depende do DAO resposáveis pelas pessoas
-	Tipo das Listas de votantes e naoVotantes 
+-Sequencia Insere Voto e Sequencia Remove Voto 
+	Votação é imutavel??
 	
 -Sequencia CriaVotacaoCommand
 	condição teste do tipo do usuário -> alterar depois
