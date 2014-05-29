@@ -1,8 +1,5 @@
 -Implementação VotacaoDao
 	getVotacoesSemAta -> verificar que sejam votações fechadas
-	
--Classe Votacao
-	método getVotoDoAutor: remover
 
 -Sequencia Insere Voto e Sequencia Remove Voto 
 	Votação é imutavel??
