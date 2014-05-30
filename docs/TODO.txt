@@ -1,8 +1,5 @@
 -Implementação VotacaoDao
 	getVotacoesSemAta -> verificar que sejam votações fechadas
-
--Sequencia Insere Voto e Sequencia Remove Voto 
-	Votação é imutavel??
 	
 -Sequencia CriaVotacaoCommand
 	condição teste do tipo do usuário -> alterar depois
