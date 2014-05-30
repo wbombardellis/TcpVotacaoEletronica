@@ -1,5 +1,7 @@
 -Implementação VotacaoDao
 	getVotacoesSemAta -> verificar que sejam votações fechadas
+-Implementação VotarCommand
+	imprimir msg "sem votações";
 	
 -Sequencia CriaVotacaoCommand
 	condição teste do tipo do usuário -> alterar depois

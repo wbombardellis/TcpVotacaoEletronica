@@ -19,6 +19,14 @@ public class VotarCommand extends Command {
 	private void imprimeComprovanteVotacao() {
 
 	}
+	
+	private void imprimeVoto(Voto voto){
+		
+	}
+	
+	private Voto leVoto(){
+		return null;
+	}
 
 	@Override
 	public void execute() {
@@ -34,16 +42,31 @@ public class VotarCommand extends Command {
 			if (votacao != null){
 				Voto voto = VotarController.getVotoByAutor(votacao, this.sessao.getMembro());
 				
-				//Porém na votação escolhida o usuário já votou
+				//Usuário ainda não votou nesta votação
 				if (voto == null){
-					// Le voto
+					voto = leVoto();
 					
-					//
-					if (voto != null)
+					//Votou de fato
+					if (voto != null){
+						VotarController.insereVoto(votacao, voto);
+						imprimeComprovanteVotacao();
+					}
+					
+				}else{
+					//Nesta votação escolhida o usuário já votou
+					imprimeVoto(voto);
+					
+					Voto novoVoto = leVoto();
+					
+					if (novoVoto != null){
+						VotarController.removeVoto(votacao, voto);
+						VotarController.insereVoto(votacao, novoVoto);
+						imprimeComprovanteVotacao();
+					}
 				}
 			}
 		}else{
-			
+			//Não existe votações para escolher
 		}
 	}
 
