@@ -1,5 +1,10 @@
 package view.command;
 
+import java.util.List;
+
+import controller.FecharVotacaoController;
+import model.entity.Votacao;
+
 public class FecharVotacaoCommand extends VotacaoCommand {
 
 	public FecharVotacaoCommand(Sessao sessao) {
@@ -8,20 +13,24 @@ public class FecharVotacaoCommand extends VotacaoCommand {
 
 	@Override
 	public void execute() {
-		// TODO Auto-generated method stub
+		Votacao votacao = this.leOpcaoListaVotacao(this.listaEstados);
 		
+		List<String> warnings = FecharVotacaoController.fechaVotacao(votacao);
+		
+		// Mensagens ao usuário
+		if (! warnings.isEmpty()) {
+			// Mostra os warnings
+		}
 	}
 
 	@Override
 	public String getCodigoTela() {
-		// TODO Auto-generated method stub
-		return null;
+		return "F";
 	}
 
 	@Override
 	public String getDescricaoTela() {
-		// TODO Auto-generated method stub
-		return null;
+		return "Fechar Votação";
 	}
 
 }

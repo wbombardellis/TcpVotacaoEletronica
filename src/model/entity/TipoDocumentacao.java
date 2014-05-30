@@ -1,5 +1,8 @@
 package model.entity;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import view.command.Imprimivel;
 
 public enum TipoDocumentacao implements Imprimivel {
@@ -25,6 +28,14 @@ public enum TipoDocumentacao implements Imprimivel {
 		return this.descricaoTela;
 	}
 	
-	
+	public static List<TipoDocumentacao> getListaTodosPossiveis() {
+		List<TipoDocumentacao> lst = new ArrayList<>();
+		
+		lst.add(TipoDocumentacao.AfastamentoPais);
+		lst.add(TipoDocumentacao.ProgressaoFuncional);
+		lst.add(TipoDocumentacao.EstagioProbatorio);
+		
+		return lst;
+	}
 
 }

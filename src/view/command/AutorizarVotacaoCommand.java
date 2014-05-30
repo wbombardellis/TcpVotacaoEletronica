@@ -9,7 +9,7 @@ public class AutorizarVotacaoCommand extends VotacaoCommand {
 	public AutorizarVotacaoCommand(Sessao sessao) {
 		super(sessao);
 		
-		this.listaEstados.add(Estado.Liberada);
+		this.listaEstados.add(Estado.Bloqueada);
 	}
 
 	@Override
