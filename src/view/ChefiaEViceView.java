@@ -1,9 +1,13 @@
 package view;
 
-public class ChefiaEViceView extends View {
+import view.command.MenuHelper;;
 
-	public void imprimeMenu() {
+public class ChefiaEViceView extends View 
+{
 
+	public void imprimeMenu() 
+	{
+		MenuHelper.imprimeOpcoes(commandsPossiveis);
 	}
 
 }

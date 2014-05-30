@@ -6,14 +6,15 @@ import view.command.Command;
 
 public class View {
 
-	private List<Command> commandsPossiveis;
+	protected List<Command> commandsPossiveis;
 
 	public void imprimeMenu() {
 
 	}
 
-	private void menuLogin() {
-
+	private void menuLogin() 
+	{
+		
 	}
 
 	private void menuSair() {

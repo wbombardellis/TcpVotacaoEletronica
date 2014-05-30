@@ -1,5 +1,7 @@
 package view.command;
 
+import java.io.*;
+
 public class LoginCommand extends Command {
 
 	public LoginCommand(Sessao sessao) {
@@ -26,6 +28,11 @@ public class LoginCommand extends Command {
 	public String getDescricaoTela() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+	
+	public void imprimeOpcaoTela()
+	{
+		System.out.println("Fazer login");
 	}
 
 }
