@@ -2,8 +2,8 @@ package model.entity;
 
 public class Discente extends Membro {
 
-	public void Discente(string nome, string username, string password) {
-
+	public Discente(String nome, String username, String password) {
+		super(nome, username, password);
 	}
 
 }

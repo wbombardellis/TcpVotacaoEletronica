@@ -29,7 +29,7 @@ public class AtaVotacao {
 
 	private List abstencoes;
 
-	public void AtaVotacao(Votacao votacao, List<Membro> votantes, List<Membro> naoVotantes) {
+	public AtaVotacao(Votacao votacao, List<Membro> votantes, List<Membro> naoVotantes) {
 
 	}
 
@@ -57,7 +57,7 @@ public class AtaVotacao {
 		return null;
 	}
 
-	public List getAbstencoes() {
+	public List<Membro> getAbstencoes() {
 		return null;
 	}
 

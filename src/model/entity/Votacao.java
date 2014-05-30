@@ -12,12 +12,6 @@ public class Votacao implements Imprimivel {
 
 	private AtaVotacao ataVotacao;
 
-	private List list;
-
-	private List documentosOpicionais;
-
-	private List list;
-
 	private Date dataInicio;
 
 	private Date dataFim;
@@ -28,7 +22,7 @@ public class Votacao implements Imprimivel {
 
 	private Estado estadoExplicito;
 
-	private List votos;
+	private List<Voto> votos;
 
 	public int getId() {
 		return 0;
@@ -62,15 +56,19 @@ public class Votacao implements Imprimivel {
 		return false;
 	}
 
-	public void Votacao(int id, String titulo, Date dataInicio, Date dataFim, Estado estado, Documentacao documentacao, List_Votos_ votos) {
+	public Votacao(int id, String titulo, Date dataInicio, Date dataFim, Estado estado, Documentacao documentacao, List<Voto> votos) {
 
 	}
 
-	public void Votacao(Votacao votacaoBase, Estado estado) {
+	public Votacao(Votacao votacaoBase, Estado estado) {
 
 	}
 
-	public void Votacao(Votacao votacaoBase, Date dataInicio, Date dataFim) {
+	public Votacao(Votacao votacaoBase, Date dataInicio, Date dataFim) {
+
+	}
+	
+	public Votacao(Votacao votacaoBase, List<Voto> votos) {
 
 	}
 

@@ -2,8 +2,8 @@ package model.entity;
 
 public class Docente extends Membro {
 
-	public void Docente(string nome, string username, string password) {
-
+	public Docente(String nome, String username, String password) {
+		super(nome, username, password);
 	}
 
 }

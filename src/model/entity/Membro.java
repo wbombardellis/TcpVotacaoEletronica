@@ -4,11 +4,11 @@ import java.util.Date;
 
 public abstract class Membro {
 
-	private string nome;
+	private String nome;
 
-	private string username;
+	private String username;
 
-	private string password;
+	private String password;
 
 	private Date dataInicioMandato;
 
@@ -16,19 +16,19 @@ public abstract class Membro {
 
 	private Voto voto;
 
-	public void Membro(string nome, string username, string password) {
+	public Membro(String nome, String username, String password) {
 
 	}
 
-	public string getNome() {
+	public String getNome() {
 		return null;
 	}
 
-	public string getUsername() {
+	public String getUsername() {
 		return null;
 	}
 
-	public string getPassword() {
+	public String getPassword() {
 		return null;
 	}
 

@@ -6,9 +6,9 @@ public abstract class Documentacao {
 
 	private Votacao votacao;
 
-	public abstract Map<int,String> getDocumentosObrigatorios();
+	public abstract Map<Integer,String> getDocumentosObrigatorios();
 
-	public abstract Map<int,String> getDocumentosNaoObrigatorios();
+	public abstract Map<Integer,String> getDocumentosNaoObrigatorios();
 
 	public abstract String getDescricao();
 

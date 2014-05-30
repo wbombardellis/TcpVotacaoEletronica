@@ -8,16 +8,34 @@ public class EstagioProbatorio extends Documentacao {
 
 	private String relatorioProfessorTutor;
 
-	public static Map<int,String> getDescricaoDocumentosObrigatorios() {
+	public static Map<Integer,String> getDescricaoDocumentosObrigatorios() {
 		return null;
 	}
 
-	public static Map<int,String> getDescricaoDocumentosNaoObrigatorios() {
+	public static Map<Integer,String> getDescricaoDocumentosNaoObrigatorios() {
 		return null;
 	}
 
-	public void EstagioProbatorio(Map<int,String> documentosObrigatoriosCaminhos, Map<int,String> documentosNaoObrigatoriosCaminhos) {
+	public EstagioProbatorio(Map<Integer,String> documentosObrigatoriosCaminhos, Map<Integer,String> documentosNaoObrigatoriosCaminhos) {
 
+	}
+
+	@Override
+	public Map<Integer, String> getDocumentosObrigatorios() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Map<Integer, String> getDocumentosNaoObrigatorios() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String getDescricao() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

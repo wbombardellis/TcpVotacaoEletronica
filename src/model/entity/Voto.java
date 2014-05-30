@@ -14,7 +14,7 @@ public class Voto {
 
 	private Membro autor;
 
-	public void Voto(TipoVoto tipo, Membro autor, Date data, String justificativa) {
+	public Voto(TipoVoto tipo, Membro autor, Date data, String justificativa) {
 
 	}
 
