@@ -1,0 +1,4 @@
+--Modificações Importantes--
+VotarCommand:
+	novo metodo imprimemenu
+	novo metodo lemenu
