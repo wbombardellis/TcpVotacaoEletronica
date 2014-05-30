@@ -2,8 +2,14 @@ package view.command;
 
 public class FecharVotacaoCommand extends VotacaoCommand {
 
-	public void FecharVotacaoCommand(Sessao sessao) {
+	public FecharVotacaoCommand(Sessao sessao) {
+		super(sessao);
+	}
 
+	@Override
+	public void execute() {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

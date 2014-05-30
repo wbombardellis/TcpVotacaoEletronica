@@ -4,7 +4,7 @@ public abstract class Command implements Imprimivel {
 
 	protected Sessao sessao;
 
-	public void Command(Sessao sessao) {
+	public Command(Sessao sessao) {
 
 	}
 

@@ -2,12 +2,18 @@ package view.command;
 
 public class LoginCommand extends Command {
 
-	public Sessao LoginCommand() {
-		return null;
+	public LoginCommand(Sessao sessao) {
+		super(sessao);
 	}
 
-	public boolean login(string username, string password) {
+	public boolean login(String username, String password) {
 		return false;
+	}
+
+	@Override
+	public void execute() {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

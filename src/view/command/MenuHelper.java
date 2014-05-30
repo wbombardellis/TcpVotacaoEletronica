@@ -4,15 +4,15 @@ import java.util.List;
 
 public abstract class MenuHelper {
 
-	public static T leOpcaoMenu(List<T extends Imprimivel> opcoes) {
+	public static <T extends Imprimivel> T leOpcaoMenu(List<T> opcoes) {
 		return null;
 	}
 
-	public static T leOpcoesMenu(List<T extends Imprimivel> opcoes) {
+	public static <T extends Imprimivel> T leOpcoesMenu(List<T> opcoes) {
 		return null;
 	}
 
-	public static void imprimeOpcoes(List<T extends Imprimivel> opcoes) {
+	public static <T extends Imprimivel> void imprimeOpcoes(List<T> opcoes) {
 
 	}
 
