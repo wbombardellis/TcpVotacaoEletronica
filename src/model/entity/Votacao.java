@@ -1,6 +1,7 @@
 package model.entity;
 
 import view.command.Imprimivel;
+
 import java.util.List;
 import java.util.Date;
 
@@ -72,11 +73,15 @@ public class Votacao implements Imprimivel {
 
 	}
 
-
-	/**
-	 * @see view.command.Imprimivel#getDescricaoTela()
-	 */
+	@Override
 	public String getDescricaoTela() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String getCodigoTela() {
+		// TODO Auto-generated method stub
 		return null;
 	}
 

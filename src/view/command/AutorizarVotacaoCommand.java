@@ -1,15 +1,34 @@
 package view.command;
 
+import controller.AutorizarVotacaoController;
+import model.entity.Estado;
+import model.entity.Votacao;
+
 public class AutorizarVotacaoCommand extends VotacaoCommand {
 
 	public AutorizarVotacaoCommand(Sessao sessao) {
 		super(sessao);
+		
+		this.listaEstados.add(Estado.Liberada);
 	}
 
 	@Override
 	public void execute() {
-		// TODO Auto-generated method stub
+		Votacao votacao = leOpcaoListaVotacao(this.listaEstados);
 		
+		AutorizarVotacaoController.autorizaVotacao(votacao);
+		
+		// Mensagens ao usuário
+	}
+
+	@Override
+	public String getCodigoTela() {
+		return "A";
+	}
+
+	@Override
+	public String getDescricaoTela() {
+		return "Autorizar Votação";
 	}
 
 }

@@ -5,25 +5,21 @@ public abstract class Command implements Imprimivel {
 	protected Sessao sessao;
 
 	public Command(Sessao sessao) {
-
+		this.sessao = sessao; 
 	}
 
 	public abstract void execute();
 
 
 	/**
-	 * @see view.command.Imprimivel#getId()
+	 * @see view.command.Imprimivel#getCodigoTela()
 	 */
-	public int getId() {
-		return 0;
-	}
+	public abstract String getCodigoTela();
 
 
 	/**
 	 * @see view.command.Imprimivel#getDescricaoTela()
 	 */
-	public String getDescricaoTela() {
-		return null;
-	}
+	public abstract String getDescricaoTela();
 
 }

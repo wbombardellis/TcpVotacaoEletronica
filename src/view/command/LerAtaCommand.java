@@ -12,4 +12,16 @@ public class LerAtaCommand extends Command {
 		
 	}
 
+	@Override
+	public String getCodigoTela() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String getDescricaoTela() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }
