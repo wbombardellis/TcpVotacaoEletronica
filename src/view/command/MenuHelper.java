@@ -8,18 +8,20 @@ import java.util.List;
 public abstract class MenuHelper {
 
 	public static <T extends Imprimivel> T leOpcaoMenu(List<T> opcoes) throws IOException {
+		//Imprime opções
 		for (T opcao : opcoes){
 			System.out.println(opcao.getCodigoTela() + " - " + opcao.getDescricaoTela());
 		}
 		System.out.println("C" + " - " + "Cancelar");
 		
+		//Le opção
 		System.out.println("Escolha uma opção: ");
-		
 		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 		Boolean entradaInvalida;
 		String escolha;
 		do{
 			escolha = reader.readLine();
+			//Valida leitura
 			if(!escolha.equals("C") && getOpcaoByCodigo(opcoes, escolha) == null){
 				System.out.println("Opção inválida. Escolha uma opção válida: ");
 				entradaInvalida = true;
@@ -27,7 +29,10 @@ public abstract class MenuHelper {
 				entradaInvalida = false;
 		}while(entradaInvalida);
 		
-		return getOpcaoByCodigo(opcoes, escolha);
+		if (escolha.equals("C"))
+			return null;
+		else
+			return getOpcaoByCodigo(opcoes, escolha);
 	}
 	
 	private static <T extends Imprimivel> T getOpcaoByCodigo(List<T> opcoes, String codigo) {

@@ -20,8 +20,7 @@ public class LerAtaCommand extends Command {
 		List<Ata> atas = AtaDao.getInstance().getAll();
 		
 		if (atas.isEmpty())
-			//Não há votações
-			;
+			SaidaHelper.imprimirLinhaFromResources("mensagem.ata.semAtas");
 		else{
 			try{
 				Ata ata = MenuHelper.leOpcaoMenu(atas);
@@ -29,6 +28,8 @@ public class LerAtaCommand extends Command {
 				ArrayList<String> relatorioTexto = new ArrayList<>();
 				//Adiciona outras informações @TODO
 				relatorioTexto.addAll(ata.getDescricao());
+				
+				SaidaHelper.imprimirLinhas(relatorioTexto);
 				
 			}catch(IOException ex){
 				Logger.getLogger(LerAtaCommand.class.getName()).log(Level.SEVERE, ex.getMessage());
