@@ -22,9 +22,9 @@ public class TextManager {
 		this.recursos = recursos;
 	}
 	
-	public String getText(String chave){
-		assert chave != null;
+	public String getText(String recurso){
+		assert recurso != null;
 		assert recursos != null;
-		return recursos.getString(chave);
+		return recursos.getString(recurso);
 	}
 }

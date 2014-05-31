@@ -2,9 +2,6 @@
 	getVotacoesSemAta -> verificar que sejam votações fechadas
 LerAtaCommand
 	Adiciona outras informações no relatorio
--Diagrama
-	Criar TextManager e SaidaHelper
-	Ata método getId
 	
 -Sequencia CriaVotacaoCommand
 	condição teste do tipo do usuário -> alterar depois
