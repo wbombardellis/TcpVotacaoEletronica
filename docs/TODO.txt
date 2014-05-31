@@ -1,7 +1,5 @@
 -Implementação VotacaoDao
 	getVotacoesSemAta -> verificar que sejam votações fechadas
-LerAtaCommand
-	Adiciona outras informações no relatorio
 	
 -Sequencia CriaVotacaoCommand
 	condição teste do tipo do usuário -> alterar depois
