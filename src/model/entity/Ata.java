@@ -9,7 +9,7 @@ public class Ata {
 
 	private HashMap<Integer,Votacao> atasVotacoes;
 
-	public Ata(HashMap<Integer,Votacao> atasVotacoes) {
+	public Ata(HashMap<Integer,AtaVotacao> atasVotacoes) {
 
 	}
 
