@@ -21,6 +21,7 @@ public class LerAtaCommand extends Command {
 		
 		if (atas.isEmpty())
 			SaidaHelper.imprimirLinhaFromResources("mensagem.ata.semAtas");
+		
 		else{
 			try{
 				Ata ata = MenuHelper.leOpcaoMenu(atas);
