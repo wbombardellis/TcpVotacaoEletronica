@@ -85,4 +85,10 @@ public class Votacao implements Imprimivel {
 		return null;
 	}
 
+	@Override
+	public void imprimeOpcaoTela() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

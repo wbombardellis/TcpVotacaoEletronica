@@ -8,7 +8,7 @@ public abstract class MenuHelper {
 		return null;
 	}
 
-	public static <T extends Imprimivel> T leOpcoesMenu(List<T> opcoes) {
+	public static <T extends Imprimivel> List<T> leOpcoesMenu(List<T> opcoes) {
 		return null;
 	}
 

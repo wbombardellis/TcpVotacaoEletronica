@@ -38,4 +38,10 @@ public enum TipoDocumentacao implements Imprimivel {
 		return lst;
 	}
 
+	@Override
+	public void imprimeOpcaoTela() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

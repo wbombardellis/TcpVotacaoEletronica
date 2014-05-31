@@ -1,5 +1,11 @@
 package view.command;
 
+import java.util.List;
+
+import controller.GerarAtaController;
+import model.dao.VotacaoDao;
+import model.entity.Votacao;
+
 public class GerarAtaCommand extends Command {
 
 	public GerarAtaCommand(Sessao sessao) {
@@ -8,7 +14,9 @@ public class GerarAtaCommand extends Command {
 
 	@Override
 	public void execute() {
-		// TODO Auto-generated method stub
+		List<Votacao> votacoes = VotacaoDao.getInstance().getVotacoesSemAta();
+		
+		GerarAtaController.criaAta( MenuHelper.leOpcoesMenu(votacoes) );
 		
 	}
 
@@ -22,6 +30,12 @@ public class GerarAtaCommand extends Command {
 	public String getDescricaoTela() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public void imprimeOpcaoTela() {
+		// TODO Auto-generated method stub
+		
 	}
 
 }
