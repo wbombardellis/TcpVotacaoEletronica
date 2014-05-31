@@ -2,55 +2,52 @@ package model.entity;
 
 import view.command.Imprimivel;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Date;
 
 public class Votacao implements Imprimivel, Identificavel {
 
-	private int id;
+	private final int id;
 
-	private String titulo;
+	private final String titulo;
 
-	private AtaVotacao ataVotacao;
+	private final Date dataInicio;
 
-	private Date dataInicio;
+	private final Date dataFim;
 
-	private Date dataFim;
+	private final Documentacao documentacao;
 
-	private Date date;
+	private final Estado estadoExplicito;
 
-	private Documentacao documentacao;
-
-	private Estado estadoExplicito;
-
-	private List<Voto> votos;
+	private final List<Voto> votos;
 
 	public int getId() {
-		return 0;
+		return this.id;
 	}
 
 	public String getTitulo() {
-		return null;
+		return this.titulo;
 	}
 
 	public List<Voto> getVotos() {
-		return null;
+		return Collections.unmodifiableList(this.votos);
 	}
 
 	public Documentacao getDocumentacao() {
-		return null;
+		return this.documentacao;
 	}
 
 	public Date getDataInicio() {
-		return null;
+		return (Date)this.dataInicio.clone();
 	}
 
 	public Date getDataFim() {
-		return null;
+		return (Date)this.dataFim.clone();
 	}
 
 	public Estado getEstado() {
-		return null;
+		return this.getEstado();
 	}
 
 	public boolean testaEstado(Estado estado) {
@@ -58,31 +55,53 @@ public class Votacao implements Imprimivel, Identificavel {
 	}
 
 	public Votacao(int id, String titulo, Date dataInicio, Date dataFim, Estado estado, Documentacao documentacao, List<Voto> votos) {
-
+		this.id = id;
+		this.titulo = titulo;
+		this.dataInicio = (Date)dataInicio.clone();
+		this.dataFim = (Date)dataFim.clone();
+		this.estadoExplicito = estado;
+		this.documentacao = documentacao;
+		this.votos = votos;
 	}
 
 	public Votacao(Votacao votacaoBase, Estado estado) {
-
+		this.id = votacaoBase.getId();
+		this.titulo = votacaoBase.getTitulo();
+		this.dataInicio = votacaoBase.getDataInicio();
+		this.dataFim = votacaoBase.getDataFim();
+		this.estadoExplicito = estado;
+		this.documentacao = votacaoBase.getDocumentacao();
+		this.votos = votacaoBase.getVotos();
 	}
 
 	public Votacao(Votacao votacaoBase, Date dataInicio, Date dataFim) {
-
+		this.id = votacaoBase.getId();
+		this.titulo = votacaoBase.getTitulo();
+		this.dataInicio = (Date)dataInicio.clone();
+		this.dataFim = (Date)dataFim.clone();
+		this.estadoExplicito = votacaoBase.getEstado();
+		this.documentacao = votacaoBase.getDocumentacao();
+		this.votos = votacaoBase.getVotos();
 	}
 	
 	public Votacao(Votacao votacaoBase, List<Voto> votos) {
-
+		this.id = votacaoBase.getId();
+		this.titulo = votacaoBase.getTitulo();
+		this.dataInicio = votacaoBase.getDataInicio();
+		this.dataFim = votacaoBase.getDataFim();
+		this.estadoExplicito = votacaoBase.getEstado();
+		this.documentacao = votacaoBase.getDocumentacao();
+		this.votos = votos;
 	}
 
 	@Override
 	public String getDescricaoTela() {
-		// TODO Auto-generated method stub
-		return null;
+		return this.getTitulo();
 	}
 
 	@Override
 	public String getCodigoTela() {
-		// TODO Auto-generated method stub
-		return null;
+		return String.valueOf(this.id);
 	}
 
 	@Override

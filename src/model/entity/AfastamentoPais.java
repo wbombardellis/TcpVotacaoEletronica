@@ -1,43 +1,63 @@
 package model.entity;
 
+import java.util.HashMap;
 import java.util.Map;
 
 public class AfastamentoPais extends Documentacao {
 
-	private String cartaConvite;
+	private final String cartaConvite;
 
-	private String cartaLinguaEstrangeira;
+	private final String cartaLinguaEstrangeira;
 
-	private String PassagemAerea;
+	private final String passagemAerea;
 
 	public static Map<Integer,String> getDescricaoDocumentosObrigatorios() {
-		return null;
+		Map<Integer, String> docs = new HashMap<>();
+		
+		docs.put(0, "Carta Convite");
+		docs.put(1, "Carta em Língua Estrangeira");
+		
+		return docs;
 	}
 
 	public static Map<Integer,String> getDescricaoDocumentosNaoObrigatorios() {
-		return null;
+		Map<Integer, String> docs = new HashMap<>();
+		
+		docs.put(0, "Passagem Aérea");
+		
+		return docs;
 	}
 
 	public AfastamentoPais(Map<Integer,String> documentosObrigatoriosCaminhos, Map<Integer,String> documentosNaoObrigatoriosCaminhos) {
-
-	}
-
-	@Override
-	public String getDescricao() {
-		// TODO Auto-generated method stub
-		return null;
+		super(TipoDocumentacao.AfastamentoPais);
+		
+		if (documentosObrigatoriosCaminhos == null || documentosNaoObrigatoriosCaminhos == null) {
+			throw new IllegalArgumentException();
+		}
+		
+		this.cartaConvite = documentosObrigatoriosCaminhos.get(0);
+		this.cartaLinguaEstrangeira = documentosObrigatoriosCaminhos.get(1);
+		
+		this.passagemAerea = documentosNaoObrigatoriosCaminhos.get(0);
 	}
 
 	@Override
 	public Map<Integer, String> getDocumentosObrigatorios() {
-		// TODO Auto-generated method stub
-		return null;
+		Map<Integer, String> docs = new HashMap<>();
+		
+		docs.put(0, this.cartaConvite);
+		docs.put(1, this.cartaLinguaEstrangeira);
+		
+		return docs;
 	}
 
 	@Override
 	public Map<Integer, String> getDocumentosNaoObrigatorios() {
-		// TODO Auto-generated method stub
-		return null;
+		Map<Integer, String> docs = new HashMap<>();
+		
+		docs.put(0, this.passagemAerea);
+		
+		return docs;
 	}
 
 }
