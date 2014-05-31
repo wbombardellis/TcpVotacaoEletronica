@@ -25,20 +25,12 @@ public class GerarAtaCommand extends Command {
 
 	@Override
 	public String getCodigoTela() {
-		// TODO Auto-generated method stub
-		return null;
+		return "GA";
 	}
 
 	@Override
 	public String getDescricaoTela() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void imprimeOpcaoTela() {
-		// TODO Auto-generated method stub
-		
+		return "Gerar Ata";
 	}
 
 }

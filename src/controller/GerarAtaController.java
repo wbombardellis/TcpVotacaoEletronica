@@ -68,7 +68,6 @@ public abstract class GerarAtaController {
 			}
 		}
 		return count;
-		return null;
 	}
 
 }

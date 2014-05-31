@@ -1,5 +1,13 @@
 -Implementação VotacaoDao
 	getVotacoesSemAta -> verificar que sejam votações fechadas
+-Implementação Membro
+	equals	
+-Implementação Votacao
+	equals
+-Implementação AbstractoDao
+	tudo	
+-Diagrama:
+	Mudar List para Collection -> getAll dos DAOs
 	
 -Sequencia CriaVotacaoCommand
 	condição teste do tipo do usuário -> alterar depois

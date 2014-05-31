@@ -76,7 +76,8 @@ public class VotarCommand extends Command {
 				Logger.getLogger(VotarCommand.class.getName()).log(Level.SEVERE, ex.getMessage());
 			}
 		}else{
-			//Não existe votações para escolher
+			TextManager txtManager = new TextManager(SaidaHelper.nomeRecursos);
+			SaidaHelper.imprimeLinhaFromResources(txtManager.getText("mensagem.votacao.semVotacoes"));
 		}
 	}
 
