@@ -3,22 +3,42 @@ package model.entity;
 import java.util.HashMap;
 import java.util.List;
 
-public class Ata {
+import view.command.Imprimivel;
+
+public class Ata implements Imprimivel{
 
 	private int id;
 
-	private HashMap<Integer,Votacao> atasVotacoes;
+	private HashMap<Integer,AtaVotacao> atasVotacoes;
 
 	public Ata(HashMap<Integer,AtaVotacao> atasVotacoes) {
 
 	}
 
-	public String getDescricao() {
+	public List<String> getDescricao() {
 		return null;
 	}
 
 	public List<AtaVotacao> getAtasVotacoes() {
 		return null;
+	}
+
+	@Override
+	public String getCodigoTela() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String getDescricaoTela() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void imprimeOpcaoTela() {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

@@ -1,5 +1,14 @@
 package view.command;
 
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+import model.dao.AtaDao;
+import model.entity.Ata;
+
 public class LerAtaCommand extends Command {
 
 	public LerAtaCommand(Sessao sessao) {
@@ -8,7 +17,23 @@ public class LerAtaCommand extends Command {
 
 	@Override
 	public void execute() {
-		// TODO Auto-generated method stub
+		List<Ata> atas = AtaDao.getInstance().getAll();
+		
+		if (atas.isEmpty())
+			//Não há votações
+			;
+		else{
+			try{
+				Ata ata = MenuHelper.leOpcaoMenu(atas);
+				
+				ArrayList<String> relatorioTexto = new ArrayList<>();
+				//Adiciona outras informações @TODO
+				relatorioTexto.addAll(ata.getDescricao());
+				
+			}catch(IOException ex){
+				Logger.getLogger(LerAtaCommand.class.getName()).log(Level.SEVERE, ex.getMessage());
+			}
+		}
 		
 	}
 

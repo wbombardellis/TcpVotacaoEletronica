@@ -16,7 +16,11 @@ public class GerarAtaCommand extends Command {
 	public void execute() {
 		List<Votacao> votacoes = VotacaoDao.getInstance().getVotacoesSemAta();
 		
-		GerarAtaController.criaAta( MenuHelper.leOpcoesMenu(votacoes) );
+		if (votacoes.isEmpty())
+			//Não há votações
+			;
+		else
+			GerarAtaController.criaAta( MenuHelper.leOpcoesMenu(votacoes) );
 		
 	}
 

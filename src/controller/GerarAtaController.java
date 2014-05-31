@@ -15,6 +15,9 @@ import model.entity.Voto;
 public abstract class GerarAtaController {
 
 	public static void criaAta(List<Votacao> votacoes) {
+		assert votacoes != null;
+		assert !votacoes.isEmpty();
+		
 		HashMap<Integer,AtaVotacao> atasVotacoes = new HashMap<>();
 		
 		List<Membro> membros = MembroDao.getInstance().getMembrosQueVotam();
@@ -42,6 +45,7 @@ public abstract class GerarAtaController {
 			AtaVotacao ataVotacao = new AtaVotacao(votacao, votantes, naoVotantes);
 			atasVotacoes.put(ataVotacao.getId(), ataVotacao);
 		}
+		
 		AtaDao.getInstance().insert(new Ata(atasVotacoes));
 	}
 
