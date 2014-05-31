@@ -37,6 +37,10 @@ public enum TipoDocumentacao implements Imprimivel {
 		
 		return lst;
 	}
+	
+	public String toString() {
+		return this.descricaoTela;
+	}
 
 	@Override
 	public void imprimeOpcaoTela() {

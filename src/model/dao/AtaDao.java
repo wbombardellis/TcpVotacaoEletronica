@@ -11,6 +11,9 @@ public class AtaDao extends AbstractDao<Ata> {
 	private static AtaDao instance = null;
 
 	public static AtaDao getInstance() {
+		if (instance == null) {
+			instance = new AtaDao();
+		}
 		return instance;
 	}
 

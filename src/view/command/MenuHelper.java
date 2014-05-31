@@ -13,8 +13,9 @@ public abstract class MenuHelper {
 		
 		TextManager txtManager = new TextManager(SaidaHelper.nomeRecursos);
 		
-		//Imprime op√ß√µes
-		for (T opcao : opcoes){
+		//Imprime opções
+		for (T opcao : opcoes)
+		{
 			SaidaHelper.imprimeLinha(opcao.getCodigoTela() + txtManager.getText("simbolo.menu.separadorCodigoDescricao") + opcao.getDescricaoTela());
 		}
 		SaidaHelper.imprimeLinha(codigoCancelar + " - " + txtManager.getText("simbolo.menu.opcao.cancelar"));

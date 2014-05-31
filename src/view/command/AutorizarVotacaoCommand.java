@@ -13,7 +13,8 @@ public class AutorizarVotacaoCommand extends VotacaoCommand {
 	}
 
 	@Override
-	public void execute() {
+	public void execute()
+	{
 		Votacao votacao = leOpcaoListaVotacao(this.listaEstados);
 		
 		AutorizarVotacaoController.autorizaVotacao(votacao);
@@ -27,8 +28,9 @@ public class AutorizarVotacaoCommand extends VotacaoCommand {
 	}
 
 	@Override
-	public String getDescricaoTela() {
-		return "Autorizar Votação";
+	public String getDescricaoTela() 
+	{
+		return "Autorizar Votacao";
 	}
 
 }

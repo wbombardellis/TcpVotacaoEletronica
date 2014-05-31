@@ -2,93 +2,199 @@ package model.entity;
 
 import view.command.Imprimivel;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Date;
 
 public class Votacao implements Imprimivel, Identificavel {
 
-	private int id;
+	private final int id;
 
-	private String titulo;
+	private final String titulo;
 
-	private AtaVotacao ataVotacao;
+	private final Date dataInicio;
 
-	private Date dataInicio;
+	private final Date dataFim;
 
-	private Date dataFim;
+	private final Documentacao documentacao;
 
-	private Date date;
+	private final Estado estadoExplicito;
 
-	private Documentacao documentacao;
-
-	private Estado estadoExplicito;
-
-	private List<Voto> votos;
+	private final List<Voto> votos;
 
 	public int getId() {
-		return 0;
+		return this.id;
 	}
 
 	public String getTitulo() {
-		return null;
+		return this.titulo;
 	}
 
 	public List<Voto> getVotos() {
-		return null;
+		return Collections.unmodifiableList(this.votos);
 	}
 
 	public Documentacao getDocumentacao() {
-		return null;
+		return this.documentacao;
 	}
 
 	public Date getDataInicio() {
-		return null;
+		return (Date)this.dataInicio.clone();
 	}
 
 	public Date getDataFim() {
-		return null;
+		return (Date)this.dataFim.clone();
 	}
 
 	public Estado getEstado() {
-		return null;
+		return this.getEstado();
+	}
+	
+	private boolean temTodosDocumentosObrigatorios() {
+		for (String documento : this.documentacao.getDocumentosObrigatorios().values()) {
+			if (documento.isEmpty()) {
+				return false;
+			}
+		}
+		return true;
+	}
+	
+	private boolean estaLiberada() {
+		return this.estadoExplicito.equals(Estado.Liberada)
+			|| this.temTodosDocumentosObrigatorios();
 	}
 
 	public boolean testaEstado(Estado estado) {
-		return false;
+		switch (estado) {
+		case Bloqueada:
+			return ! this.estaLiberada();
+		case Autorizada:
+			return this.estadoExplicito.equals(Estado.Autorizada);
+		case Liberada:
+			return this.estaLiberada();
+		case Aberta:
+			return this.estaLiberada()
+				&& (new Date()).after(this.dataInicio);
+		case Finalizada:
+			return (new Date()).after(this.dataFim);
+		default:
+			assert(false);
+			return false;
+		}
 	}
 
 	public Votacao(int id, String titulo, Date dataInicio, Date dataFim, Estado estado, Documentacao documentacao, List<Voto> votos) {
-
+		this.id = id;
+		this.titulo = titulo;
+		this.dataInicio = (Date)dataInicio.clone();
+		this.dataFim = (Date)dataFim.clone();
+		this.estadoExplicito = estado;
+		this.documentacao = documentacao;
+		this.votos = votos;
 	}
 
 	public Votacao(Votacao votacaoBase, Estado estado) {
-
+		this.id = votacaoBase.getId();
+		this.titulo = votacaoBase.getTitulo();
+		this.dataInicio = votacaoBase.getDataInicio();
+		this.dataFim = votacaoBase.getDataFim();
+		this.estadoExplicito = estado;
+		this.documentacao = votacaoBase.getDocumentacao();
+		this.votos = votacaoBase.getVotos();
 	}
 
 	public Votacao(Votacao votacaoBase, Date dataInicio, Date dataFim) {
-
+		this.id = votacaoBase.getId();
+		this.titulo = votacaoBase.getTitulo();
+		this.dataInicio = (Date)dataInicio.clone();
+		this.dataFim = (Date)dataFim.clone();
+		this.estadoExplicito = votacaoBase.getEstado();
+		this.documentacao = votacaoBase.getDocumentacao();
+		this.votos = votacaoBase.getVotos();
 	}
 	
 	public Votacao(Votacao votacaoBase, List<Voto> votos) {
-
+		this.id = votacaoBase.getId();
+		this.titulo = votacaoBase.getTitulo();
+		this.dataInicio = votacaoBase.getDataInicio();
+		this.dataFim = votacaoBase.getDataFim();
+		this.estadoExplicito = votacaoBase.getEstado();
+		this.documentacao = votacaoBase.getDocumentacao();
+		this.votos = votos;
 	}
 
 	@Override
 	public String getDescricaoTela() {
-		// TODO Auto-generated method stub
-		return null;
+		return this.getTitulo();
 	}
 
 	@Override
 	public String getCodigoTela() {
-		// TODO Auto-generated method stub
-		return null;
+		return String.valueOf(this.id);
 	}
 
 	@Override
 	public void imprimeOpcaoTela() {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((dataFim == null) ? 0 : dataFim.hashCode());
+		result = prime * result
+				+ ((dataInicio == null) ? 0 : dataInicio.hashCode());
+		result = prime * result
+				+ ((documentacao == null) ? 0 : documentacao.hashCode());
+		result = prime * result
+				+ ((estadoExplicito == null) ? 0 : estadoExplicito.hashCode());
+		result = prime * result + id;
+		result = prime * result + ((titulo == null) ? 0 : titulo.hashCode());
+		result = prime * result + ((votos == null) ? 0 : votos.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Votacao other = (Votacao) obj;
+		if (dataFim == null) {
+			if (other.dataFim != null)
+				return false;
+		} else if (!dataFim.equals(other.dataFim))
+			return false;
+		if (dataInicio == null) {
+			if (other.dataInicio != null)
+				return false;
+		} else if (!dataInicio.equals(other.dataInicio))
+			return false;
+		if (documentacao == null) {
+			if (other.documentacao != null)
+				return false;
+		} else if (!documentacao.equals(other.documentacao))
+			return false;
+		if (estadoExplicito != other.estadoExplicito)
+			return false;
+		if (id != other.id)
+			return false;
+		if (titulo == null) {
+			if (other.titulo != null)
+				return false;
+		} else if (!titulo.equals(other.titulo))
+			return false;
+		if (votos == null) {
+			if (other.votos != null)
+				return false;
+		} else if (!votos.equals(other.votos))
+			return false;
+		return true;
 	}
 
 }
