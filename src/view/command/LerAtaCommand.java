@@ -44,6 +44,13 @@ public class LerAtaCommand extends Command {
 					relatorioTexto.add(txtManager.getText("texto.ataVotacao.id") + ataVotacao.getId());
 					relatorioTexto.add(txtManager.getText("texto.ataVotacao.dataInicio") + ataVotacao.getDataInicio());
 					relatorioTexto.add(txtManager.getText("texto.ataVotacao.dataFim") + ataVotacao.getDataFim());
+					
+					relatorioTexto.add(txtManager.getText("texto.ataVotacao.qtdVotantes") + ataVotacao.getDataFim());
+					relatorioTexto.add(txtManager.getText("texto.ataVotacao.qtdNaoVotantes") + ataVotacao.getDataFim());
+					relatorioTexto.add(txtManager.getText("texto.ataVotacao.qtdVotosFavoraveis") + ataVotacao.getDataFim());
+					relatorioTexto.add(txtManager.getText("texto.ataVotacao.qtdVotosNaoFavoraveis") + ataVotacao.getDataFim());
+					relatorioTexto.add(txtManager.getText("texto.ataVotacao.qtdVotosAbstencao") + ataVotacao.getDataFim());
+					
 					relatorioTexto.add(txtManager.getText("texto.ataVotacao.resultado") 
 					+ (ataVotacao.getResultado() == true ? txtManager.getText("texto.aprovado") : txtManager.getText("texto.reprovado") ));
 					
