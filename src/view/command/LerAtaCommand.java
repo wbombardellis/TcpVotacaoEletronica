@@ -2,6 +2,7 @@ package view.command;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -17,14 +18,14 @@ public class LerAtaCommand extends Command {
 
 	@Override
 	public void execute() {
-		List<Ata> atas = AtaDao.getInstance().getAll();
+		Collection<Ata> atas = AtaDao.getInstance().getAll();
 		
 		if (atas.isEmpty())
 			SaidaHelper.imprimirLinhaFromResources("mensagem.ata.semAtas");
 		
 		else{
 			try{
-				Ata ata = MenuHelper.leOpcaoMenu(atas);
+				Ata ata = MenuHelper.leOpcaoMenu(new ArrayList<Ata>(atas));
 				
 				ArrayList<String> relatorioTexto = new ArrayList<>();
 				//Adiciona outras informações @TODO

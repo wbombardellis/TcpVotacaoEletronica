@@ -1,27 +1,39 @@
 package view.command;
 
+import java.util.List;
+
+import controller.LiberarVotacaoController;
+import model.entity.Estado;
+import model.entity.Votacao;
+
 public class LiberarVotacaoCommand extends VotacaoCommand {
 
 	public LiberarVotacaoCommand(Sessao sessao) {
 		super(sessao);
+		
+		this.listaEstados.add(Estado.Autorizada);
 	}
 
 	@Override
 	public void execute() {
-		// TODO Auto-generated method stub
+		Votacao votacao = this.leOpcaoListaVotacao(this.listaEstados);
 		
+		List<String> warnings = LiberarVotacaoController.liberaVotacao(votacao);
+		
+		// Mensagens ao usuário
+		if (! warnings.isEmpty()) {
+			// Mostra os warnings
+		}
 	}
 
 	@Override
 	public String getCodigoTela() {
-		// TODO Auto-generated method stub
-		return null;
+		return "L";
 	}
 
 	@Override
 	public String getDescricaoTela() {
-		// TODO Auto-generated method stub
-		return null;
+		return "Liberar Votação";
 	}
 
 }

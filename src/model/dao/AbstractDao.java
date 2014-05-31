@@ -1,36 +1,57 @@
 package model.dao;
 
+import java.util.Collection;
+import java.util.Collections;
+import java.util.HashMap;
 import java.util.Map;
-import java.util.List;
 
-public abstract class AbstractDao<T> {
+import model.entity.Identificavel;
 
-	private int lastInsertedId;
+public abstract class AbstractDao<T extends Identificavel> {
 
-	private Map data;
+	private int lastInsertedId = 0;
+
+	private Map<Integer, T> data = new HashMap<>();
 
 	public boolean insert(T record) {
-		return false;
+		T recorded = this.data.get(record.getId());
+		
+		if (recorded == null) {
+			this.lastInsertedId = record.getId();
+			this.data.put(this.lastInsertedId, record);
+			
+			return true;
+		} else {
+			return false;
+		}
 	}
 
 	public boolean delete(int id) {
-		return false;
+		return (this.data.remove(id) != null);
 	}
 
 	public boolean update(int id, T record) {
-		return false;
+		T recorded = this.data.get(id);
+		
+		if (recorded != null) {
+			this.data.put(id, record);
+			
+			return true;
+		} else {
+			return false;
+		}
 	}
 
 	public T getById(int id) {
-		return null;
+		return this.data.get(id);
 	}
 
-	public List<T> getAll() {
-		return null;
+	public Collection<T> getAll() {
+		return Collections.unmodifiableCollection(this.data.values());
 	}
 
 	public int getLastInsertedId() {
-		return 0;
+		return this.lastInsertedId;
 	}
 
 }

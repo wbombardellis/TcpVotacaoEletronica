@@ -5,7 +5,7 @@ import view.command.Imprimivel;
 import java.util.List;
 import java.util.Date;
 
-public class Votacao implements Imprimivel {
+public class Votacao implements Imprimivel, Identificavel {
 
 	private int id;
 
