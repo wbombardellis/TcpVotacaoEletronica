@@ -17,11 +17,13 @@ public class View {
 		
 	}
 
-	private void menuSair() {
+	private void menuSair()
+	{
 
 	}
 
-	private void menuLogout() {
+	private void menuLogout()
+	{
 
 	}
 
