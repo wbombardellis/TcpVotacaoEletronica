@@ -22,6 +22,10 @@ public class Ata implements Imprimivel{
 	public List<AtaVotacao> getAtasVotacoes() {
 		return null;
 	}
+	
+	public int getId(){
+		return id;
+	}
 
 	@Override
 	public String getCodigoTela() {

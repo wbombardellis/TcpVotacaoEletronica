@@ -4,13 +4,19 @@ import java.util.List;
 
 public abstract class SaidaHelper {
 	
-	private static final String nomeRecursos = "view.resources.messages.properties";
+	public static final String nomeRecursos = "view.resources.messages";
 	
 	public static void imprimeLinhaFromResources(String recurso){
-		TextManager txtManager = new TextManager(SaidaHelper.nomeRecursos);
+		TextManager txtManager = new TextManager(nomeRecursos);
+		
+		System.out.println(txtManager.getText(recurso));
 	}
 	
-	public static void imprimirLinhas(List<String> linhas){
+	public static void imprimeLinha(String linha){
+		System.out.println(linha);
+	}
+	
+	public static void imprimeLinhas(List<String> linhas){
 		for (String linha : linhas){
 			System.out.println(linha);
 		}

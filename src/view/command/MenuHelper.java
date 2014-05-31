@@ -6,30 +6,36 @@ import java.io.InputStreamReader;
 import java.util.List;
 
 public abstract class MenuHelper {
+	
+	private static final String codigoCancelar = "C";
 
 	public static <T extends Imprimivel> T leOpcaoMenu(List<T> opcoes) throws IOException {
+		
+		TextManager txtManager = new TextManager(SaidaHelper.nomeRecursos);
+		
 		//Imprime opções
 		for (T opcao : opcoes){
-			System.out.println(opcao.getCodigoTela() + " - " + opcao.getDescricaoTela());
+			SaidaHelper.imprimeLinha(opcao.getCodigoTela() + txtManager.getText("simbolo.menu.separadorCodigoDescricao") + opcao.getDescricaoTela());
 		}
-		System.out.println("C" + " - " + "Cancelar");
+		SaidaHelper.imprimeLinha(codigoCancelar + " - " + txtManager.getText("simbolo.menu.opcao.cancelar"));
 		
-		//Le opção
-		System.out.println("Escolha uma opção: ");
+		SaidaHelper.imprimeLinhaFromResources("mensagem.menu.opcao.escolher");
+		
+		//Lê opção
 		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 		Boolean entradaInvalida;
 		String escolha;
 		do{
 			escolha = reader.readLine();
 			//Valida leitura
-			if(!escolha.equals("C") && getOpcaoByCodigo(opcoes, escolha) == null){
-				System.out.println("Opção inválida. Escolha uma opção válida: ");
+			if(!escolha.equals(codigoCancelar) && getOpcaoByCodigo(opcoes, escolha) == null){
+				SaidaHelper.imprimeLinhaFromResources("mensagem.menu.erro.escolhaInvalida");
 				entradaInvalida = true;
 			}else
 				entradaInvalida = false;
 		}while(entradaInvalida);
 		
-		if (escolha.equals("C"))
+		if (escolha.equals(codigoCancelar))
 			return null;
 		else
 			return getOpcaoByCodigo(opcoes, escolha);

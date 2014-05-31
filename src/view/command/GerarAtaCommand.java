@@ -17,8 +17,7 @@ public class GerarAtaCommand extends Command {
 		List<Votacao> votacoes = VotacaoDao.getInstance().getVotacoesSemAta();
 		
 		if (votacoes.isEmpty())
-			//Não há votações
-			;
+			SaidaHelper.imprimeLinhaFromResources("mensagem.ata.semAtas");
 		else
 			GerarAtaController.criaAta( MenuHelper.leOpcoesMenu(votacoes) );
 		
