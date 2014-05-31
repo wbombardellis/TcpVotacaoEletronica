@@ -6,6 +6,7 @@ public interface Imprimivel {
 
 	public abstract String getDescricaoTela();
 	
-	public abstract void imprimeOpcaoTela();
+	// Desnecess‡rio
+	//public abstract void imprimeOpcaoTela();
 
 }

@@ -33,7 +33,7 @@ public class AbrirVotacaoCommand extends VotacaoCommand {
 
 	@Override
 	public String getDescricaoTela() {
-		return "Abrir Vota√ß√£o";
+		return "Abrir Votação";
 	}
 
 }
