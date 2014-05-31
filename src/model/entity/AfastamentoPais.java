@@ -60,4 +60,46 @@ public class AfastamentoPais extends Documentacao {
 		return docs;
 	}
 
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = super.hashCode();
+		result = prime * result
+				+ ((cartaConvite == null) ? 0 : cartaConvite.hashCode());
+		result = prime
+				* result
+				+ ((cartaLinguaEstrangeira == null) ? 0
+						: cartaLinguaEstrangeira.hashCode());
+		result = prime * result
+				+ ((passagemAerea == null) ? 0 : passagemAerea.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (!super.equals(obj))
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		AfastamentoPais other = (AfastamentoPais) obj;
+		if (cartaConvite == null) {
+			if (other.cartaConvite != null)
+				return false;
+		} else if (!cartaConvite.equals(other.cartaConvite))
+			return false;
+		if (cartaLinguaEstrangeira == null) {
+			if (other.cartaLinguaEstrangeira != null)
+				return false;
+		} else if (!cartaLinguaEstrangeira.equals(other.cartaLinguaEstrangeira))
+			return false;
+		if (passagemAerea == null) {
+			if (other.passagemAerea != null)
+				return false;
+		} else if (!passagemAerea.equals(other.passagemAerea))
+			return false;
+		return true;
+	}
+
 }

@@ -50,4 +50,42 @@ public class EstagioProbatorio extends Documentacao {
 		return new HashMap<Integer, String>();
 	}
 
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = super.hashCode();
+		result = prime
+				* result
+				+ ((relatorioProfessor == null) ? 0 : relatorioProfessor
+						.hashCode());
+		result = prime
+				* result
+				+ ((relatorioProfessorTutor == null) ? 0
+						: relatorioProfessorTutor.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (!super.equals(obj))
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		EstagioProbatorio other = (EstagioProbatorio) obj;
+		if (relatorioProfessor == null) {
+			if (other.relatorioProfessor != null)
+				return false;
+		} else if (!relatorioProfessor.equals(other.relatorioProfessor))
+			return false;
+		if (relatorioProfessorTutor == null) {
+			if (other.relatorioProfessorTutor != null)
+				return false;
+		} else if (!relatorioProfessorTutor
+				.equals(other.relatorioProfessorTutor))
+			return false;
+		return true;
+	}
+
 }

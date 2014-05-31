@@ -53,4 +53,48 @@ public class ProgressaoFuncional extends Documentacao {
 		return new HashMap<Integer, String>();
 	}
 
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = super.hashCode();
+		result = prime * result
+				+ ((comprovantes == null) ? 0 : comprovantes.hashCode());
+		result = prime
+				* result
+				+ ((memorialDescritivo == null) ? 0 : memorialDescritivo
+						.hashCode());
+		result = prime
+				* result
+				+ ((planilhaPontuacao == null) ? 0 : planilhaPontuacao
+						.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (!super.equals(obj))
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		ProgressaoFuncional other = (ProgressaoFuncional) obj;
+		if (comprovantes == null) {
+			if (other.comprovantes != null)
+				return false;
+		} else if (!comprovantes.equals(other.comprovantes))
+			return false;
+		if (memorialDescritivo == null) {
+			if (other.memorialDescritivo != null)
+				return false;
+		} else if (!memorialDescritivo.equals(other.memorialDescritivo))
+			return false;
+		if (planilhaPontuacao == null) {
+			if (other.planilhaPontuacao != null)
+				return false;
+		} else if (!planilhaPontuacao.equals(other.planilhaPontuacao))
+			return false;
+		return true;
+	}
+
 }
