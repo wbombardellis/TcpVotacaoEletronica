@@ -5,7 +5,7 @@ import java.util.List;
 
 import view.command.Imprimivel;
 
-public class Ata implements Imprimivel{
+public class Ata implements Imprimivel, Identificavel {
 
 	private int id;
 
@@ -43,6 +43,11 @@ public class Ata implements Imprimivel{
 	public void imprimeOpcaoTela() {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public int getId() {
+		return this.id;
 	}
 
 }

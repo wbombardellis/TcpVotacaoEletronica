@@ -2,12 +2,11 @@ package view.command;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
-import javax.xml.soap.Text;
 
 import model.dao.AtaDao;
 import model.entity.Ata;
@@ -24,13 +23,13 @@ public class LerAtaCommand extends Command {
 
 	@Override
 	public void execute() {
-		List<Ata> atas = AtaDao.getInstance().getAll();
+		Collection<Ata> atas = AtaDao.getInstance().getAll();
 		
 		if (atas.isEmpty())
 			SaidaHelper.imprimeLinhaFromResources("mensagem.ata.semAtas");
 		else{
 			try{
-				Ata ata = MenuHelper.leOpcaoMenu(atas);
+				Ata ata = MenuHelper.leOpcaoMenu(new ArrayList<Ata>(atas));
 				
 				TextManager txtManager = new TextManager(SaidaHelper.nomeRecursos);
 				
