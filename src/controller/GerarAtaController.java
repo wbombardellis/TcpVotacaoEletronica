@@ -9,6 +9,7 @@ import model.dao.MembroDao;
 import model.entity.Ata;
 import model.entity.AtaVotacao;
 import model.entity.Membro;
+import model.entity.TipoVoto;
 import model.entity.Votacao;
 import model.entity.Voto;
 
@@ -47,6 +48,27 @@ public abstract class GerarAtaController {
 		}
 		
 		AtaDao.getInstance().insert(new Ata(atasVotacoes));
+	}
+
+	public static Integer getQtdVotosFavoriaveis(List<Voto> votos) {
+		Integer count = 0;
+		for (Voto voto : votos){
+			if (voto.getTipo() == TipoVoto.Favoravel){
+				count++;
+			}
+		}
+		return count;
+	}
+
+	public static Integer getQtdVotosNaoFavoriaveis(List<Voto> votos) {
+		Integer count = 0;
+		for (Voto voto : votos){
+			if (voto.getTipo() == TipoVoto.NaoFavoravel){
+				count++;
+			}
+		}
+		return count;
+		return null;
 	}
 
 }

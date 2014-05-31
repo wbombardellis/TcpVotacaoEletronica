@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import controller.GerarAtaController;
 import model.dao.AtaDao;
 import model.entity.Ata;
 import model.entity.AtaVotacao;
@@ -45,25 +46,17 @@ public class LerAtaCommand extends Command {
 					relatorioTexto.add(txtManager.getText("texto.ataVotacao.dataInicio") + ataVotacao.getDataInicio());
 					relatorioTexto.add(txtManager.getText("texto.ataVotacao.dataFim") + ataVotacao.getDataFim());
 					
-					relatorioTexto.add(txtManager.getText("texto.ataVotacao.qtdVotantes") + ataVotacao.getDataFim());
-					relatorioTexto.add(txtManager.getText("texto.ataVotacao.qtdNaoVotantes") + ataVotacao.getDataFim());
-					relatorioTexto.add(txtManager.getText("texto.ataVotacao.qtdVotosFavoraveis") + ataVotacao.getDataFim());
-					relatorioTexto.add(txtManager.getText("texto.ataVotacao.qtdVotosNaoFavoraveis") + ataVotacao.getDataFim());
-					relatorioTexto.add(txtManager.getText("texto.ataVotacao.qtdVotosAbstencao") + ataVotacao.getDataFim());
+					relatorioTexto.add(txtManager.getText("texto.ataVotacao.qtdVotantes") + ataVotacao.getVotantes().size());
+					relatorioTexto.add(txtManager.getText("texto.ataVotacao.qtdNaoVotantes") + ataVotacao.getNaoVotantes().size());
+					relatorioTexto.add(txtManager.getText("texto.ataVotacao.qtdVotosFavoraveis") 
+							+ GerarAtaController.getQtdVotosFavoriaveis(ataVotacao.getVotos()));
+					relatorioTexto.add(txtManager.getText("texto.ataVotacao.qtdVotosNaoFavoraveis") 
+							+ GerarAtaController.getQtdVotosNaoFavoriaveis(ataVotacao.getVotos()));
+					relatorioTexto.add(txtManager.getText("texto.ataVotacao.qtdVotosAbstencao") + ataVotacao.getAbstencoes().size());
 					
 					relatorioTexto.add(txtManager.getText("texto.ataVotacao.resultado") 
-					+ (ataVotacao.getResultado() == true ? txtManager.getText("texto.aprovado") : txtManager.getText("texto.reprovado") ));
-					
-					/*
-					public List<Membro> getVotantes()
-					public List<Membro> getNaoVotantes() 
-					public List<Membro> getAbstencoes() 
-					public List<Voto> getVotos() 
-					public boolean getResultado()*/
-					
-					relatorioTexto.add(txtManager.getText("texto.ataVotacao.idAta") + ataVotacao.getId());
+					+ (ataVotacao.getResultado() == true ? txtManager.getText("texto.ataVotacao.aprovado") : txtManager.getText("texto.ataVotacao.reprovado") ));
 				}
-				relatorioTexto.addAll();
 				
 				SaidaHelper.imprimeLinhas(relatorioTexto);
 				
