@@ -23,7 +23,11 @@ public class LiberarVotacaoCommand extends VotacaoCommand {
 		// Mensagens ao usuário
 		if (! warnings.isEmpty()) {
 			// Mostra os warnings
+			for (String warning : warnings)
+				SaidaHelper.imprimeLinha(warning);
 		}
+		
+		SaidaHelper.imprimeLinhaFromResources("liberar.votacao.sucesso");
 	}
 
 	@Override

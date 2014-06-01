@@ -20,6 +20,7 @@ public class AutorizarVotacaoCommand extends VotacaoCommand {
 		AutorizarVotacaoController.autorizaVotacao(votacao);
 		
 		// Mensagens ao usuário
+		SaidaHelper.imprimeLinhaFromResources("autorizacao.votacao.sucesso");
 	}
 
 	@Override

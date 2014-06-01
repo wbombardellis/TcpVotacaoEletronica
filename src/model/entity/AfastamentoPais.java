@@ -11,7 +11,7 @@ public class AfastamentoPais extends Documentacao {
 
 	private final String passagemAerea;
 
-	public static Map<Integer,String> getDescricaoDocumentosObrigatorios() {
+	public static Map<Integer,String> staticgetDescricaoDocumentosObrigatorios() {
 		Map<Integer, String> docs = new HashMap<>();
 		
 		docs.put(0, "Carta Convite");
@@ -20,12 +20,22 @@ public class AfastamentoPais extends Documentacao {
 		return docs;
 	}
 
-	public static Map<Integer,String> getDescricaoDocumentosNaoObrigatorios() {
+	public static Map<Integer,String> staticgetDescricaoDocumentosNaoObrigatorios() {
 		Map<Integer, String> docs = new HashMap<>();
 		
 		docs.put(0, "Passagem Aérea");
 		
 		return docs;
+	}
+
+	@Override
+	public Map<Integer, String> getDescricaoDocumentosObrigatorios() {
+		return AfastamentoPais.staticgetDescricaoDocumentosObrigatorios();
+	}
+
+	@Override
+	public Map<Integer, String> getDescricaoDocumentosNaoObrigatorios() {
+		return AfastamentoPais.staticgetDescricaoDocumentosNaoObrigatorios();
 	}
 
 	public AfastamentoPais(Map<Integer,String> documentosObrigatoriosCaminhos, Map<Integer,String> documentosNaoObrigatoriosCaminhos) {

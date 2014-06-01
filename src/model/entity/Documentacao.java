@@ -13,6 +13,10 @@ public abstract class Documentacao {
 	public abstract Map<Integer,String> getDocumentosObrigatorios();
 
 	public abstract Map<Integer,String> getDocumentosNaoObrigatorios();
+	
+	public abstract Map<Integer,String> getDescricaoDocumentosObrigatorios();
+	
+	public abstract Map<Integer,String> getDescricaoDocumentosNaoObrigatorios();
 
 	public String getDescricao() {
 		return this.tipoDocumentacao.toString();

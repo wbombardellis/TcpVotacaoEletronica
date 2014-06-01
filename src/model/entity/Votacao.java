@@ -47,7 +47,16 @@ public class Votacao implements Imprimivel, Identificavel {
 	}
 
 	public Estado getEstado() {
-		return this.getEstado();
+		if (testaEstado(Estado.Finalizada))
+			return Estado.Finalizada;
+		else if (testaEstado(Estado.Aberta))
+			return Estado.Aberta;
+		else if (testaEstado(Estado.Liberada))
+			return Estado.Liberada;
+		else if (testaEstado(Estado.Autorizada))
+			return Estado.Autorizada;
+		else
+			return Estado.Bloqueada;
 	}
 	
 	private boolean temTodosDocumentosObrigatorios() {
@@ -131,12 +140,6 @@ public class Votacao implements Imprimivel, Identificavel {
 	@Override
 	public String getCodigoTela() {
 		return String.valueOf(this.id);
-	}
-
-	@Override
-	public void imprimeOpcaoTela() {
-		// TODO Auto-generated method stub
-		
 	}
 
 	@Override

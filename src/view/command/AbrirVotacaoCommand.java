@@ -24,6 +24,7 @@ public class AbrirVotacaoCommand extends VotacaoCommand {
 		VotacaoDao.getInstance().update(votacao.getId(), novaVotacao);
 		
 		// Mensagens ao usu√°rio
+		SaidaHelper.imprimeLinhaFromResources("abrir.votacao.sucesso");
 	}
 
 	@Override
@@ -33,7 +34,7 @@ public class AbrirVotacaoCommand extends VotacaoCommand {
 
 	@Override
 	public String getDescricaoTela() {
-		return "Abrir Votação";
+		return "Abrir VotaÔøΩÔøΩo";
 	}
 
 }

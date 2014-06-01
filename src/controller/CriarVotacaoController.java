@@ -23,11 +23,11 @@ public abstract class CriarVotacaoController {
 	public static Map<Integer,String> getDocumentosObrigatorios(TipoDocumentacao tipoDocumentacao) {
 		switch (tipoDocumentacao) {
 			case AfastamentoPais:
-				return AfastamentoPais.getDescricaoDocumentosObrigatorios();
+				return AfastamentoPais.staticgetDescricaoDocumentosObrigatorios();
 			case ProgressaoFuncional:
-				return ProgressaoFuncional.getDescricaoDocumentosObrigatorios();
+				return ProgressaoFuncional.staticgetDescricaoDocumentosObrigatorios();
 			case EstagioProbatorio:
-				return EstagioProbatorio.getDescricaoDocumentosObrigatorios();
+				return EstagioProbatorio.staticgetDescricaoDocumentosObrigatorios();
 			default:
 				assert(false);
 				return null;
@@ -37,11 +37,11 @@ public abstract class CriarVotacaoController {
 	public static Map<Integer,String> getDocumentosNaoObrigatorios(TipoDocumentacao tipoDocumentacao) {
 		switch (tipoDocumentacao) {
 			case AfastamentoPais:
-				return AfastamentoPais.getDescricaoDocumentosNaoObrigatorios();
+				return AfastamentoPais.staticgetDescricaoDocumentosNaoObrigatorios();
 			case ProgressaoFuncional:
-				return ProgressaoFuncional.getDescricaoDocumentosNaoObrigatorios();
+				return ProgressaoFuncional.staticgetDescricaoDocumentosNaoObrigatorios();
 			case EstagioProbatorio:
-				return EstagioProbatorio.getDescricaoDocumentosNaoObrigatorios();
+				return EstagioProbatorio.staticgetDescricaoDocumentosNaoObrigatorios();
 			default:
 				assert(false);
 				return null;

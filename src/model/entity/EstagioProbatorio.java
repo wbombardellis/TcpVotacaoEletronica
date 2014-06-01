@@ -11,7 +11,7 @@ public class EstagioProbatorio extends Documentacao {
 
 	private final String relatorioProfessorTutor;
 
-	public static Map<Integer,String> getDescricaoDocumentosObrigatorios() {
+	public static Map<Integer,String> staticgetDescricaoDocumentosObrigatorios() {
 		Map<Integer, String> docs = new HashMap<>();
 		
 		docs.put(0, "Relatório do Professor");
@@ -20,7 +20,7 @@ public class EstagioProbatorio extends Documentacao {
 		return docs;
 	}
 
-	public static Map<Integer,String> getDescricaoDocumentosNaoObrigatorios() {
+	public static Map<Integer,String> staticgetDescricaoDocumentosNaoObrigatorios() {
 		return new HashMap<Integer, String>();
 	}
 
@@ -48,6 +48,16 @@ public class EstagioProbatorio extends Documentacao {
 	@Override
 	public Map<Integer, String> getDocumentosNaoObrigatorios() {
 		return new HashMap<Integer, String>();
+	}
+	
+	@Override
+	public Map<Integer, String> getDescricaoDocumentosObrigatorios() {
+		return EstagioProbatorio.staticgetDescricaoDocumentosObrigatorios();
+	}
+
+	@Override
+	public Map<Integer, String> getDescricaoDocumentosNaoObrigatorios() {
+		return EstagioProbatorio.staticgetDescricaoDocumentosNaoObrigatorios();
 	}
 
 	@Override

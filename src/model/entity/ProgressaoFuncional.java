@@ -11,7 +11,7 @@ public class ProgressaoFuncional extends Documentacao {
 
 	private final String comprovantes;
 
-	public static Map<Integer,String> getDescricaoDocumentosObrigatorios() {
+	public static Map<Integer,String> staticgetDescricaoDocumentosObrigatorios() {
 		Map<Integer, String> docs = new HashMap<>();
 		
 		docs.put(0, "Memórial Descritivo");
@@ -21,8 +21,18 @@ public class ProgressaoFuncional extends Documentacao {
 		return docs;
 	}
 
-	public static Map<Integer,String> getDescricaoDocumentosNaoObrigatorios() {
+	public static Map<Integer,String> staticgetDescricaoDocumentosNaoObrigatorios() {
 		return new HashMap<Integer, String>();
+	}
+	
+	@Override
+	public Map<Integer, String> getDescricaoDocumentosObrigatorios() {
+		return ProgressaoFuncional.staticgetDescricaoDocumentosObrigatorios();
+	}
+
+	@Override
+	public Map<Integer, String> getDescricaoDocumentosNaoObrigatorios() {
+		return ProgressaoFuncional.staticgetDescricaoDocumentosNaoObrigatorios();
 	}
 
 	public ProgressaoFuncional(Map<Integer,String> documentosObrigatoriosCaminhos, Map<Integer,String> documentosNaoObrigatoriosCaminhos) {

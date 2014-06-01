@@ -20,13 +20,18 @@ public class ExcluirVotacaoCommand extends VotacaoCommand {
 		boolean confirmadaExclusao = true;
 		if (! votacao.getVotos().isEmpty()) {
 			// Infroma usuário e pede confirmação
+			SaidaHelper.imprimeLinhaFromResources("exclusao.informar.votos");
 		}
 		
 		if (confirmadaExclusao) {
 			VotacaoDao.getInstance().delete(votacao.getId());
+			// Mensagens ao usuário
+			SaidaHelper.imprimeLinhaFromResources("exclusao.sucesso");
+		} else {
+			// Mensagens ao usuário
+			SaidaHelper.imprimeLinhaFromResources("exclusao.falha");
 		}
 		
-		// Mensagens ao usuário
 	}
 
 	@Override
