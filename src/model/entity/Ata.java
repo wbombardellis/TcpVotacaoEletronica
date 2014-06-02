@@ -1,5 +1,7 @@
 package model.entity;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 
@@ -11,43 +13,29 @@ public class Ata implements Imprimivel, Identificavel {
 
 	private HashMap<Integer,AtaVotacao> atasVotacoes;
 
-	public Ata(HashMap<Integer,AtaVotacao> atasVotacoes) {
-
+	public Ata(int id, HashMap<Integer,AtaVotacao> atasVotacoes) {
+		this.id = id;
+		//Faz uma cópia raza, porém já é suficiente, pois Integer e AtaVotacao são imutáveis
+		this.atasVotacoes = (HashMap<Integer,AtaVotacao>)atasVotacoes.clone();
 	}
-
-	public List<String> getDescricao() {
-		return null;
+	
+	@Override
+	public int getId() {
+		return this.id;
 	}
 
 	public List<AtaVotacao> getAtasVotacoes() {
-		return null;
-	}
-	
-	public int getId(){
-		return id;
+		return Collections.unmodifiableList(new ArrayList<>(atasVotacoes.values()));
 	}
 
 	@Override
 	public String getCodigoTela() {
-		// TODO Auto-generated method stub
-		return null;
+		return "A";
 	}
 
 	@Override
 	public String getDescricaoTela() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void imprimeOpcaoTela() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public int getId() {
-		return this.id;
+		return "Ata";
 	}
 
 }

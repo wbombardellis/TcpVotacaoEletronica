@@ -2,12 +2,16 @@
 	getVotacoesSemAta -> verificar que sejam votações fechadas
 -Implementação Membro
 	equals	
+	clone
 -Implementação Votacao
 	equals
+	votos no contrutor -> clone
 -Implementação AbstractoDao
 	tudo	
 -Revisar
-	model.entity
+	model.entity.AtaVotacao.getResultado
+	model.entity.AtaVotacao.getDescricao
+	model.entity.AtaVotacao.construtor
 	VotarCommand
 	MenuHelper
 	

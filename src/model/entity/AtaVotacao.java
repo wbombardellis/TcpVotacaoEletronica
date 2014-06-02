@@ -1,11 +1,12 @@
 package model.entity;
 
+import java.util.Collections;
 import java.util.Date;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class AtaVotacao {
+public class AtaVotacao implements Identificavel{
 
 	private int id;
 
@@ -17,32 +18,33 @@ public class AtaVotacao {
 
 	private Date dataFim;
 
-	private ArrayList votos;
+	private HashMap<Integer, Voto> votos;
 
 	private Votacao votacao;
 
-	private HashMap hashMap;
+	private ArrayList<Membro> votantes;
 
-	private List votantes;
+	private ArrayList<Membro> naoVotantes;
 
-	private List naoVotantes;
+	private ArrayList<Membro> abstencoes;
 
-	private List abstencoes;
-
-	public AtaVotacao(Votacao votacao, List<Membro> votantes, List<Membro> naoVotantes) {
-
+	public AtaVotacao(int id, Votacao votacao, List<Membro> votantes, List<Membro> naoVotantes) {
+		this.id = id;
+		this.votacao = votacao;
+		this.votantes = new ArrayList<Membro>(votantes);
+		this.naoVotantes = new ArrayList<Membro>(naoVotantes);
 	}
 
 	public int getId() {
-		return 0;
+		return id;
 	}
 
 	public Date getDataInicio() {
-		return null;
+		return (Date)dataInicio.clone();
 	}
 
 	public Date getDataFim() {
-		return null;
+		return (Date)dataFim.clone();
 	}
 
 	public String getDescricao() {
@@ -50,19 +52,19 @@ public class AtaVotacao {
 	}
 
 	public List<Membro> getVotantes() {
-		return null;
+		return Collections.unmodifiableList(votantes);
 	}
 
 	public List<Membro> getNaoVotantes() {
-		return null;
+		return Collections.unmodifiableList(naoVotantes);
 	}
 
 	public List<Membro> getAbstencoes() {
-		return null;
+		return Collections.unmodifiableList(abstencoes);
 	}
 
 	public List<Voto> getVotos() {
-		return null;
+		return Collections.unmodifiableList(new ArrayList<Voto>(votos.values()));
 	}
 
 	public boolean getResultado() {
@@ -70,7 +72,7 @@ public class AtaVotacao {
 	}
 
 	public Votacao getVotacao() {
-		return null;
+		return votacao;
 	}
 
 	@Override

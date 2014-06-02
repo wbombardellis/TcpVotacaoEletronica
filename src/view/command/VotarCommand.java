@@ -19,11 +19,22 @@ public class VotarCommand extends Command {
 	}
 
 	private void imprimeComprovanteVotacao() {
-
+		SaidaHelper.imprimeLinhaFromResources("votar.titulo.comprovante");
+		SaidaHelper.imprimeLinhaFromResources("votar.sucesso");
 	}
 	
 	private void imprimeVoto(Voto voto){
+		ArrayList<String> output = new ArrayList<>();
+		TextManager txtMngr = new TextManager(SaidaHelper.nomeRecursos);
 		
+		output.add(txtMngr.getText("titulo.voto"));
+		output.add(txtMngr.getText("voto.id") + voto.getId());
+		output.add(txtMngr.getText("voto.autor") + voto.getAutor().getNome());
+		output.add(txtMngr.getText("voto.tipo") + voto.getTipo());
+		output.add(txtMngr.getText("voto.data") + voto.getData());
+		output.add(txtMngr.getText("voto.justificativa") + voto.getJustificativa());
+		
+		SaidaHelper.imprimeLinhas(output);
 	}
 	
 	private Voto leVoto(){

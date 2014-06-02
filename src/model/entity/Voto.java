@@ -2,7 +2,7 @@ package model.entity;
 
 import java.util.Date;
 
-public class Voto {
+public class Voto implements Identificavel{
 
 	private int id;
 
@@ -14,28 +14,32 @@ public class Voto {
 
 	private Membro autor;
 
-	public Voto(TipoVoto tipo, Membro autor, Date data, String justificativa) {
-
+	public Voto(int id, TipoVoto tipo, Membro autor, Date data, String justificativa) {
+		this.id = id;
+		this.tipoVoto = tipo; //TipoVoto é imutável
+		this.autor = autor; //Supõe que autor é imutável
+		this.data = (Date)data.clone();
+		this.justificativa = justificativa;
 	}
 
 	public int getId() {
-		return 0;
+		return id;
 	}
 
 	public TipoVoto getTipo() {
-		return null;
+		return tipoVoto;
 	}
 
 	public Membro getAutor() {
-		return null;
+		return autor;
 	}
 
 	public Date getData() {
-		return null;
+		return (Date)data.clone();
 	}
 
 	public String getJustificativa() {
-		return null;
+		return justificativa;
 	}
 
 }
