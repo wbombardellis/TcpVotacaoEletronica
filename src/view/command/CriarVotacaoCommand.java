@@ -1,5 +1,6 @@
 package view.command;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -20,7 +21,7 @@ public class CriarVotacaoCommand extends VotacaoCommand {
 	}
 
 	@Override
-	public void execute() {
+	public void execute() throws IOException {
 		TipoDocumentacao tipoVoto = MenuHelper.leOpcaoMenu(this.tiposVotacao);
 		
 		Map<Integer, String> documentosObrigatorios = CriarVotacaoController.getDocumentosObrigatorios(tipoVoto);

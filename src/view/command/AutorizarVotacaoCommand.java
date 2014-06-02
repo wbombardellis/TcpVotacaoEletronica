@@ -1,5 +1,7 @@
 package view.command;
 
+import java.io.IOException;
+
 import controller.AutorizarVotacaoController;
 import model.entity.Estado;
 import model.entity.Votacao;
@@ -13,8 +15,7 @@ public class AutorizarVotacaoCommand extends VotacaoCommand {
 	}
 
 	@Override
-	public void execute()
-	{
+	public void execute() throws IOException {
 		Votacao votacao = leOpcaoListaVotacao(this.listaEstados);
 		
 		AutorizarVotacaoController.autorizaVotacao(votacao);

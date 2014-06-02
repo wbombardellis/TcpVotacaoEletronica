@@ -1,5 +1,7 @@
 package view.command;
 
+import java.io.IOException;
+
 import model.dao.VotacaoDao;
 import model.entity.Estado;
 import model.entity.Votacao;
@@ -14,7 +16,7 @@ public class ExcluirVotacaoCommand extends VotacaoCommand {
 	}
 
 	@Override
-	public void execute() {
+	public void execute() throws IOException {
 		Votacao votacao = this.leOpcaoListaVotacao(this.listaEstados);
 		
 		boolean confirmadaExclusao = true;

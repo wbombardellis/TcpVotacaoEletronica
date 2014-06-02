@@ -1,5 +1,6 @@
 package view.command;
 
+import java.io.IOException;
 import java.util.Date;
 
 import model.dao.VotacaoDao;
@@ -15,7 +16,7 @@ public class AbrirVotacaoCommand extends VotacaoCommand {
 	}
 
 	@Override
-	public void execute() {
+	public void execute() throws IOException {
 		Votacao votacao = this.leOpcaoListaVotacao(this.listaEstados);
 		
 		// Coloca a data atual na votação escolhida 
@@ -34,7 +35,7 @@ public class AbrirVotacaoCommand extends VotacaoCommand {
 
 	@Override
 	public String getDescricaoTela() {
-		return "Abrir Vota��o";
+		return "Abrir Votação";
 	}
 
 }
