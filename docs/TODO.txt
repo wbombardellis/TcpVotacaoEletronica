@@ -9,11 +9,15 @@
 -Implementação AbstractoDao
 	tudo	
 -Revisar
-	model.entity.AtaVotacao.getResultado
 	model.entity.AtaVotacao.getDescricao
 	model.entity.AtaVotacao.construtor
 	VotarCommand
 	MenuHelper
+-Diagramas
+	AtaVotacao dois metodos novos
+	AtaVotacao remove attr resultado
+	AtaFactory
+	AtaVotacaoFactory
 	
 -Sequencia CriaVotacaoCommand
 	condição teste do tipo do usuário -> alterar depois

@@ -11,9 +11,7 @@ public class AtaVotacao implements Identificavel{
 	private int id;
 
 	private String descricao;
-
-	private boolean resultado;
-
+	
 	private Date dataInicio;
 
 	private Date dataFim;
@@ -68,11 +66,31 @@ public class AtaVotacao implements Identificavel{
 	}
 
 	public boolean getResultado() {
-		return false;
+		return getQtdVotosFavoriaveis() > getQtdVotosNaoFavoriaveis();
 	}
 
 	public Votacao getVotacao() {
 		return votacao;
+	}
+	
+	public Integer getQtdVotosFavoriaveis() {
+		Integer count = 0;
+		for (Voto voto : votos.values()){
+			if (voto.getTipo() == TipoVoto.Favoravel){
+				count++;
+			}
+		}
+		return count;
+	}
+
+	public Integer getQtdVotosNaoFavoriaveis() {
+		Integer count = 0;
+		for (Voto voto : votos.values()){
+			if (voto.getTipo() == TipoVoto.NaoFavoravel){
+				count++;
+			}
+		}
+		return count;
 	}
 
 	@Override

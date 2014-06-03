@@ -48,10 +48,8 @@ public class LerAtaCommand extends Command {
 					
 					relatorioTexto.add(txtManager.getText("texto.ataVotacao.qtdVotantes") + ataVotacao.getVotantes().size());
 					relatorioTexto.add(txtManager.getText("texto.ataVotacao.qtdNaoVotantes") + ataVotacao.getNaoVotantes().size());
-					relatorioTexto.add(txtManager.getText("texto.ataVotacao.qtdVotosFavoraveis") 
-							+ GerarAtaController.getQtdVotosFavoriaveis(ataVotacao.getVotos()));
-					relatorioTexto.add(txtManager.getText("texto.ataVotacao.qtdVotosNaoFavoraveis") 
-							+ GerarAtaController.getQtdVotosNaoFavoriaveis(ataVotacao.getVotos()));
+					relatorioTexto.add(txtManager.getText("texto.ataVotacao.qtdVotosFavoraveis") + ataVotacao.getQtdVotosFavoriaveis());
+					relatorioTexto.add(txtManager.getText("texto.ataVotacao.qtdVotosNaoFavoraveis") + ataVotacao.getQtdVotosNaoFavoriaveis());
 					relatorioTexto.add(txtManager.getText("texto.ataVotacao.qtdVotosAbstencao") + ataVotacao.getAbstencoes().size());
 					
 					relatorioTexto.add(txtManager.getText("texto.ataVotacao.resultado") 

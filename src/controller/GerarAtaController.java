@@ -4,7 +4,10 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import model.AtaFactory;
+import model.AtaVotacaoFactory;
 import model.dao.AtaDao;
+import model.dao.AtaVotacaoDao;
 import model.dao.MembroDao;
 import model.entity.Ata;
 import model.entity.AtaVotacao;
@@ -43,31 +46,12 @@ public abstract class GerarAtaController {
 				}
 			}
 			//Adiciona nova Ata de Votação no hash
-			AtaVotacao ataVotacao = new AtaVotacao(votacao, votantes, naoVotantes);
+			AtaVotacao ataVotacao = AtaVotacaoFactory.criaAtaVotacao(votacao, votantes, naoVotantes);
 			atasVotacoes.put(ataVotacao.getId(), ataVotacao);
+			AtaVotacaoDao.getInstance().insert(ataVotacao);
 		}
 		
-		AtaDao.getInstance().insert(new Ata(atasVotacoes));
-	}
-
-	public static Integer getQtdVotosFavoriaveis(List<Voto> votos) {
-		Integer count = 0;
-		for (Voto voto : votos){
-			if (voto.getTipo() == TipoVoto.Favoravel){
-				count++;
-			}
-		}
-		return count;
-	}
-
-	public static Integer getQtdVotosNaoFavoriaveis(List<Voto> votos) {
-		Integer count = 0;
-		for (Voto voto : votos){
-			if (voto.getTipo() == TipoVoto.NaoFavoravel){
-				count++;
-			}
-		}
-		return count;
+		AtaDao.getInstance().insert(AtaFactory.criaAta(atasVotacoes));
 	}
 
 }
