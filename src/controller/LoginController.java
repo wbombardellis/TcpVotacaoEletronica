@@ -1,17 +1,30 @@
 package controller;
 
-public class LoginController {
-
+public class LoginController
+{
 	private String username;
-
 	private String password;
 
-	public void LoginController(String username, String password) {
-
+	public LoginController(String username, String password) 
+	{
+		this.username = username;
+		this.password = password;
+	}
+	
+	public void setAttributes(String username, String password)
+	{
+		this.username = username;
+		this.password = password;
 	}
 
-	public boolean credenciaisValidas(String username, String password) {
+	private boolean credenciaisValidas()
+	{
 		return false;
 	}
-
+	
+	public void autenticar()
+	{
+		// if credenciaisValidas
+			// autoriza a sessão
+	}
 }
