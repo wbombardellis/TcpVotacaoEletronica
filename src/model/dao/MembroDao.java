@@ -1,6 +1,8 @@
 package model.dao;
 
 import model.entity.Membro;
+
+import java.util.ArrayList;
 import java.util.List;
 
 public class MembroDao extends AbstractDao<Membro> {
@@ -11,7 +13,9 @@ public class MembroDao extends AbstractDao<Membro> {
 		return null;
 	}
 
-	public Membro getMembroByUsername(String username) {
+	public Membro getMembroByUsername(String username)
+	{
+		
 		return null;
 	}
 

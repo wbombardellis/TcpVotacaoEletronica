@@ -1,5 +1,7 @@
 package view.command;
 
+import java.io.IOException;
+
 public abstract class Command implements Imprimivel {
 
 	protected Sessao sessao;
@@ -8,7 +10,7 @@ public abstract class Command implements Imprimivel {
 		this.sessao = sessao; 
 	}
 
-	public abstract void execute();
+	public abstract void execute() throws IOException;
 
 
 	/**

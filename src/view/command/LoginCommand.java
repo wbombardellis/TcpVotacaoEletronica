@@ -1,6 +1,7 @@
 package view.command;
 
 import java.io.*;
+import controller.LoginController;
 
 public class LoginCommand extends Command {
 
@@ -8,31 +9,35 @@ public class LoginCommand extends Command {
 		super(sessao);
 	}
 
-	public boolean login(String username, String password) {
+	public boolean login(String username, String password) 
+	{
 		return false;
 	}
 
 	@Override
-	public void execute() {
-		// TODO Auto-generated method stub
+	public void execute() throws IOException
+	{		
+		SaidaHelper.imprimeLinhaFromResources("login.pedir.username");
+		String username = MenuHelper.leString();
+			
+		SaidaHelper.imprimeLinhaFromResources("loign.pedir.senha");
+		String password = MenuHelper.leString();
+		
+		LoginController loginController = new LoginController(username, password);
+		
+		loginController.autenticar();
 		
 	}
 
 	@Override
-	public String getCodigoTela() {
-		// TODO Auto-generated method stub
-		return null;
+	public String getCodigoTela() 
+	{
+		return "L";
 	}
 
 	@Override
-	public String getDescricaoTela() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	
-	public void imprimeOpcaoTela()
+	public String getDescricaoTela() 
 	{
-		System.out.println("Fazer login");
+		return "Fazer login";
 	}
-
 }

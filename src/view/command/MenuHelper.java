@@ -55,7 +55,7 @@ public abstract class MenuHelper {
 	public static <T extends Imprimivel> void imprimeOpcoes(List<T> opcoes)
 	{
 		TextManager txtManager = new TextManager(SaidaHelper.nomeRecursos);
-		//Imprime op��es
+		//Imprime opções
 		for (T opcao : opcoes)
 		{
 			SaidaHelper.imprimeLinha(opcao.getCodigoTela() + txtManager.getText("simbolo.menu.separadorCodigoDescricao") + opcao.getDescricaoTela());
@@ -81,5 +81,28 @@ public abstract class MenuHelper {
 			return null;
 		else
 			return getOpcaoByCodigo(opcoes, escolha);
+	}
+	
+	public static String leString() throws IOException
+	{
+		BufferedReader reader = new BufferedReader (new InputStreamReader(System.in));
+		Boolean entradaInvalida = true;
+		String stringLida;
+		
+		do
+		{
+			stringLida = reader.readLine();
+			if (!stringLida.isEmpty())
+			{
+				entradaInvalida = true;
+			}
+			else
+			{
+				entradaInvalida = false;
+			}
+		}
+		while (entradaInvalida);
+		
+		return stringLida;
 	}
 }

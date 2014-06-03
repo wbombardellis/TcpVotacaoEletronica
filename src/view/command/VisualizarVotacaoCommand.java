@@ -1,5 +1,6 @@
 package view.command;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -29,7 +30,7 @@ public class VisualizarVotacaoCommand extends VotacaoCommand {
 	}
 
 	@Override
-	public void execute() {
+	public void execute() throws IOException {
 		Votacao votacao;
 		
 		Membro membroLogado = sessao.getMembro();

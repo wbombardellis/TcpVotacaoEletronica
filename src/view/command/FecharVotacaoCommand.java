@@ -1,5 +1,6 @@
 package view.command;
 
+import java.io.IOException;
 import java.util.List;
 
 import controller.FecharVotacaoController;
@@ -12,7 +13,7 @@ public class FecharVotacaoCommand extends VotacaoCommand {
 	}
 
 	@Override
-	public void execute() {
+	public void execute() throws IOException {
 		Votacao votacao = this.leOpcaoListaVotacao(this.listaEstados);
 		
 		List<String> warnings = FecharVotacaoController.fechaVotacao(votacao);
