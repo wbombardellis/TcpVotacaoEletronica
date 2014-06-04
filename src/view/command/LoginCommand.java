@@ -25,7 +25,16 @@ public class LoginCommand extends Command {
 		
 		LoginController loginController = new LoginController(username, password);
 		
-		loginController.autenticar();
+		if (loginController.autenticar() == true)
+		{
+			SaidaHelper.imprimeLinhaFromResources("login.sucesso");
+		}
+		else
+		{
+			SaidaHelper.imprimeLinhaFromResources("login.erro");
+		}
+		
+		//Falta imprimir o menu da view (tanto sucesso quanto erro), talvez um clear screen
 		
 	}
 

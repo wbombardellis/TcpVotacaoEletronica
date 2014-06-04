@@ -2,18 +2,18 @@ package model.entity;
 
 import java.util.Date;
 
-public abstract class Membro {
+public class Membro {
 
 	private String nome;
-
+	
 	private String username;
-
+	
 	private String password;
-
+	
 	private Date dataInicioMandato;
-
+	
 	private Date dataFinalMandato;
-
+	
 	private Voto voto;
 
 	public Membro(String nome, String username, String password) {
