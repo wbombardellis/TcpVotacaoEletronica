@@ -14,6 +14,9 @@ public class Ata implements Imprimivel, Identificavel {
 	private HashMap<Integer,AtaVotacao> atasVotacoes;
 
 	public Ata(int id, HashMap<Integer,AtaVotacao> atasVotacoes) {
+		assert id >=0;
+		assert atasVotacoes != null;
+		assert !atasVotacoes.isEmpty();
 		this.id = id;
 		//Faz uma cópia raza, porém já é suficiente, pois Integer e AtaVotacao são imutáveis
 		this.atasVotacoes = (HashMap<Integer,AtaVotacao>)atasVotacoes.clone();

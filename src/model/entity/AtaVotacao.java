@@ -16,7 +16,7 @@ public class AtaVotacao implements Identificavel{
 
 	private Date dataFim;
 
-	private HashMap<Integer, Voto> votos;
+	private ArrayList<Voto> votos;
 
 	private Votacao votacao;
 
@@ -29,10 +29,24 @@ public class AtaVotacao implements Identificavel{
 	private boolean resultado;
 
 	public AtaVotacao(int id, Votacao votacao, List<Membro> votantes, List<Membro> naoVotantes) {
+		assert id >= 0;
+		assert votacao != null;
+		
 		this.id = id;
 		this.votacao = votacao;
-		this.votantes = new ArrayList<Membro>(votantes);
-		this.naoVotantes = new ArrayList<Membro>(naoVotantes);
+		this.votantes = new ArrayList<>(votantes);
+		this.naoVotantes = new ArrayList<>(naoVotantes);
+		this.dataInicio = votacao.getDataInicio();
+		this.dataFim = votacao.getDataFim();
+		this.votos = new ArrayList<Voto>(votacao.getVotos());
+		
+		this.abstencoes = new ArrayList<>();
+		for (Voto voto : this.votos){
+			if (voto.getTipo() == TipoVoto.Abstencao){
+				this.abstencoes.add(voto.getAutor());
+			}
+		}
+		//descricao
 		
 		this.resultado = getQtdVotosFavoriaveis() > getQtdVotosNaoFavoriaveis();
 	}
@@ -66,7 +80,7 @@ public class AtaVotacao implements Identificavel{
 	}
 
 	public List<Voto> getVotos() {
-		return Collections.unmodifiableList(new ArrayList<Voto>(votos.values()));
+		return Collections.unmodifiableList(votos);
 	}
 
 	public boolean getResultado() {
@@ -79,7 +93,7 @@ public class AtaVotacao implements Identificavel{
 	
 	public int getQtdVotosFavoriaveis() {
 		Integer count = 0;
-		for (Voto voto : votos.values()){
+		for (Voto voto : votos){
 			if (voto.getTipo() == TipoVoto.Favoravel){
 				count++;
 			}
@@ -89,7 +103,7 @@ public class AtaVotacao implements Identificavel{
 
 	public int getQtdVotosNaoFavoriaveis() {
 		Integer count = 0;
-		for (Voto voto : votos.values()){
+		for (Voto voto : votos){
 			if (voto.getTipo() == TipoVoto.NaoFavoravel){
 				count++;
 			}
