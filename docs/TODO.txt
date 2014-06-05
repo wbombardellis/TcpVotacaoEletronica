@@ -3,14 +3,11 @@
 -Implementação Membro
 	equals	
 	clone
--Implementação Votacao
-	equals
-	votos no contrutor -> clone
 -Revisar
 	model.entity.AtaVotacao.getDescricao
 	model.entity.AtaVotacao.construtor
-	VotarCommand
-	MenuHelper
+	VotarCommand.leVoto
+	MenuHelper.leOpceoes
 	
 -Sequencia CriaVotacaoCommand
 	condição teste do tipo do usuário -> alterar depois

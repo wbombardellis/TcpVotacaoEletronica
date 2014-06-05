@@ -25,12 +25,16 @@ public class AtaVotacao implements Identificavel{
 	private ArrayList<Membro> naoVotantes;
 
 	private ArrayList<Membro> abstencoes;
+	
+	private boolean resultado;
 
 	public AtaVotacao(int id, Votacao votacao, List<Membro> votantes, List<Membro> naoVotantes) {
 		this.id = id;
 		this.votacao = votacao;
 		this.votantes = new ArrayList<Membro>(votantes);
 		this.naoVotantes = new ArrayList<Membro>(naoVotantes);
+		
+		this.resultado = getQtdVotosFavoriaveis() > getQtdVotosNaoFavoriaveis();
 	}
 
 	public int getId() {
@@ -46,7 +50,7 @@ public class AtaVotacao implements Identificavel{
 	}
 
 	public String getDescricao() {
-		return null;
+		return descricao;
 	}
 
 	public List<Membro> getVotantes() {
@@ -66,7 +70,7 @@ public class AtaVotacao implements Identificavel{
 	}
 
 	public boolean getResultado() {
-		return getQtdVotosFavoriaveis() > getQtdVotosNaoFavoriaveis();
+		return resultado;
 	}
 
 	public Votacao getVotacao() {
