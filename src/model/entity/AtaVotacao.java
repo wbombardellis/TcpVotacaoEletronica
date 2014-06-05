@@ -73,7 +73,7 @@ public class AtaVotacao implements Identificavel{
 		return votacao;
 	}
 	
-	public Integer getQtdVotosFavoriaveis() {
+	public int getQtdVotosFavoriaveis() {
 		Integer count = 0;
 		for (Voto voto : votos.values()){
 			if (voto.getTipo() == TipoVoto.Favoravel){
@@ -83,7 +83,7 @@ public class AtaVotacao implements Identificavel{
 		return count;
 	}
 
-	public Integer getQtdVotosNaoFavoriaveis() {
+	public int getQtdVotosNaoFavoriaveis() {
 		Integer count = 0;
 		for (Voto voto : votos.values()){
 			if (voto.getTipo() == TipoVoto.NaoFavoravel){
