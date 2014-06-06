@@ -4,10 +4,19 @@
 	equals	
 	clone
 -Revisar
-	model.entity.AtaVotacao.getDescricao
-	model.entity.AtaVotacao.construtor
 	VotarCommand.leVoto
 	MenuHelper.leOpceoes
+-Testes
+	AbstractDaoTest -> Correção membro
+	controller.GerarAta
+	controller.LerAta
+	model.entity.Ata
+	model.entity.AtaVotacao
+	model.entity.Voto
+	view.command.MenuHelper
+	view.command.SaidaHelper
+	view.command.TextManager
+	
 	
 -Sequencia CriaVotacaoCommand
 	condição teste do tipo do usuário -> alterar depois

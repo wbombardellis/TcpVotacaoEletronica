@@ -1,6 +1,9 @@
 package view.command;
 
+import java.io.IOException;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import controller.GerarAtaController;
 import model.dao.VotacaoDao;
@@ -18,8 +21,13 @@ public class GerarAtaCommand extends Command {
 		
 		if (votacoes.isEmpty())
 			SaidaHelper.imprimeLinhaFromResources("mensagem.ata.semAtas");
-		else
-			GerarAtaController.criaAta( MenuHelper.leOpcoesMenu(votacoes) );
+		else{
+			try{
+				GerarAtaController.criaAta( MenuHelper.leOpcoesMenu(votacoes) );
+			}catch(IOException ex){
+				Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, ex.getMessage());
+			}
+		}
 		
 	}
 

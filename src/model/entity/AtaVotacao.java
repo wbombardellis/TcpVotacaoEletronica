@@ -1,9 +1,8 @@
 package model.entity;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 public class AtaVotacao implements Identificavel{
@@ -46,9 +45,9 @@ public class AtaVotacao implements Identificavel{
 				this.abstencoes.add(voto.getAutor());
 			}
 		}
-		//descricao
-		
 		this.resultado = getQtdVotosFavoriaveis() > getQtdVotosNaoFavoriaveis();
+
+		this.descricao = "[AtaVotacao]:{id:"+this.id+",inicio:"+this.dataInicio+",fim:"+this.dataFim+",resultado:"+this.resultado;
 	}
 
 	public int getId() {
