@@ -8,8 +8,6 @@
 	MenuHelper.leOpceoes
 -Testes
 	AbstractDaoTest -> Correção membro
-	controller.GerarAta
-	controller.LerAta
 	
 	
 -Sequencia CriaVotacaoCommand

@@ -13,6 +13,7 @@ public abstract class VotarController {
 	public static void insereVoto(Votacao votacao, Voto voto) {
 		assert votacao != null;
 		assert voto != null;
+		assert VotacaoDao.getInstance().getById(votacao.getId()) != null;
 		
 		//Copia os votos da votação enviada
 		ArrayList<Voto> novosVotos = new ArrayList<>(votacao.getVotos());
@@ -26,6 +27,7 @@ public abstract class VotarController {
 	public static void removeVoto(Votacao votacao, Voto voto) {
 		assert votacao != null;
 		assert voto != null;
+		assert VotacaoDao.getInstance().getById(votacao.getId()) != null;
 		
 		//Copia os votos da votação enviada
 		ArrayList<Voto> novosVotos = new ArrayList<>(votacao.getVotos());
