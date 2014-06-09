@@ -2,7 +2,9 @@ package model.entity;
 
 import java.util.Date;
 
-public class Membro {
+public class Membro implements Identificavel
+{
+	private int id;
 
 	private String nome;
 	
@@ -18,6 +20,11 @@ public class Membro {
 
 	public Membro(String nome, String username, String password) {
 
+	}
+	
+	public int getId()
+	{
+		return this.id;
 	}
 
 	public String getNome() {

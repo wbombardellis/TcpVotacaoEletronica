@@ -5,8 +5,8 @@ import model.entity.Membro;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MembroDao extends AbstractDao<Membro> {
-
+public class MembroDao extends AbstractDao<Membro>
+{
 	private static MembroDao instance;
 
 	private MembroDao()

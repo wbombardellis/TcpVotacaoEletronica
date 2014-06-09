@@ -105,4 +105,41 @@ public abstract class MenuHelper {
 		
 		return stringLida;
 	}
+	
+	/*
+	 * Lê escolha do usuário quando é necessária uma confirmação do tipo (S/N). Retorna o booleano correspondente (S = true, N = false).
+	 */
+	public static Boolean leConfirmacao()
+	{
+		BufferedReader reader = new BufferedReader (new InputStreamReader(System.in));
+		Boolean entradaInvalida = true; 
+		String stringLida = null;
+		
+		do
+		{
+			try
+			{
+				stringLida = reader.readLine();
+			}
+			catch (IOException e)
+			{
+				entradaInvalida = true;
+			}
+			
+			if (!stringLida.isEmpty())
+			{
+				switch(stringLida)
+				{
+				case "S":
+				case "s":
+					return true;
+				case "N":
+				case "n":
+					return false;
+				}
+			}
+		}
+		while (entradaInvalida);
+		return false;
+	}
 }
