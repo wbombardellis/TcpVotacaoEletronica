@@ -5,6 +5,7 @@ import java.util.List;
 import view.command.Command;
 import view.command.LoginCommand;
 import view.command.LogoutCommand;
+import view.command.MenuHelper;
 import view.command.Sessao;
 
 public class View
@@ -20,22 +21,6 @@ public class View
 
 	public void imprimeMenu()
 	{
-
+		MenuHelper.imprimeOpcoes(commandsPossiveis);
 	}
-
-	private void menuLogin() 
-	{
-		
-	}
-
-	private void menuSair()
-	{
-
-	}
-
-	private void menuLogout()
-	{
-
-	}
-
 }

@@ -58,5 +58,10 @@ public class Sessao {
 			viewAtual = new DocenteEDiscenteView();
 		}
 	}
+	
+	public View getView()
+	{
+		return viewAtual;
+	}
 
 }

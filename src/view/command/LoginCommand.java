@@ -34,8 +34,8 @@ public class LoginCommand extends Command {
 			SaidaHelper.imprimeLinhaFromResources("login.erro");
 		}
 		
-		//Falta imprimir o menu da view (tanto sucesso quanto erro), talvez um clear screen
-		
+		// Imprime o menu da view atual (mesmo que o login não tenha sido feito com sucesso)
+		Sessao.getInstance().getView().imprimeMenu();
 	}
 
 	@Override

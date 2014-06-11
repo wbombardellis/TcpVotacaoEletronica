@@ -23,7 +23,8 @@ public class LogoutCommand extends Command {
 			sessao.setMembro(null); // Termina a sessão atual.
 		}
 		
-		// Falta imprimir o menu da view (mesmo que o logout não tenha ocorrido).
+		// Imprime o menu da view atual (mesmo que o logout não tenha sido feito com sucesso)
+		Sessao.getInstance().getView().imprimeMenu();
 	}
 
 	@Override
