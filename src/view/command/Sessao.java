@@ -43,7 +43,7 @@ public class Sessao {
 		if (membroLogado == null) // Se for null, descarta os dados atuais (operação de logout)
 		{
 			viewAtual = new View(); // View do menu inicial
-			instance = null;
+			membroLogado = null;
 		}
 		else if (membroLogado instanceof Chefe || membroLogado instanceof ViceChefe)
 		{

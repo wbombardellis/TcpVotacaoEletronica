@@ -18,6 +18,11 @@ public class View
 		this.commandsPossiveis.add(new LoginCommand(sessao));
 		this.commandsPossiveis.add(new LogoutCommand(sessao));
 	}
+	
+	public List<Command> getCommandsPossiveis()
+	{
+		return commandsPossiveis;
+	}
 
 	public void imprimeMenu()
 	{
