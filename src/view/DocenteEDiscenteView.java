@@ -1,7 +1,9 @@
 package view;
 
+import java.util.List;
+
+import view.command.Command;
 import view.command.ListarVotacaoCommand;
-import view.command.MenuHelper;
 import view.command.Sessao;
 import view.command.VisualizarVotacaoCommand;
 
@@ -14,10 +16,10 @@ public class DocenteEDiscenteView extends View
 		this.commandsPossiveis.add(new VisualizarVotacaoCommand(sessao));
 		// this.commandsPossiveis.add(new ...(sessao)); Alterar Voto Command? Como é implementado?
 	}
-
-	public void imprimeMenu() 
+	
+	@Override
+	public List<Command> getCommandsPossiveis()
 	{
-		MenuHelper.imprimeOpcoes(commandsPossiveis);
+		return this.commandsPossiveis;
 	}
-
 }

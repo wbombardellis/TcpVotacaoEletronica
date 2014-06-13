@@ -2,6 +2,7 @@ package view.command;
 
 import view.ChefiaEViceView;
 import view.DocenteEDiscenteView;
+import view.InicioView;
 import view.SecretariaView;
 import view.View;
 import model.entity.Chefe;
@@ -42,7 +43,7 @@ public class Sessao {
 		// Descobre o tipo de membro para atribuir a view correspondente.
 		if (membroLogado == null) // Se for null, descarta os dados atuais (operação de logout)
 		{
-			viewAtual = new View(); // View do menu inicial
+			viewAtual = new InicioView(); // View do menu inicial
 			membroLogado = null;
 		}
 		else if (membroLogado instanceof Chefe || membroLogado instanceof ViceChefe)

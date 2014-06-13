@@ -1,12 +1,14 @@
 package view;
 
+import java.util.List;
+
+import view.command.Command;
 import view.command.CriarVotacaoCommand;
 import view.command.ExcluirVotacaoCommand;
 import view.command.FecharVotacaoCommand;
 import view.command.GerarAtaCommand;
 import view.command.LerAtaCommand;
 import view.command.ListarVotacaoCommand;
-import view.command.MenuHelper;
 import view.command.Sessao;
 import view.command.VisualizarVotacaoCommand;
 
@@ -25,9 +27,9 @@ public class SecretariaView extends View
 		this.commandsPossiveis.add(new GerarAtaCommand(sessao));
 	}
 	
-	public void imprimeMenu() 
+	@Override
+	public List<Command> getCommandsPossiveis()
 	{
-		MenuHelper.imprimeOpcoes(commandsPossiveis);
+		return this.commandsPossiveis;
 	}
-
 }

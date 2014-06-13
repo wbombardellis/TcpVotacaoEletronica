@@ -70,17 +70,14 @@ public abstract class MenuHelper {
 		do{
 			escolha = reader.readLine();
 			//Valida leitura
-			if(!escolha.equals(codigoCancelar) && getOpcaoByCodigo(opcoes, escolha) == null){
+			if(getOpcaoByCodigo(opcoes, escolha) == null){
 				SaidaHelper.imprimeLinhaFromResources("mensagem.menu.erro.escolhaInvalida");
 				entradaInvalida = true;
 			}else
 				entradaInvalida = false;
 		}while(entradaInvalida);
 		
-		if (escolha.equals(codigoCancelar))
-			return null;
-		else
-			return getOpcaoByCodigo(opcoes, escolha);
+		return getOpcaoByCodigo(opcoes, escolha);
 	}
 	
 	public static String leString() throws IOException

@@ -1,31 +1,38 @@
 package view;
 
+import java.io.IOException;
 import java.util.List;
 
 import view.command.Command;
-import view.command.LoginCommand;
-import view.command.LogoutCommand;
 import view.command.MenuHelper;
-import view.command.Sessao;
 
-public class View
+public abstract class View
 {
 	protected List<Command> commandsPossiveis;
 	
-	public View()
-	{
-		Sessao sessao = Sessao.getInstance();
-		this.commandsPossiveis.add(new LoginCommand(sessao));
-		this.commandsPossiveis.add(new LogoutCommand(sessao));
-	}
-	
-	public List<Command> getCommandsPossiveis()
-	{
-		return commandsPossiveis;
-	}
+	public abstract List<Command> getCommandsPossiveis();
 
 	public void imprimeMenu()
 	{
-		MenuHelper.imprimeOpcoes(commandsPossiveis);
+		Boolean commandExecutado = false;
+		do
+		{
+			Command opcao = null;
+			try
+			{
+				// Imprime o menu e, caso a opção escolhida pelo usuário seja válida, executa a mesma.
+				opcao = MenuHelper.leOpcao(commandsPossiveis);
+				if (opcao != null)
+				{
+					opcao.execute();
+					commandExecutado = true;
+				}
+			}
+			catch (IOException e)
+			{
+				System.out.println(e.getMessage());
+			}
+		}
+		while (commandExecutado == false);
 	}
 }

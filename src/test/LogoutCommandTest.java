@@ -8,7 +8,6 @@ import org.junit.Before;
 import org.junit.Test;
 
 import controller.LoginController;
-import view.command.LoginCommand;
 import view.command.LogoutCommand;
 import view.command.Sessao;
 
