@@ -6,6 +6,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import view.command.SaidaHelper;
+import view.command.TextManager;
 import model.dao.MembroDao;
 import model.dao.VotacaoDao;
 import model.entity.Votacao;
@@ -15,8 +17,9 @@ import model.entity.Voto;
 public abstract class FecharVotacaoController {
 
 	public static List<String> fechaVotacao(Votacao votacao) {
+		TextManager txtMananger = new TextManager(SaidaHelper.nomeRecursos);
 		List<String> warnings = new ArrayList<>();
-		warnings.add("Alterada a data de fim da votacao");
+		warnings.add(txtMananger.getText("fechar.votacao.aviso.data"));
 		
 		// Verifica se alguém não votou
 		Set<Membro> votantes = new HashSet<>();
@@ -33,7 +36,7 @@ public abstract class FecharVotacaoController {
 		}
 		
 		if (alguemNaoVotou) {
-			warnings.add("Há membros do colegiado que não votaram");
+			warnings.add(txtMananger.getText("fechar.votacao.aviso.colegiado"));
 		}
 		
 		// Atualiza os dados

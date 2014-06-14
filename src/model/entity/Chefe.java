@@ -8,8 +8,8 @@ public class Chefe extends Membro {
 		super(nome, username, password);
 	}
 
-	public Chefe getInstance() {
-		return null;
+	public Chefe getInstance()
+	{
+		return chefe;
 	}
-
 }

@@ -33,12 +33,12 @@ public class LiberarVotacaoCommand extends VotacaoCommand {
 
 	@Override
 	public String getCodigoTela() {
-		return "L";
+		return this.txtManager.getText("liberar.votacao.codigo");
 	}
 
 	@Override
 	public String getDescricaoTela() {
-		return "Liberar Votação";
+		return this.txtManager.getText("liberar.votacao");
 	}
 
 }

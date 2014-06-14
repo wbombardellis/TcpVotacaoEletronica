@@ -9,7 +9,7 @@ public class ViceChefe extends Membro {
 	}
 
 	public ViceChefe getInstance() {
-		return null;
+		return viceChefe;
 	}
 
 }

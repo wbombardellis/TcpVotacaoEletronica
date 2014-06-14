@@ -21,18 +21,18 @@ public class AutorizarVotacaoCommand extends VotacaoCommand {
 		AutorizarVotacaoController.autorizaVotacao(votacao);
 		
 		// Mensagens ao usuário
-		SaidaHelper.imprimeLinhaFromResources("autorizacao.votacao.sucesso");
+		SaidaHelper.imprimeLinhaFromResources("autorizar.votacao.sucesso");
 	}
 
 	@Override
 	public String getCodigoTela() {
-		return "A";
+		return this.txtManager.getText("autorizar.votacao.codigo");
 	}
 
 	@Override
 	public String getDescricaoTela() 
 	{
-		return "Autorizar Votacao";
+		return this.txtManager.getText("autorizar.votacao");
 	}
 
 }

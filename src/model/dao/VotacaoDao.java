@@ -1,7 +1,6 @@
 package model.dao;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 import model.entity.Ata;

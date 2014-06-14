@@ -3,19 +3,25 @@ package model.entity;
 import java.util.HashMap;
 import java.util.Map;
 
+import view.command.SaidaHelper;
+import view.command.TextManager;
 import model.entity.TipoDocumentacao;
 
 public class EstagioProbatorio extends Documentacao {
 
+	private static final Integer RELATORIO_PROFESSOR_ID=0;
+	private static final Integer RELATORIO_PROFESSOR_TUTOR_ID=1;
+	
 	private final String relatorioProfessor;
 
 	private final String relatorioProfessorTutor;
 
 	public static Map<Integer,String> staticgetDescricaoDocumentosObrigatorios() {
 		Map<Integer, String> docs = new HashMap<>();
+		TextManager txtManager = new TextManager(SaidaHelper.nomeRecursos);
 		
-		docs.put(0, "Relatório do Professor");
-		docs.put(1, "Relatório do Professor Tutor");
+		docs.put(RELATORIO_PROFESSOR_ID, txtManager.getText("estagio.probatorio.relatorio.professor"));
+		docs.put(RELATORIO_PROFESSOR_TUTOR_ID, txtManager.getText("estagio.probatorio.relatorio.professor.tutor"));
 		
 		return docs;
 	}
@@ -31,16 +37,16 @@ public class EstagioProbatorio extends Documentacao {
 			throw new IllegalArgumentException();
 		}
 		
-		this.relatorioProfessor = documentosObrigatoriosCaminhos.get(0);
-		this.relatorioProfessorTutor = documentosObrigatoriosCaminhos.get(1);
+		this.relatorioProfessor = documentosObrigatoriosCaminhos.get(RELATORIO_PROFESSOR_ID);
+		this.relatorioProfessorTutor = documentosObrigatoriosCaminhos.get(RELATORIO_PROFESSOR_TUTOR_ID);
 	}
 
 	@Override
 	public Map<Integer, String> getDocumentosObrigatorios() {
 		Map<Integer, String> docs = new HashMap<>();
 		
-		docs.put(0, this.relatorioProfessor);
-		docs.put(1, this.relatorioProfessorTutor);
+		docs.put(RELATORIO_PROFESSOR_ID, this.relatorioProfessor);
+		docs.put(RELATORIO_PROFESSOR_TUTOR_ID, this.relatorioProfessorTutor);
 		
 		return docs;
 	}
