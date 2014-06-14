@@ -30,6 +30,8 @@ public class AtaVotacao implements Identificavel{
 	public AtaVotacao(int id, Votacao votacao, List<Membro> votantes, List<Membro> naoVotantes) {
 		assert id >= 0;
 		assert votacao != null;
+		assert votantes != null;
+		assert naoVotantes != null;
 		
 		this.id = id;
 		this.votacao = votacao;

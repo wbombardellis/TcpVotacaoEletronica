@@ -51,7 +51,7 @@ public class AtaVotacaoTest {
 		Date dtFim1 = cal.getTime(); 
 		
 		Votacao votacao1 = new Votacao(0, "teste1", dtIni1, dtFim1, Estado.Aberta, null, votos);		
-		AtaVotacao ataV1 = AtaVotacaoFactory.criaAtaVotacao(votacao1, votantes, naoVotantes);
+		AtaVotacao ataV1 = new AtaVotacao(1, votacao1, votantes, naoVotantes);
 		
 		//Verifica Atributos
 		assertEquals(dtIni1, ataV1.getDataInicio());
@@ -71,11 +71,11 @@ public class AtaVotacaoTest {
 		votantes.add(new Membro("a","a","1234"));
 		assertNotEquals(votantes, ataV1.getVotantes());
 		naoVotantes.add(new Membro("b","b","1234"));
-		assertEquals(naoVotantes, ataV1.getNaoVotantes());
+		assertNotEquals(naoVotantes, ataV1.getNaoVotantes());
 
 		//Testes Triviais
 		Votacao votacao2 = new Votacao(2, "teste2", new Date(), new Date(), Estado.Aberta, null, new ArrayList<Voto>());
-		AtaVotacao ataV2 = AtaVotacaoFactory.criaAtaVotacao(votacao2, null, null);
+		AtaVotacao ataV2 = new AtaVotacao(2, votacao2, new ArrayList<Membro>(), new ArrayList<Membro>());
 		
 		assertEquals(new ArrayList<Voto>(), ataV2.getVotos());
 		assertEquals(new ArrayList<Membro>(), ataV2.getVotantes());
@@ -115,7 +115,7 @@ public class AtaVotacaoTest {
 		
 		//Cenário 1 - Empate
 		Votacao votacao1 = new Votacao(0, "teste1", dtIni1, dtFim1, Estado.Aberta, null, votos);		
-		AtaVotacao ataV1 = AtaVotacaoFactory.criaAtaVotacao(votacao1, votantes, naoVotantes);
+		AtaVotacao ataV1 = new AtaVotacao(1, votacao1, votantes, naoVotantes);
 		assertEquals(1, ataV1.getQtdVotosFavoriaveis());
 		assertEquals(1, ataV1.getQtdVotosNaoFavoriaveis());
 		assertFalse(ataV1.getResultado());
@@ -124,7 +124,7 @@ public class AtaVotacaoTest {
 		votos.add(new Voto(3, TipoVoto.Favoravel, membro5, new Date(), null));
 		votantes.add(membro5);
 		Votacao votacao2 = new Votacao(votacao1, votos);		
-		AtaVotacao ataV2 = AtaVotacaoFactory.criaAtaVotacao(votacao2, votantes, naoVotantes);
+		AtaVotacao ataV2 = new AtaVotacao(2, votacao2, votantes, naoVotantes);
 		assertEquals(2, ataV1.getQtdVotosFavoriaveis());
 		assertEquals(1, ataV1.getQtdVotosNaoFavoriaveis());
 		assertTrue(ataV2.getResultado());
@@ -135,7 +135,7 @@ public class AtaVotacaoTest {
 		votantes.add(membro6);
 		votantes.add(membro7);
 		Votacao votacao3 = new Votacao(votacao1, votos);		
-		AtaVotacao ataV3 = AtaVotacaoFactory.criaAtaVotacao(votacao3, votantes, naoVotantes);
+		AtaVotacao ataV3 = new AtaVotacao(3, votacao3, votantes, naoVotantes);
 		assertEquals(2, ataV1.getQtdVotosFavoriaveis());
 		assertEquals(3, ataV1.getQtdVotosNaoFavoriaveis());
 		assertFalse(ataV2.getResultado());

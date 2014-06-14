@@ -8,6 +8,7 @@ import java.util.HashMap;
 
 import model.AtaFactory;
 import model.dao.AtaDao;
+import model.dao.AtaVotacaoDao;
 import model.entity.Ata;
 import model.entity.AtaVotacao;
 import model.entity.Estado;
@@ -64,20 +65,22 @@ public class AtaFactoryTest {
 		assertEquals(0, AtaDao.getInstance().getLastInsertedId());
 		Ata ata1 = AtaFactory.criaAta(atasVotacoes1);
 		assertNotNull(ata1);
-		assertEquals(1, AtaDao.getInstance().getLastInsertedId());
 		assertEquals(1, ata1.getId());
+		AtaDao.getInstance().insert(ata1);
+		assertEquals(1, AtaDao.getInstance().getLastInsertedId());
 		
 		//Teste segunda inserção
 		Ata ata2 = AtaFactory.criaAta(atasVotacoes2);
-		assertEquals(2, AtaDao.getInstance().getLastInsertedId());
 		assertEquals(2, ata2.getId());
+		AtaDao.getInstance().insert(ata2);
+		assertEquals(2, AtaDao.getInstance().getLastInsertedId());
 		
 		//Inserção após remoção
 		AtaDao.getInstance().delete(1);
 		Ata ata3 = AtaFactory.criaAta(atasVotacoes2);
-		assertEquals(3, AtaDao.getInstance().getLastInsertedId());
 		assertEquals(3, ata3.getId());
-		
+		AtaDao.getInstance().insert(ata3);
+		assertEquals(3, AtaDao.getInstance().getLastInsertedId());
 	}
 
 }

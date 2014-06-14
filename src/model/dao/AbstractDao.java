@@ -14,6 +14,8 @@ public abstract class AbstractDao<T extends Identificavel> {
 	private Map<Integer, T> data = new HashMap<>();
 
 	public boolean insert(T record) {
+		assert record != null;
+		
 		T recorded = this.data.get(record.getId());
 		
 		if (recorded == null) {

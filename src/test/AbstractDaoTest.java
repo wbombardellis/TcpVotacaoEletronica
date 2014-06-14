@@ -24,14 +24,14 @@ public class AbstractDaoTest {
 
 	@Test(expected = AssertionError.class)
 	public void testInsertNull() {
-		MembroDao mDao = MembroDao.getInstance();
+		MembroDao mDao = MembroDaoStub.getInstance();
 		//Test to fail
 		mDao.insert(null);
 	}
 	
 	@Test
 	public void testInsert() {
-		MembroDao mDao = MembroDao.getInstance();
+		MembroDao mDao = MembroDaoStub.getInstance();
 		Membro m1 = new Membro("t1", "t1", "1234");
 		Membro m2 = new Membro("t2", "t2", "1234");
 		
@@ -61,7 +61,7 @@ public class AbstractDaoTest {
 
 	@Test
 	public void testDeleteGetByIdGetAll() {
-		MembroDao mDao = MembroDao.getInstance();
+		MembroDao mDao = MembroDaoStub.getInstance();
 		Membro m1 = new Membro("t1", "t1", "1234");
 		Membro m2 = new Membro("t2", "t2", "1234");
 		
@@ -130,19 +130,19 @@ public class AbstractDaoTest {
 		}
 	}
 	
-	@Test(expected = AssertionError.class)
-	public void testUpdateFail(){
-		MembroDao mDao = MembroDao.getInstance();
+	@Test
+	public void testUpdateNull(){
+		MembroDao mDao = MembroDaoStub.getInstance();
 		Membro m1 = new Membro("t1", "t1", "1234");
 		
 		//Test to pass - Uma inserção
 		assertTrue(mDao.insert(m1));
-		mDao.update(1, null);
+		assertFalse(mDao.update(1, null));
 	}
 
 	@Test
 	public void testUpdate() {
-		MembroDao mDao = MembroDao.getInstance();
+		MembroDao mDao = MembroDaoStub.getInstance();
 		Membro m1 = new Membro("t1", "t1", "1234");
 		Membro m2 = new Membro("t2", "t2", "1234");
 		

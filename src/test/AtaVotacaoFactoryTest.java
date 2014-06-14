@@ -7,6 +7,7 @@ import java.util.Date;
 
 import model.AtaVotacaoFactory;
 import model.dao.AtaVotacaoDao;
+import model.dao.VotacaoDao;
 import model.entity.AtaVotacao;
 import model.entity.Estado;
 import model.entity.Membro;
@@ -47,19 +48,25 @@ public class AtaVotacaoFactoryTest {
 		assertEquals(0, AtaVotacaoDao.getInstance().getLastInsertedId());
 		AtaVotacao ataVotacao1 = AtaVotacaoFactory.criaAtaVotacao(votacao1, votantes, naoVotantes);
 		assertNotNull(ataVotacao1);
-		assertEquals(1, AtaVotacaoDao.getInstance().getLastInsertedId());
 		assertEquals(1, ataVotacao1.getId());
+		
+		AtaVotacaoDao.getInstance().insert(ataVotacao1);
+		assertEquals(1, AtaVotacaoDao.getInstance().getLastInsertedId());
 		
 		//Teste segunda inserção
 		AtaVotacao ataVotacao2 = AtaVotacaoFactory.criaAtaVotacao(votacao2, votantes, naoVotantes);
-		assertEquals(2, AtaVotacaoDao.getInstance().getLastInsertedId());
 		assertEquals(2, ataVotacao2.getId());
+		
+		AtaVotacaoDao.getInstance().insert(ataVotacao2);
+		assertEquals(2, AtaVotacaoDao.getInstance().getLastInsertedId());
 		
 		//Inserção após remoção
 		AtaVotacaoDao.getInstance().delete(0);
 		AtaVotacao ataVotacao3 = AtaVotacaoFactory.criaAtaVotacao(votacao2, votantes, naoVotantes);
+		assertEquals(3, ataVotacao3.getId());
+		
+		AtaVotacaoDao.getInstance().insert(ataVotacao3);
 		assertEquals(3, AtaVotacaoDao.getInstance().getLastInsertedId());
-		assertEquals(3, ataVotacao2.getId());
 	}
 
 }

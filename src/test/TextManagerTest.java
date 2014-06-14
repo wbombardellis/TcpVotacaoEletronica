@@ -19,14 +19,14 @@ public class TextManagerTest {
 	
 	@Test(expected = Exception.class)
 	public void testGetTextFail() {
-		txtMng.getText("test.mensagem0");
+		txtMng.getText("teste.mensagem0");
 	}
 
 	@Test
 	public void testGetText() {
-		assertEquals("Teste 1 com espaços e cê-cedilha", txtMng.getText("test.mensagem1"));
-		assertEquals("Teste 1 áéàóõã[]'~\"\\\\ \\n com acentos e símbolos", txtMng.getText("test.mensagem2"));
-		assertEquals(" ", txtMng.getText("test.mensagem3"));
+		assertEquals("Teste 1 com espaços e cê-cedilha", txtMng.getText("teste.mensagem1"));
+		assertEquals("Teste 1 áéàóõã[]'~\"\\\\ com acentos e símbolos", txtMng.getText("teste.mensagem2"));
+		assertEquals("", txtMng.getText("teste.mensagem3"));
 	}
 
 }

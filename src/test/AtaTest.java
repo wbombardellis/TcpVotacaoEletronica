@@ -56,6 +56,7 @@ public class AtaTest {
 		HashMap<Integer, AtaVotacao> atas = new HashMap<Integer, AtaVotacao>(); 
 		atas.put(0, AtaVotacaoFactory.criaAtaVotacao(votacao1, votantes, naoVotantes));
 		
+		//Test to fail
 		new Ata(-1, null);
 	}
 
@@ -88,10 +89,10 @@ public class AtaTest {
 		AtaVotacao ataV1 = AtaVotacaoFactory.criaAtaVotacao(votacao1, votantes, naoVotantes);
 		
 		HashMap<Integer, AtaVotacao> atas = new HashMap<Integer, AtaVotacao>(); 
-		atas.put(0, AtaVotacaoFactory.criaAtaVotacao(votacao1, votantes, naoVotantes));
+		atas.put(0, ataV1);
 		
 		Ata ata1 = new Ata(0, atas);
-		assertEquals(atas, ata1.getAtasVotacoes());
+		assertArrayEquals(atas.values().toArray(), ata1.getAtasVotacoes().toArray());
 		
 		//Imutabilidade
 		atas.remove(0);

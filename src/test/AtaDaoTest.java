@@ -60,18 +60,20 @@ public class AtaDaoTest {
 		atasVotacoes1.put(0, ataVotacao1);
 
 		Ata ata1 = new Ata(0, atasVotacoes1);
-		AtaDao.getInstance().insert(ata1);
+		AtaDao ataDao = AtaDaoStub.getInstance();
+
+		ataDao.insert(ata1);
 				
 		//Teste trivial
-		assertFalse(AtaDao.getInstance().existsAtaByVotacao(null));
+		assertFalse(ataDao.existsAtaByVotacao(null));
 		//Votacao1 ocorre na ata1
-		assertTrue(AtaDao.getInstance().existsAtaByVotacao(votacao1));
+		assertTrue(ataDao.existsAtaByVotacao(votacao1));
 		//Não pode comparar pela referência, mas sim pelos valores do objeto
-		assertTrue(AtaDao.getInstance().existsAtaByVotacao(votacao1_1));
+		assertTrue(ataDao.existsAtaByVotacao(votacao1_1));
 		//Referêmcia também funciona
-		assertTrue(AtaDao.getInstance().existsAtaByVotacao(votacao1_2));
+		assertTrue(ataDao.existsAtaByVotacao(votacao1_2));
 		//Votacao2 não ocorre em nenhuma ata
-		assertFalse(AtaDao.getInstance().existsAtaByVotacao(votacao2));		
+		assertFalse(ataDao.existsAtaByVotacao(votacao2));		
 		
 	}
 	
@@ -92,38 +94,40 @@ public class AtaDaoTest {
 		
 		//Cria as votações que serão testadas no método
 		Votacao votacao1 = new Votacao(0, "teste", new Date(), new Date(), Estado.Aberta, null, votos);
-		Votacao votacao2 = new Votacao(0, "teste", new Date(), new Date(), Estado.Aberta, null, new ArrayList<Voto>());
+		Votacao votacao2 = new Votacao(1, "teste", new Date(), new Date(), Estado.Aberta, null, new ArrayList<Voto>());
 		
 		AtaVotacao ataVotacao1 = new AtaVotacao(0, votacao1, votantes, naoVotantes);
 		AtaVotacao ataVotacao2 = new AtaVotacao(1, votacao2, votantes, naoVotantes);
 		
 		HashMap<Integer, AtaVotacao> atasVotacoes1 = new HashMap<>();
 		atasVotacoes1.put(0, ataVotacao1);
-		atasVotacoes1.put(0, ataVotacao2);
+		atasVotacoes1.put(1, ataVotacao2);
 		
 		Ata ata1 = new Ata(0, atasVotacoes1);
-		AtaDao.getInstance().insert(ata1);
+		AtaDao ataDao = AtaDaoStub.getInstance();
+		
+		ataDao.insert(ata1);
 		
 		//Tests to pass
 		//Votacao1 ocorre na ata1
-		assertTrue(AtaDao.getInstance().existsAtaByVotacao(votacao1));
+		assertTrue(ataDao.existsAtaByVotacao(votacao1));
 		//Votacao2 ocorre na ata1
-		assertFalse(AtaDao.getInstance().existsAtaByVotacao(votacao2));
+		assertTrue(ataDao.existsAtaByVotacao(votacao2));
 		
 		//Votacao2 ocorre na ata1 e ata2
 		HashMap<Integer, AtaVotacao> atasVotacoes2 = new HashMap<>();
 		atasVotacoes2.put(0, ataVotacao2);
 		
 		Ata ata2 = new Ata(0, atasVotacoes2);
-		AtaDao.getInstance().insert(ata2);
+		ataDao.insert(ata2);
 		
-		assertTrue(AtaDao.getInstance().existsAtaByVotacao(votacao2));
+		assertTrue(ataDao.existsAtaByVotacao(votacao2));
 		
 		//Remover ata1. Votacao 1 agora não ocorre mais
-		AtaDao.getInstance().delete(0);
-		assertFalse(AtaDao.getInstance().existsAtaByVotacao(votacao1));
+		ataDao.delete(0);
+		assertFalse(ataDao.existsAtaByVotacao(votacao1));
 		//Ata2 continua presente
-		assertTrue(AtaDao.getInstance().existsAtaByVotacao(votacao2));
+		assertTrue(ataDao.existsAtaByVotacao(votacao2));
 		
 		
 	}
