@@ -29,23 +29,28 @@ public abstract class MenuHelper {
 
 	public static <T extends Imprimivel> List<T> leOpcoesMenu(List<T> opcoes) throws IOException {
 		
-		ArrayList<T> opcoesCopia = new ArrayList<>(opcoes);
+		ArrayList<T> opcoesMostrar = new ArrayList<>(opcoes);
 		ArrayList<T> opcoesEscolhidas = new ArrayList<>(opcoes);
 		T opcao;
 		Boolean fimLeitura;
 		do{
-			imprimeOpcoes(opcoesCopia);
+			imprimeOpcoes(opcoesMostrar);
 			SaidaHelper.imprimeLinhaFromResources("mensagem.menu.opcao.escolher");
 		
-			opcao = leOpcao(opcoesCopia);
+			opcao = leOpcao(opcoesMostrar);
+			//Se é nulo, então usuário não escolheu nenhuma opção, portanto fim da letura (cancelamento)
 			if (opcao == null){
 				fimLeitura = true;
 				opcoesEscolhidas = null;
 			}else{
+				//usuário escolheu uma opção. Adiciona-la à lista de escolhidas
 				opcoesEscolhidas.add(opcao);
-				opcoesCopia.remove(opcao);
-				//Ler mais opções? @ TODO
-				fimLeitura = false;
+				//Remove-la da lista que vai para a tela, pois fora escolhida
+				opcoesMostrar.remove(opcao);
+				
+				//Ler mais opções?
+				SaidaHelper.imprimeLinhaFromResources("mesagem.menu.opcao.escolherMais");
+				fimLeitura = !MenuHelper.leConfirmacao();
 			}
 		}while(!fimLeitura);
 		
@@ -101,6 +106,12 @@ public abstract class MenuHelper {
 		while (entradaInvalida);
 		
 		return stringLida;
+	}
+	
+	public static String leStringOpcional() throws IOException
+	{
+		BufferedReader reader = new BufferedReader (new InputStreamReader(System.in));
+		return reader.readLine();
 	}
 	
 	/*

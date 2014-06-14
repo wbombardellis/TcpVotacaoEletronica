@@ -2,13 +2,16 @@ package view.command;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import controller.VotarController;
+import model.VotoFactory;
 import model.dao.VotacaoDao;
 import model.entity.Estado;
+import model.entity.TipoVoto;
 import model.entity.Votacao;
 import model.entity.Voto;
 
@@ -37,8 +40,14 @@ public class VotarCommand extends Command {
 		SaidaHelper.imprimeLinhas(output);
 	}
 	
-	private Voto leVoto(){
-		return null;
+	private Voto leVoto() throws IOException{
+		SaidaHelper.imprimeLinhaFromResources("votar.pedir.voto");
+		TipoVoto tipoVoto = MenuHelper.leOpcaoMenu(TipoVoto.getListaTodosPossiveis());
+		
+		SaidaHelper.imprimeLinhaFromResources("votar.pedir.justificativa");
+		String justificativa = MenuHelper.leStringOpcional();
+		
+		return VotoFactory.criaVoto(tipoVoto, this.sessao.getMembro(), new Date(), justificativa);
 	}
 
 	@Override
