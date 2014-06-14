@@ -12,7 +12,7 @@ public abstract class Inicializador {
 
 	public static void incializaDao() {
 		MembroDao membroDao = MembroDao.getInstance();
-		membroDao.insert(new Chefe("Alan Turing","1","TheFirst"));
+		membroDao.insert(Chefe.substituirChefe("Alan Turing","1","TheFirst"));
 		membroDao.insert(new ViceChefe("Edsger Dijkstra","2","Path"));
 		membroDao.insert(new Secretario("C.A.R. Hoare","3","Parallel"));
 		membroDao.insert(new Docente("Alonzo Church","4","Lambda"));

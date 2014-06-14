@@ -20,7 +20,8 @@ public class Sessao {
 	
 	private Sessao()
 	{
-		
+		membroLogado = null;
+		viewAtual = null;
 	}
 
 	public static Sessao getInstance()

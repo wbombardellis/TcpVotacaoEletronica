@@ -2,24 +2,28 @@ package model.entity;
 
 import java.util.Date;
 
+import model.dao.MembroDao;
+
 public class Membro implements Identificavel
 {
-	private int id;
+	protected int id;
 
-	private String nome;
+	protected String nome;
 	
-	private String username;
+	protected String username;
 	
-	private String password;
+	protected String password;
 	
-	private Date dataInicioMandato;
+	protected Date dataInicioMandato;
 	
-	private Date dataFinalMandato;
+	protected Date dataFinalMandato;
 	
-	private Voto voto;
+	protected Voto voto;
 
 	public Membro(String nome, String username, String password)
 	{
+		MembroDao membroDao = MembroDao.getInstance();
+		this.id = membroDao.getLastInsertedId() + 1;
 		this.nome = nome;
 		this.username = username;
 		this.password = password;
@@ -29,6 +33,8 @@ public class Membro implements Identificavel
 	
 	public Membro(String nome, String username, String password, Date inicioMandato, Date finalMandato)
 	{
+		MembroDao membroDao = MembroDao.getInstance();
+		this.id = membroDao.getLastInsertedId() + 1;
 		this.nome = nome;
 		this.username = username;
 		this.password = password;
