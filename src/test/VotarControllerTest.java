@@ -70,19 +70,21 @@ public class VotarControllerTest {
 		
 		Votacao votacao1 = new Votacao(1, "teste1", dtIni1, dtFim1, Estado.Aberta, null, votos);
 		
-		VotacaoDao.getInstance().insert(votacao1);
+		///Não utiliza o AtaVotacaoDaoStub aqui, pois o controller consulta o AtaVotacaoDao, então supõe que está vazio
+		VotacaoDao votacaoDao = VotacaoDao.getInstance();
+		votacaoDao.insert(votacao1);
 		
 		Voto votoAdded = new Voto(2, TipoVoto.Abstencao, membro3, new Date(), null);
 		VotarController.insereVoto(votacao1, votoAdded);
 		
 		//Deve ter adicionado o voto
 		votos.add(votoAdded);
-		assertEquals(votos, VotacaoDao.getInstance().getById(1).getVotos());
+		assertEquals(votos, votacaoDao.getById(1).getVotos());
 		assertEquals(votoAdded, VotarController.getVotoByAutor(votacao1, membro3));
 		
 		votos.remove(votoAdded);
 		VotarController.removeVoto(votacao1, votoAdded);
-		assertEquals(votos, VotacaoDao.getInstance().getById(1).getVotos());
+		assertEquals(votos, votacaoDao.getById(1).getVotos());
 		assertNull(VotarController.getVotoByAutor(votacao1, membro3));
 		
 		assertNull(VotarController.getVotoByAutor(votacao1, membro4));

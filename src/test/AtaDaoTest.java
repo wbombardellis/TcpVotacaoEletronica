@@ -118,7 +118,7 @@ public class AtaDaoTest {
 		HashMap<Integer, AtaVotacao> atasVotacoes2 = new HashMap<>();
 		atasVotacoes2.put(0, ataVotacao2);
 		
-		Ata ata2 = new Ata(0, atasVotacoes2);
+		Ata ata2 = new Ata(1, atasVotacoes2);
 		ataDao.insert(ata2);
 		
 		assertTrue(ataDao.existsAtaByVotacao(votacao2));

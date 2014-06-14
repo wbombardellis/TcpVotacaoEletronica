@@ -1,9 +1,5 @@
 -Testes
 	AbstractDao -> inserir id nos membros
--Rever utilizacao das factories, elas nao add o lastinsert
--Implementação Membro
-	equals
-	clone
 -Relatorio
 	Falta de padrão de nomes em alguns lugares (comunicação equipe)
 	Alguns nomes de metodos e atributos nao muito bons (ver menu helper)

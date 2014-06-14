@@ -5,6 +5,7 @@ import static org.junit.Assert.*;
 import java.util.Date;
 
 import model.VotoFactory;
+import model.dao.VotoDao;
 import model.entity.Membro;
 import model.entity.TipoVoto;
 import model.entity.Voto;
@@ -26,7 +27,6 @@ public class VotoFactoryTest {
 		
 		Date data1 = new Date();
 		Voto v1 = VotoFactory.criaVoto(TipoVoto.Favoravel, membro1, data1, null);
-		Voto v2 = VotoFactory.criaVoto(TipoVoto.NaoFavoravel, membro2, new Date(), "teste");
 		
 		assertEquals(1, v1.getId());
 		assertEquals(TipoVoto.Favoravel, v1.getTipo());
@@ -34,6 +34,10 @@ public class VotoFactoryTest {
 		assertEquals(data1, v1.getData());
 		assertNull(v1.getJustificativa());
 		
+		///Não utiliza o Stub aqui, pois o factory consulta o Dao original, então supõe que está vazio e que o lastinsertId é zero
+		VotoDao.getInstance().insert(v1);
+
+		Voto v2 = VotoFactory.criaVoto(TipoVoto.NaoFavoravel, membro2, new Date(), "teste");
 		assertEquals(2, v2.getId());
 		assertEquals(membro2, v1.getAutor());
 		assertEquals("teste", v2.getJustificativa());
