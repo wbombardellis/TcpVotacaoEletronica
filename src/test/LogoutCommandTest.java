@@ -1,6 +1,7 @@
 package test;
 
 import static org.junit.Assert.*;
+import junit.framework.TestCase;
 import model.dao.MembroDao;
 import model.entity.Chefe;
 
@@ -11,7 +12,7 @@ import controller.LoginController;
 import view.command.LogoutCommand;
 import view.command.Sessao;
 
-public class LogoutCommandTest
+public class LogoutCommandTest extends TestCase
 {
 	private LogoutCommand logoutCommand;
 	

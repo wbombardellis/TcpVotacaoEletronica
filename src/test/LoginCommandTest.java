@@ -1,6 +1,6 @@
 package test;
 
-import static org.junit.Assert.*;
+import junit.framework.TestCase;
 import model.dao.MembroDao;
 import model.entity.Chefe;
 import model.entity.Discente;
@@ -15,9 +15,9 @@ import controller.LoginController;
 import view.command.LoginCommand;
 import view.command.Sessao;
 
-public class LoginCommandTest
+public class LoginCommandTest extends TestCase
 {
-	private LoginCommand loginCommand;
+private LoginCommand loginCommand;
 	
 	@Before
 	public void setUp()
@@ -99,5 +99,4 @@ public class LoginCommandTest
 		assertFalse(controllerTeste.autenticar()); // Autenticar deve retornar false, pois as credenciais estão incorretas.
 		assertNull(Sessao.getInstance().getMembro()); // O membro logado deve ser null, pois a autenticação falhou.
 	}
-
 }
