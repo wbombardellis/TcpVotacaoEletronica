@@ -33,14 +33,16 @@ public class VotacaoDao extends AbstractDao<Votacao> {
 		return result;
 	}
 
-	public List<Votacao> getVotacoesSemAta() {
+	public List<Votacao> getVotacoesSemAtaByEstado(Estado estado) {
 		List<Votacao> result = new ArrayList<>();
 		
 		for (Votacao votacao : this.getAll()) {
-			for (Ata ata : AtaDao.getInstance().getAll()) {
-				for (AtaVotacao ataVotacao : ata.getAtasVotacoes()) {
-					if (ataVotacao.getVotacao().equals(votacao)) {
-						result.add(votacao);
+			if (votacao.testaEstado(estado)) {
+				for (Ata ata : AtaDao.getInstance().getAll()) {
+					for (AtaVotacao ataVotacao : ata.getAtasVotacoes()) {
+						if (ataVotacao.getVotacao().equals(votacao)) {
+							result.add(votacao);
+						}
 					}
 				}
 			}

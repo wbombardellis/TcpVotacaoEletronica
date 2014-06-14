@@ -2,6 +2,7 @@ package model.entity;
 
 import view.command.Imprimivel;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Date;
@@ -99,7 +100,7 @@ public class Votacao implements Imprimivel, Identificavel {
 		this.dataFim = (Date)dataFim.clone();
 		this.estadoExplicito = estado;
 		this.documentacao = documentacao;
-		this.votos = votos;
+		this.votos = new ArrayList<>(votos);
 	}
 
 	public Votacao(Votacao votacaoBase, Estado estado) {
@@ -109,7 +110,7 @@ public class Votacao implements Imprimivel, Identificavel {
 		this.dataFim = votacaoBase.getDataFim();
 		this.estadoExplicito = estado;
 		this.documentacao = votacaoBase.getDocumentacao();
-		this.votos = votacaoBase.getVotos();
+		this.votos = new ArrayList<>(votacaoBase.getVotos());
 	}
 
 	public Votacao(Votacao votacaoBase, Date dataInicio, Date dataFim) {
@@ -119,7 +120,7 @@ public class Votacao implements Imprimivel, Identificavel {
 		this.dataFim = (Date)dataFim.clone();
 		this.estadoExplicito = votacaoBase.getEstado();
 		this.documentacao = votacaoBase.getDocumentacao();
-		this.votos = votacaoBase.getVotos();
+		this.votos = new ArrayList<>(votacaoBase.getVotos());
 	}
 	
 	public Votacao(Votacao votacaoBase, List<Voto> votos) {
@@ -129,7 +130,7 @@ public class Votacao implements Imprimivel, Identificavel {
 		this.dataFim = votacaoBase.getDataFim();
 		this.estadoExplicito = votacaoBase.getEstado();
 		this.documentacao = votacaoBase.getDocumentacao();
-		this.votos = votos;
+		this.votos = new ArrayList<>(votos);
 	}
 
 	@Override

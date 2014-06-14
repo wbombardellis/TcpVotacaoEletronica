@@ -7,6 +7,7 @@ import java.util.logging.Logger;
 
 import controller.GerarAtaController;
 import model.dao.VotacaoDao;
+import model.entity.Estado;
 import model.entity.Votacao;
 
 public class GerarAtaCommand extends Command {
@@ -17,7 +18,7 @@ public class GerarAtaCommand extends Command {
 
 	@Override
 	public void execute() {
-		List<Votacao> votacoes = VotacaoDao.getInstance().getVotacoesSemAta();
+		List<Votacao> votacoes = VotacaoDao.getInstance().getVotacoesSemAtaByEstado(Estado.Finalizada);
 		
 		if (votacoes.isEmpty())
 			SaidaHelper.imprimeLinhaFromResources("mensagem.ata.semAtas");
