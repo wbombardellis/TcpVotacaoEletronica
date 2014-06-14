@@ -58,7 +58,7 @@ public abstract class CriarVotacaoController {
 		}
 		
 		VotacaoDao votacaoDao = VotacaoDao.getInstance();
-		Votacao votacao = new Votacao(votacaoDao.getLastInsertedId(),
+		Votacao votacao = new Votacao(votacaoDao.getLastInsertedId()+1,
 				titulo,
 				dataInicio,
 				dataFim,
