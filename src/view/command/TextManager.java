@@ -27,4 +27,6 @@ public class TextManager {
 		assert recursos != null;
 		return recursos.getString(recurso);
 	}
+	
+	
 }

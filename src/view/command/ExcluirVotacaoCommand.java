@@ -21,29 +21,30 @@ public class ExcluirVotacaoCommand extends VotacaoCommand {
 		
 		boolean confirmadaExclusao = true;
 		if (! votacao.getVotos().isEmpty()) {
-			// Infroma usuário e pede confirmação
-			SaidaHelper.imprimeLinhaFromResources("exclusao.informar.votos");
+			// Informa usuário e pede confirmação
+			SaidaHelper.imprimeLinhaFromResources("excluir.informar.votos");
+			confirmadaExclusao = MenuHelper.leConfirmacao();
 		}
 		
 		if (confirmadaExclusao) {
 			VotacaoDao.getInstance().delete(votacao.getId());
 			// Mensagens ao usuário
-			SaidaHelper.imprimeLinhaFromResources("exclusao.sucesso");
+			SaidaHelper.imprimeLinhaFromResources("excluir.sucesso");
 		} else {
 			// Mensagens ao usuário
-			SaidaHelper.imprimeLinhaFromResources("exclusao.falha");
+			SaidaHelper.imprimeLinhaFromResources("excluir.falha");
 		}
 		
 	}
 
 	@Override
 	public String getCodigoTela() {
-		return "E";
+		return this.txtManager.getText("excluir.votacao.codigo");
 	}
 
 	@Override
 	public String getDescricaoTela() {
-		return "Excluir Votação";
+		return this.txtManager.getText("excluir.votacao");
 	}
 
 }

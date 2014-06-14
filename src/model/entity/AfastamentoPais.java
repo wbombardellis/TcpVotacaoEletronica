@@ -3,7 +3,14 @@ package model.entity;
 import java.util.HashMap;
 import java.util.Map;
 
+import view.command.SaidaHelper;
+import view.command.TextManager;
+
 public class AfastamentoPais extends Documentacao {
+	
+	private static final Integer CARTA_CONVITE_ID=0;
+	private static final Integer CARTA_LINGUA_ESTRANGEIRA_ID=1;
+	private static final Integer PASSAGEM_AEREA_ID=0;
 
 	private final String cartaConvite;
 
@@ -13,17 +20,19 @@ public class AfastamentoPais extends Documentacao {
 
 	public static Map<Integer,String> staticgetDescricaoDocumentosObrigatorios() {
 		Map<Integer, String> docs = new HashMap<>();
+		TextManager txtManager = new TextManager(SaidaHelper.nomeRecursos);
 		
-		docs.put(0, "Carta Convite");
-		docs.put(1, "Carta em Língua Estrangeira");
+		docs.put(CARTA_CONVITE_ID, txtManager.getText("afastamento.pais.cartaConvite"));
+		docs.put(CARTA_LINGUA_ESTRANGEIRA_ID, txtManager.getText("afastamento.pais.cartaLinguaEstrangeira"));
 		
 		return docs;
 	}
 
 	public static Map<Integer,String> staticgetDescricaoDocumentosNaoObrigatorios() {
 		Map<Integer, String> docs = new HashMap<>();
+		TextManager txtManager = new TextManager(SaidaHelper.nomeRecursos);
 		
-		docs.put(0, "Passagem Aérea");
+		docs.put(PASSAGEM_AEREA_ID, txtManager.getText("afastamento.pais.passagemAerea"));
 		
 		return docs;
 	}
@@ -45,18 +54,18 @@ public class AfastamentoPais extends Documentacao {
 			throw new IllegalArgumentException();
 		}
 		
-		this.cartaConvite = documentosObrigatoriosCaminhos.get(0);
-		this.cartaLinguaEstrangeira = documentosObrigatoriosCaminhos.get(1);
+		this.cartaConvite = documentosObrigatoriosCaminhos.get(CARTA_CONVITE_ID);
+		this.cartaLinguaEstrangeira = documentosObrigatoriosCaminhos.get(CARTA_LINGUA_ESTRANGEIRA_ID);
 		
-		this.passagemAerea = documentosNaoObrigatoriosCaminhos.get(0);
+		this.passagemAerea = documentosNaoObrigatoriosCaminhos.get(PASSAGEM_AEREA_ID);
 	}
 
 	@Override
 	public Map<Integer, String> getDocumentosObrigatorios() {
 		Map<Integer, String> docs = new HashMap<>();
 		
-		docs.put(0, this.cartaConvite);
-		docs.put(1, this.cartaLinguaEstrangeira);
+		docs.put(CARTA_CONVITE_ID, this.cartaConvite);
+		docs.put(CARTA_LINGUA_ESTRANGEIRA_ID, this.cartaLinguaEstrangeira);
 		
 		return docs;
 	}
@@ -65,7 +74,7 @@ public class AfastamentoPais extends Documentacao {
 	public Map<Integer, String> getDocumentosNaoObrigatorios() {
 		Map<Integer, String> docs = new HashMap<>();
 		
-		docs.put(0, this.passagemAerea);
+		docs.put(PASSAGEM_AEREA_ID, this.passagemAerea);
 		
 		return docs;
 	}

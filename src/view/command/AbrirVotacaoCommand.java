@@ -30,12 +30,12 @@ public class AbrirVotacaoCommand extends VotacaoCommand {
 
 	@Override
 	public String getCodigoTela() {
-		return "O";
+		return this.txtManager.getText("abrir.votacao.codigo");
 	}
 
 	@Override
 	public String getDescricaoTela() {
-		return "Abrir Votação";
+		return this.txtManager.getText("abrir.votacao");
 	}
 
 }

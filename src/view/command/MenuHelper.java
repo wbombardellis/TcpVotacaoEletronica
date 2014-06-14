@@ -3,7 +3,10 @@ package view.command;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public abstract class MenuHelper {
@@ -149,5 +152,54 @@ public abstract class MenuHelper {
 		}
 		while (entradaInvalida);
 		return false;
+	}
+	
+	public static Date leDate() throws IOException
+	{
+		BufferedReader reader = new BufferedReader (new InputStreamReader(System.in));
+		Boolean entradaInvalida = true;
+		String stringLida;
+		Date dataLida = null;
+		TextManager txtManager = new TextManager(SaidaHelper.nomeRecursos);
+		SimpleDateFormat formatter = new SimpleDateFormat(txtManager.getText("locale.date_format"));
+		
+		do
+		{
+			stringLida = reader.readLine();
+			if (!stringLida.isEmpty())
+			{
+				entradaInvalida = true;
+			}
+			else
+			{
+				try {
+					dataLida = formatter.parse(stringLida);
+					entradaInvalida = false;
+				} catch (ParseException e) {
+					entradaInvalida = true;
+				}
+			}
+		}
+		while (entradaInvalida);
+		
+		return dataLida;
+	}
+	
+	public static String leStringComMensagemFromResources(String recursoMensagem) throws IOException
+	{
+		SaidaHelper.imprimeLinhaFromResources(recursoMensagem);
+		return MenuHelper.leString();
+	}
+	
+	public static String leStringOpicionalComMensagem(String mensagem) throws IOException
+	{
+		SaidaHelper.imprimeLinha(mensagem);
+		return MenuHelper.leStringOpcional();
+	}
+	
+	public static Date leDateComMensagemFromResources(String recursoMensagem) throws IOException
+	{
+		SaidaHelper.imprimeLinhaFromResources(recursoMensagem);
+		return MenuHelper.leDate();
 	}
 }

@@ -5,6 +5,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import view.command.SaidaHelper;
+import view.command.TextManager;
 import model.dao.VotacaoDao;
 import model.entity.Estado;
 import model.entity.Votacao;
@@ -12,6 +14,7 @@ import model.entity.Votacao;
 public abstract class LiberarVotacaoController {
 
 	public static List<String> liberaVotacao(Votacao votacao) {
+		TextManager txtMananger = new TextManager(SaidaHelper.nomeRecursos);
 		List<String> warnings = new ArrayList<>();
 		
 		// Verifica se há documentos não informados
@@ -25,7 +28,7 @@ public abstract class LiberarVotacaoController {
 		}
 		
 		if (faltamDocumentos) {
-			warnings.add("Há documentos origatórios faltantes");
+			warnings.add(txtMananger.getText("liberar.votacao.aviso"));
 		}
 		
 		// Atualiza o status da votação para liberada 

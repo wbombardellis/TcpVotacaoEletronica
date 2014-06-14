@@ -3,8 +3,15 @@ package model.entity;
 import java.util.HashMap;
 import java.util.Map;
 
+import view.command.SaidaHelper;
+import view.command.TextManager;
+
 public class ProgressaoFuncional extends Documentacao {
 
+	private static final Integer MEMORIAL_DESCRITIVO_ID=0;
+	private static final Integer PLANILHA_PONTUACAO_ID=1;
+	private static final Integer COMPROVANTE_ID=2;
+	
 	private final String memorialDescritivo;
 
 	private final String planilhaPontuacao;
@@ -13,10 +20,11 @@ public class ProgressaoFuncional extends Documentacao {
 
 	public static Map<Integer,String> staticgetDescricaoDocumentosObrigatorios() {
 		Map<Integer, String> docs = new HashMap<>();
+		TextManager txtManager = new TextManager(SaidaHelper.nomeRecursos);
 		
-		docs.put(0, "Memórial Descritivo");
-		docs.put(1, "Planilha de Pontuação");
-		docs.put(2, "Comprovantes");
+		docs.put(MEMORIAL_DESCRITIVO_ID, txtManager.getText("progressao.funcional.memorial.descritivo"));
+		docs.put(PLANILHA_PONTUACAO_ID, txtManager.getText("progressao.funcional.planilha.pontuacao"));
+		docs.put(COMPROVANTE_ID, txtManager.getText("progressao.funcional.comprovantes"));
 		
 		return docs;
 	}
@@ -42,18 +50,18 @@ public class ProgressaoFuncional extends Documentacao {
 			throw new IllegalArgumentException();
 		}
 		
-		this.memorialDescritivo = documentosObrigatoriosCaminhos.get(0);
-		this.planilhaPontuacao = documentosObrigatoriosCaminhos.get(1);
-		this.comprovantes = documentosObrigatoriosCaminhos.get(2);
+		this.memorialDescritivo = documentosObrigatoriosCaminhos.get(MEMORIAL_DESCRITIVO_ID);
+		this.planilhaPontuacao = documentosObrigatoriosCaminhos.get(PLANILHA_PONTUACAO_ID);
+		this.comprovantes = documentosObrigatoriosCaminhos.get(COMPROVANTE_ID);
 	}
 
 	@Override
 	public Map<Integer, String> getDocumentosObrigatorios() {
 		Map<Integer, String> docs = new HashMap<>();
 		
-		docs.put(0, this.memorialDescritivo);
-		docs.put(1, this.planilhaPontuacao);
-		docs.put(2, this.comprovantes);
+		docs.put(MEMORIAL_DESCRITIVO_ID, this.memorialDescritivo);
+		docs.put(PLANILHA_PONTUACAO_ID, this.planilhaPontuacao);
+		docs.put(COMPROVANTE_ID, this.comprovantes);
 		
 		return docs;
 	}
