@@ -103,12 +103,12 @@ public class VotarCommand extends Command {
 
 	@Override
 	public String getCodigoTela() {
-		return "V";
+		return this.txtManager.getText("votar.codigo");
 	}
 
 	@Override
 	public String getDescricaoTela() {
-		return "Votar";
+		return this.txtManager.getText("votar");
 	}
 
 }

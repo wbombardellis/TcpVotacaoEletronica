@@ -61,12 +61,12 @@ public class LerAtaCommand extends Command {
 
 	@Override
 	public String getCodigoTela() {
-		return "LA";
+		return this.txtManager.getText("ler.ata.codigo");
 	}
 
 	@Override
 	public String getDescricaoTela() {
-		return "Ler Ata";
+		return this.txtManager.getText("ler.ata");
 	}
 
 }

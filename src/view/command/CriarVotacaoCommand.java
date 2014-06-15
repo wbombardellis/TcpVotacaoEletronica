@@ -23,6 +23,7 @@ public class CriarVotacaoCommand extends VotacaoCommand {
 
 	@Override
 	public void execute() throws IOException {
+		SaidaHelper.imprimeLinhaFromResources("criar.votacao.info.tipo");
 		TipoDocumentacao tipoVoto = MenuHelper.leOpcaoMenu(this.tiposVotacao);
 		
 		Map<Integer, String> documentosObrigatorios = CriarVotacaoController.getDocumentosObrigatorios(tipoVoto);

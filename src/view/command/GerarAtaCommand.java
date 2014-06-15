@@ -34,12 +34,12 @@ public class GerarAtaCommand extends Command {
 
 	@Override
 	public String getCodigoTela() {
-		return "GA";
+		return this.txtManager.getText("gerar.ata.codigo");
 	}
 
 	@Override
 	public String getDescricaoTela() {
-		return "Gerar Ata";
+		return this.txtManager.getText("gerar.ata");
 	}
 
 }
