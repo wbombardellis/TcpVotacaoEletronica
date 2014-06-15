@@ -6,6 +6,10 @@ import model.entity.Membro;
 
 public class LoginController
 {
+	/*
+	 * Essa classe tem por objetivo armazenar um nome de usuário e uma senha, de forma a verificar junto aos
+	 * dados armazenados pelo sistema se tal conjunto é válido.
+	 */
 	private String username;
 	private String password;
 
@@ -30,6 +34,10 @@ public class LoginController
 		return false;
 	}
 	
+	/*
+	 * Método responsável pela verificação da validade das credenciais armazenadas no objeto da classe e pela substituição
+	 * do usuário ativo no sistema.
+	 */
 	public boolean autenticar()
 	{
 		MembroDao dao = MembroDao.getInstance();
