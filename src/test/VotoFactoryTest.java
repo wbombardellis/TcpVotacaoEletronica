@@ -28,7 +28,7 @@ public class VotoFactoryTest {
 		Date data1 = new Date();
 		Voto v1 = VotoFactory.criaVoto(TipoVoto.Favoravel, membro1, data1, null);
 		
-		assertEquals(1, v1.getId());
+		assertEquals(VotoDao.getInstance().getLastInsertedId()+1, v1.getId());
 		assertEquals(TipoVoto.Favoravel, v1.getTipo());
 		assertEquals(membro1, v1.getAutor()); 
 		assertEquals(data1, v1.getData());
@@ -38,7 +38,7 @@ public class VotoFactoryTest {
 		VotoDao.getInstance().insert(v1);
 
 		Voto v2 = VotoFactory.criaVoto(TipoVoto.NaoFavoravel, membro2, new Date(), "teste");
-		assertEquals(2, v2.getId());
+		assertEquals(VotoDao.getInstance().getLastInsertedId()+1, v2.getId());
 		assertEquals(membro2, v1.getAutor());
 		assertEquals("teste", v2.getJustificativa());
 	}

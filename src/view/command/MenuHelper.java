@@ -31,7 +31,7 @@ public abstract class MenuHelper {
 	public static <T extends Imprimivel> List<T> leOpcoesMenu(List<T> opcoes) throws IOException {
 		
 		ArrayList<T> opcoesMostrar = new ArrayList<>(opcoes);
-		ArrayList<T> opcoesEscolhidas = new ArrayList<>(opcoes);
+		ArrayList<T> opcoesEscolhidas = new ArrayList<>();
 		T opcao;
 		Boolean fimLeitura;
 		do{
@@ -50,8 +50,12 @@ public abstract class MenuHelper {
 				opcoesMostrar.remove(opcao);
 				
 				//Ler mais opções?
-				SaidaHelper.imprimeLinhaFromResources("mesagem.menu.opcao.escolherMais");
-				fimLeitura = !MenuHelper.leConfirmacao();
+				if (!opcoesMostrar.isEmpty()){
+					SaidaHelper.imprimeLinhaFromResources("mensagem.menu.opcao.escolherMais");
+					fimLeitura = !MenuHelper.leConfirmacao();
+				}else{
+					fimLeitura = true;
+				}
 			}
 		}while(!fimLeitura);
 		

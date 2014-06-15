@@ -37,5 +37,10 @@ public enum TipoVoto implements Imprimivel{
 		
 		return lst;
 	}
+	
+	@Override
+	public String toString() {
+		return getDescricaoTela();
+	}
 
 }

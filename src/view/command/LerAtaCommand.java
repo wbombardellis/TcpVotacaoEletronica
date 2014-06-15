@@ -1,6 +1,7 @@
 package view.command;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.logging.Level;
@@ -26,9 +27,12 @@ public class LerAtaCommand extends Command {
 		}else{
 			
 			try{
+				SaidaHelper.imprimeLinhaFromResources("ler.ata.disponiveis");
+				
 				Ata ata = MenuHelper.leOpcaoMenu(new ArrayList<Ata>(atas));
 				
 				TextManager txtManager = new TextManager(SaidaHelper.nomeRecursos);
+				SimpleDateFormat formatter = new SimpleDateFormat(txtManager.getText("locale.date_format"));
 				
 				ArrayList<String> relatorioTexto = new ArrayList<>();
 				
@@ -38,8 +42,8 @@ public class LerAtaCommand extends Command {
 				for (AtaVotacao ataVotacao : ata.getAtasVotacoes()){
 					relatorioTexto.add(txtManager.getText("titulo.ataVotacao"));
 					relatorioTexto.add(txtManager.getText("texto.ataVotacao.id") + ataVotacao.getId());
-					relatorioTexto.add(txtManager.getText("texto.ataVotacao.dataInicio") + ataVotacao.getDataInicio());
-					relatorioTexto.add(txtManager.getText("texto.ataVotacao.dataFim") + ataVotacao.getDataFim());
+					relatorioTexto.add(txtManager.getText("texto.ataVotacao.dataInicio") + formatter.format(ataVotacao.getDataInicio()));
+					relatorioTexto.add(txtManager.getText("texto.ataVotacao.dataFim") + formatter.format(ataVotacao.getDataFim()));
 					
 					relatorioTexto.add(txtManager.getText("texto.ataVotacao.qtdVotantes") + ataVotacao.getVotantes().size());
 					relatorioTexto.add(txtManager.getText("texto.ataVotacao.qtdNaoVotantes") + ataVotacao.getNaoVotantes().size());
@@ -52,6 +56,7 @@ public class LerAtaCommand extends Command {
 				}
 				
 				SaidaHelper.imprimeLinhas(relatorioTexto);
+				SaidaHelper.imprimeLinha("");
 				
 			}catch(IOException ex){
 				Logger.getLogger(LerAtaCommand.class.getName()).log(Level.SEVERE, ex.getMessage());

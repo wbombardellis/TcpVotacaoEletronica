@@ -33,12 +33,16 @@ public class Ata implements Imprimivel, Identificavel {
 
 	@Override
 	public String getCodigoTela() {
-		return "A";
+		return String.valueOf(this.id);
 	}
 
 	@Override
 	public String getDescricaoTela() {
-		return "Ata";
+		String descricao = new String();
+		for (AtaVotacao ataVotacao : atasVotacoes.values()){
+			descricao += " " + ataVotacao.getVotacao().getTitulo();
+		}
+		return descricao;
 	}
 
 }

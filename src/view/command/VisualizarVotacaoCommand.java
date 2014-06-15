@@ -74,6 +74,7 @@ public class VisualizarVotacaoCommand extends VotacaoCommand {
 					output.add(txtMngr.getText("voto.id") + voto.getId());
 					output.add(txtMngr.getText("voto.autor") + voto.getAutor().getNome());
 					output.add(txtMngr.getText("voto.tipo") + voto.getTipo());
+					output.add(txtMngr.getText("voto.justificativa") + voto.getJustificativa());
 				}
 				SaidaHelper.imprimeLinhas(output);
 			}
