@@ -21,7 +21,7 @@ import org.junit.Test;
  */
 public class AbstractDaoTest {
 
-	private static final Integer LIMITE_TESTES_DELETE = 10000;
+	private static final Integer LIMITE_TESTES_DELETE = 100;
 
 	@Test(expected = AssertionError.class)
 	public void testInsertNull() {

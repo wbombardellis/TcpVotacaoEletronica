@@ -1,15 +1,19 @@
 package test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 
 import model.AtaVotacaoFactory;
 import model.dao.AtaVotacaoDao;
 import model.dao.VotacaoDao;
 import model.entity.AtaVotacao;
 import model.entity.Estado;
+import model.entity.EstagioProbatorio;
 import model.entity.Membro;
 import model.entity.TipoVoto;
 import model.entity.Votacao;
@@ -41,12 +45,13 @@ public class AtaVotacaoFactoryTest {
 		votos.add(new Voto(0, TipoVoto.Favoravel, membro1, new Date(), null));
 		
 		//Cria as votações que serão testadas no método
-		Votacao votacao1 = new Votacao(0, "teste1", new Date(), new Date(), Estado.Aberta, null, votos);
-		Votacao votacao2 = new Votacao(1, "teste2", new Date(), new Date(), Estado.Aberta, null, new ArrayList<Voto>());
+		Votacao votacao1 = new Votacao(0, "teste1", new Date(), new Date(), Estado.Aberta, new EstagioProbatorio(new HashMap<Integer, String>(), new HashMap<Integer, String>()), votos);
+		Votacao votacao2 = new Votacao(1, "teste2", new Date(), new Date(), Estado.Aberta, new EstagioProbatorio(new HashMap<Integer, String>(), new HashMap<Integer, String>()), new ArrayList<Voto>());
 		
 		
 		///Não utiliza o AtaVotacaoDaoStub aqui, pois o factory consulta o AtaVotacaoDao, então supõe que está vazio e que o lastInsertId é zero
 		AtaVotacaoDao ataVotacaoDao = AtaVotacaoDao.getInstance();
+		VotacaoDao votacaoDao = VotacaoDao.getInstance();
 		
 		//Teste trivial primeira inserção
 		assertEquals(0, ataVotacaoDao.getLastInsertedId());
@@ -73,9 +78,9 @@ public class AtaVotacaoFactoryTest {
 		assertEquals(3, ataVotacaoDao.getLastInsertedId());
 		
 		//Remove para que o Dao possa ser utilizado por outros testes
-		ataVotacaoDao.delete(1);
-		ataVotacaoDao.delete(2);
-		ataVotacaoDao.delete(3);
+		assertTrue(ataVotacaoDao.delete(1));
+		assertTrue(ataVotacaoDao.delete(2));
+		assertTrue(ataVotacaoDao.delete(3));
 	}
 
 }

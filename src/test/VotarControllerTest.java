@@ -5,9 +5,12 @@ import static org.junit.Assert.*;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
 
+import model.dao.MembroDao;
 import model.dao.VotacaoDao;
 import model.entity.Estado;
+import model.entity.EstagioProbatorio;
 import model.entity.Membro;
 import model.entity.TipoVoto;
 import model.entity.Votacao;
@@ -43,7 +46,7 @@ public class VotarControllerTest {
 		cal.add(Calendar.DAY_OF_MONTH, 1);
 		Date dtFim1 = cal.getTime(); 
 		
-		Votacao votacao1 = new Votacao(1, "teste1", dtIni1, dtFim1, Estado.Aberta, null, votos);
+		Votacao votacao1 = new Votacao(99, "teste1", dtIni1, dtFim1, Estado.Aberta, new EstagioProbatorio(new HashMap<Integer, String>(), new HashMap<Integer, String>()), votos);
 		
 		//Deve gerar erro, pois votacao1 não está no dao
 		VotarController.insereVoto(votacao1, new Voto(2, TipoVoto.Abstencao, membro3, new Date(), null));
@@ -52,10 +55,15 @@ public class VotarControllerTest {
 	@Test
 	public void testInsereVoto() {
 		//Cria elementos apenas para popular a ata
+		MembroDao mDao = MembroDao.getInstance();
 		Membro membro1 = new Membro("membro1", "teste1", "1234");
+		mDao.insert(membro1);
 		Membro membro2 = new Membro("membro2", "teste2", "1234");
+		mDao.insert(membro2);
 		Membro membro3 = new Membro("membro3", "teste3", "1234");
+		mDao.insert(membro3);
 		Membro membro4 = new Membro("membro4", "teste4", "1234");
+		mDao.insert(membro4);
 		
 		ArrayList<Voto> votos = new ArrayList<>();
 		votos.add(new Voto(0, TipoVoto.Favoravel, membro1, new Date(), null));
@@ -68,26 +76,33 @@ public class VotarControllerTest {
 		cal.add(Calendar.DAY_OF_MONTH, 1);
 		Date dtFim1 = cal.getTime(); 
 		
-		Votacao votacao1 = new Votacao(1, "teste1", dtIni1, dtFim1, Estado.Aberta, null, votos);
+		Votacao votacao1 = new Votacao(1, "teste1", dtIni1, dtFim1, Estado.Aberta, new EstagioProbatorio(new HashMap<Integer, String>(), new HashMap<Integer, String>()), votos);
 		
 		///Não utiliza o AtaVotacaoDaoStub aqui, pois o controller consulta o AtaVotacaoDao, então supõe que está vazio
 		VotacaoDao votacaoDao = VotacaoDao.getInstance();
-		votacaoDao.insert(votacao1);
+		votacaoDao.delete(votacao1.getId());
+		assertTrue(votacaoDao.insert(votacao1));
 		
 		Voto votoAdded = new Voto(2, TipoVoto.Abstencao, membro3, new Date(), null);
 		VotarController.insereVoto(votacao1, votoAdded);
 		
 		//Deve ter adicionado o voto
 		votos.add(votoAdded);
-		assertEquals(votos, votacaoDao.getById(1).getVotos());
-		assertEquals(votoAdded, VotarController.getVotoByAutor(votacao1, membro3));
+		assertEquals(votos, votacaoDao.getById(votacao1.getId()).getVotos());
+		assertEquals(votoAdded, VotarController.getVotoByAutor(votacaoDao.getById(votacao1.getId()), membro3));
 		
 		votos.remove(votoAdded);
-		VotarController.removeVoto(votacao1, votoAdded);
+		VotarController.removeVoto(votacaoDao.getById(votacao1.getId()), votoAdded);
 		assertEquals(votos, votacaoDao.getById(1).getVotos());
-		assertNull(VotarController.getVotoByAutor(votacao1, membro3));
+		assertNull(VotarController.getVotoByAutor(votacaoDao.getById(votacao1.getId()), membro3));
 		
-		assertNull(VotarController.getVotoByAutor(votacao1, membro4));
+		assertNull(VotarController.getVotoByAutor(votacaoDao.getById(votacao1.getId()), membro4));
+		
+		assertTrue(votacaoDao.delete(votacao1.getId()));
+		assertTrue(mDao.delete(membro1.getId()));
+		assertTrue(mDao.delete(membro2.getId()));
+		assertTrue(mDao.delete(membro3.getId()));
+		assertTrue(mDao.delete(membro4.getId()));
 	}
 
 	@Test(expected = AssertionError.class)

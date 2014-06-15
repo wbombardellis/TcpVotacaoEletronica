@@ -5,12 +5,16 @@ import static org.junit.Assert.*;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 
 import model.dao.AtaDao;
 import model.dao.AtaVotacaoDao;
+import model.dao.MembroDao;
+import model.dao.VotacaoDao;
 import model.entity.Ata;
 import model.entity.Estado;
+import model.entity.EstagioProbatorio;
 import model.entity.Membro;
 import model.entity.TipoVoto;
 import model.entity.Votacao;
@@ -30,9 +34,13 @@ public class GerarAtaControllerTest {
 	@Test
 	public void testCriaAta() {
 		//Cria elementos apenas para popular a ata
+		MembroDao mDao = MembroDao.getInstance();
 		Membro membro1 = new Membro("membro1", "teste1", "1234");
+		mDao.insert(membro1);
 		Membro membro2 = new Membro("membro2", "teste2", "1234");
+		mDao.insert(membro2);
 		Membro membro3 = new Membro("membro3", "teste3", "1234");
+		mDao.insert(membro3);
 				
 		ArrayList<Voto> votos = new ArrayList<>();
 		votos.add(new Voto(0, TipoVoto.Favoravel, membro1, new Date(), null));
@@ -45,7 +53,7 @@ public class GerarAtaControllerTest {
 		cal.add(Calendar.DAY_OF_MONTH, 1);
 		Date dtFim1 = cal.getTime(); 
 		
-		Votacao votacao1 = new Votacao(0, "teste1", dtIni1, dtFim1, Estado.Aberta, null, votos);
+		Votacao votacao1 = new Votacao(0, "teste1", dtIni1, dtFim1, Estado.Aberta, new EstagioProbatorio(new HashMap<Integer, String>(), new HashMap<Integer, String>()), votos);
 		List<Votacao> votacoes = new ArrayList<>();
 		votacoes.add(votacao1);
 		
@@ -54,9 +62,14 @@ public class GerarAtaControllerTest {
 		//Portanto pode utilizar o AtaDao e AtaVotacaoDao nas versões originais, sem stub
 		assertEquals(votacoes, AtaDao.getInstance().getAll());
 		assertEquals(votacao1, AtaVotacaoDao.getInstance().getById(1));	
+		
 		//Apaga o que foi inserido, para que o objeto singleton seja utilizado mais tarde
-		AtaVotacaoDao.getInstance().delete(0);
-		AtaDao.getInstance().delete(0);
+		assertTrue(AtaVotacaoDao.getInstance().delete(0));
+		assertTrue(AtaDao.getInstance().delete(0));
+		assertTrue(VotacaoDao.getInstance().delete(votacao1.getId()));
+		assertTrue(mDao.delete(membro1.getId()));
+		assertTrue(mDao.delete(membro2.getId()));
+		assertTrue(mDao.delete(membro3.getId()));
 	}
 
 }

@@ -5,11 +5,13 @@ import static org.junit.Assert.*;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 
 import model.AtaVotacaoFactory;
 import model.entity.AtaVotacao;
 import model.entity.Estado;
+import model.entity.EstagioProbatorio;
 import model.entity.Membro;
 import model.entity.TipoVoto;
 import model.entity.Votacao;
@@ -50,7 +52,7 @@ public class AtaVotacaoTest {
 		cal.add(Calendar.DAY_OF_MONTH, 1);
 		Date dtFim1 = cal.getTime(); 
 		
-		Votacao votacao1 = new Votacao(0, "teste1", dtIni1, dtFim1, Estado.Aberta, null, votos);		
+		Votacao votacao1 = new Votacao(0, "teste1", dtIni1, dtFim1, Estado.Aberta, new EstagioProbatorio(new HashMap<Integer, String>(), new HashMap<Integer, String>()), votos);		
 		AtaVotacao ataV1 = new AtaVotacao(1, votacao1, votantes, naoVotantes);
 		
 		//Verifica Atributos
@@ -74,7 +76,7 @@ public class AtaVotacaoTest {
 		assertNotEquals(naoVotantes, ataV1.getNaoVotantes());
 
 		//Testes Triviais
-		Votacao votacao2 = new Votacao(2, "teste2", new Date(), new Date(), Estado.Aberta, null, new ArrayList<Voto>());
+		Votacao votacao2 = new Votacao(2, "teste2", new Date(), new Date(), Estado.Aberta, new EstagioProbatorio(new HashMap<Integer, String>(), new HashMap<Integer, String>()), new ArrayList<Voto>());
 		AtaVotacao ataV2 = new AtaVotacao(2, votacao2, new ArrayList<Membro>(), new ArrayList<Membro>());
 		
 		assertEquals(new ArrayList<Voto>(), ataV2.getVotos());
@@ -114,7 +116,7 @@ public class AtaVotacaoTest {
 		Date dtFim1 = cal.getTime(); 
 		
 		//Cenário 1 - Empate
-		Votacao votacao1 = new Votacao(0, "teste1", dtIni1, dtFim1, Estado.Aberta, null, votos);		
+		Votacao votacao1 = new Votacao(0, "teste1", dtIni1, dtFim1, Estado.Aberta, new EstagioProbatorio(new HashMap<Integer, String>(), new HashMap<Integer, String>()), votos);		
 		AtaVotacao ataV1 = new AtaVotacao(1, votacao1, votantes, naoVotantes);
 		assertEquals(1, ataV1.getQtdVotosFavoriaveis());
 		assertEquals(1, ataV1.getQtdVotosNaoFavoriaveis());
@@ -125,8 +127,8 @@ public class AtaVotacaoTest {
 		votantes.add(membro5);
 		Votacao votacao2 = new Votacao(votacao1, votos);		
 		AtaVotacao ataV2 = new AtaVotacao(2, votacao2, votantes, naoVotantes);
-		assertEquals(2, ataV1.getQtdVotosFavoriaveis());
-		assertEquals(1, ataV1.getQtdVotosNaoFavoriaveis());
+		assertEquals(2, ataV2.getQtdVotosFavoriaveis());
+		assertEquals(1, ataV2.getQtdVotosNaoFavoriaveis());
 		assertTrue(ataV2.getResultado());
 		
 		//Cenário 2 - Resultado Positivo
@@ -136,9 +138,9 @@ public class AtaVotacaoTest {
 		votantes.add(membro7);
 		Votacao votacao3 = new Votacao(votacao1, votos);		
 		AtaVotacao ataV3 = new AtaVotacao(3, votacao3, votantes, naoVotantes);
-		assertEquals(2, ataV1.getQtdVotosFavoriaveis());
-		assertEquals(3, ataV1.getQtdVotosNaoFavoriaveis());
-		assertFalse(ataV2.getResultado());
+		assertEquals(2, ataV3.getQtdVotosFavoriaveis());
+		assertEquals(3, ataV3.getQtdVotosNaoFavoriaveis());
+		assertFalse(ataV3.getResultado());
 	}
 
 }

@@ -1,6 +1,7 @@
 package test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -8,10 +9,10 @@ import java.util.HashMap;
 
 import model.AtaFactory;
 import model.dao.AtaDao;
-import model.dao.AtaVotacaoDao;
 import model.entity.Ata;
 import model.entity.AtaVotacao;
 import model.entity.Estado;
+import model.entity.EstagioProbatorio;
 import model.entity.Membro;
 import model.entity.TipoVoto;
 import model.entity.Votacao;
@@ -49,8 +50,8 @@ public class AtaFactoryTest {
 		votos.add(new Voto(0, TipoVoto.Favoravel, membro1, new Date(), null));
 		
 		//Cria as votações que serão testadas no método
-		Votacao votacao1 = new Votacao(0, "teste1", new Date(), new Date(), Estado.Aberta, null, votos);
-		Votacao votacao2 = new Votacao(1, "teste2", new Date(), new Date(), Estado.Aberta, null, new ArrayList<Voto>());
+		Votacao votacao1 = new Votacao(0, "teste1", new Date(), new Date(), Estado.Aberta, new EstagioProbatorio(new HashMap<Integer, String>(), new HashMap<Integer, String>()), votos);
+		Votacao votacao2 = new Votacao(1, "teste2", new Date(), new Date(), Estado.Aberta, new EstagioProbatorio(new HashMap<Integer, String>(), new HashMap<Integer, String>()), new ArrayList<Voto>());
 		
 		AtaVotacao ataVotacao1 = new AtaVotacao(0, votacao1, votantes, naoVotantes);
 		HashMap<Integer, AtaVotacao> atasVotacoes1 = new HashMap<>();

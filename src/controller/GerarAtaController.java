@@ -35,14 +35,16 @@ public abstract class GerarAtaController {
 			naoVotantes.clear();
 			
 			//Loop para processar quem votou ou não nesta votação
-			for (Membro membro : membros){
-				Voto voto = VotarController.getVotoByAutor(votacao, membro);
-				//Este membro votou nesta votação
-				if (voto != null){
-					votantes.add(membro);
-				}else{
-					//Não votou
-					naoVotantes.add(membro);
+			if (membros != null){
+				for (Membro membro : membros){
+					Voto voto = VotarController.getVotoByAutor(votacao, membro);
+					//Este membro votou nesta votação
+					if (voto != null){
+						votantes.add(membro);
+					}else{
+						//Não votou
+						naoVotantes.add(membro);
+					}
 				}
 			}
 			//Adiciona nova Ata de Votação no hash

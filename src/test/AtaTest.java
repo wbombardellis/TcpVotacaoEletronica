@@ -11,6 +11,7 @@ import model.AtaVotacaoFactory;
 import model.entity.Ata;
 import model.entity.AtaVotacao;
 import model.entity.Estado;
+import model.entity.EstagioProbatorio;
 import model.entity.Membro;
 import model.entity.TipoVoto;
 import model.entity.Votacao;
@@ -50,7 +51,7 @@ public class AtaTest {
 		cal.add(Calendar.DAY_OF_MONTH, 1);
 		Date dtFim1 = cal.getTime(); 
 		
-		Votacao votacao1 = new Votacao(0, "teste1", dtIni1, dtFim1, Estado.Aberta, null, votos);		
+		Votacao votacao1 = new Votacao(0, "teste1", dtIni1, dtFim1, Estado.Aberta, new EstagioProbatorio(new HashMap<Integer, String>(), new HashMap<Integer, String>()), votos);		
 		AtaVotacao ataV1 = AtaVotacaoFactory.criaAtaVotacao(votacao1, votantes, naoVotantes);
 		
 		HashMap<Integer, AtaVotacao> atas = new HashMap<Integer, AtaVotacao>(); 
@@ -85,7 +86,7 @@ public class AtaTest {
 		cal.add(Calendar.DAY_OF_MONTH, 1);
 		Date dtFim1 = cal.getTime(); 
 		
-		Votacao votacao1 = new Votacao(0, "teste1", dtIni1, dtFim1, Estado.Aberta, null, votos);		
+		Votacao votacao1 = new Votacao(0, "teste1", dtIni1, dtFim1, Estado.Aberta, new EstagioProbatorio(new HashMap<Integer, String>(), new HashMap<Integer, String>()), votos);		
 		AtaVotacao ataV1 = AtaVotacaoFactory.criaAtaVotacao(votacao1, votantes, naoVotantes);
 		
 		HashMap<Integer, AtaVotacao> atas = new HashMap<Integer, AtaVotacao>(); 

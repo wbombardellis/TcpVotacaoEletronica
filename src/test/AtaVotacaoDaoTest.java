@@ -1,9 +1,9 @@
 package test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertSame;
 import model.dao.AtaDao;
 
-import org.junit.Before;
 import org.junit.Test;
 
 public class AtaVotacaoDaoTest {
