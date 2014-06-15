@@ -5,6 +5,7 @@ import static org.junit.Assert.*;
 import java.sql.Time;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Random;
 
@@ -31,37 +32,40 @@ public class AbstractDaoTest {
 	
 	@Test
 	public void testInsert() {
-		MembroDao mDao = MembroDaoStub.getInstance();
+		MembroDao mDao = MembroDao.getInstance();
 		Membro m1 = new Membro("t1", "t1", "1234");
-		Membro m2 = new Membro("t2", "t2", "1234");
 		
 		//membros funciona como um oráculo
 		List<Membro> membros = new ArrayList<>();
 		membros.add(m1);
 		
 		//Test to pass - Uma inserção
-		assertEquals(0, mDao.getLastInsertedId());
-		assertTrue(mDao.getAll().isEmpty());
+		int lastId = mDao.getLastInsertedId();
+		assertEquals(lastId, mDao.getLastInsertedId());
 		assertTrue(mDao.insert(m1));
-		assertEquals(1, mDao.getLastInsertedId());
-		assertEquals(m1, mDao.getById(1));
-		assertEquals(membros, mDao.getAll());
+		assertEquals(lastId+1, mDao.getLastInsertedId());
+		assertEquals(m1, mDao.getById(lastId+1));
+		//assertEquals(membros, mDao.getAll());
 
 		//Duas inserções
+		Membro m2 = new Membro("t2", "t2", "1234");
 		membros.add(m2);
 		assertTrue(mDao.insert(m2));
-		assertEquals(2, mDao.getLastInsertedId());
-		assertEquals(m2, mDao.getById(2));
-		assertEquals(membros, mDao.getAll());
+		assertEquals(lastId+2, mDao.getLastInsertedId());
+		assertEquals(m2, mDao.getById(lastId+2));
+		//assertEquals(membros, mDao.getAll());
 		
 		//Repetida
 		assertFalse(mDao.insert(m1));
 		assertFalse(mDao.insert(m2));
+		
+		assertTrue(mDao.delete(lastId+1));
+		assertTrue(mDao.delete(lastId+2));
 	}
 
 	@Test
 	public void testDeleteGetByIdGetAll() {
-		MembroDao mDao = MembroDaoStub.getInstance();
+		MembroDao mDao = MembroDao.getInstance();
 		Membro m1 = new Membro("t1", "t1", "1234");
 		Membro m2 = new Membro("t2", "t2", "1234");
 		
@@ -75,20 +79,23 @@ public class AbstractDaoTest {
 		assertTrue(mDao.insert(m1));
 		assertEquals(1, mDao.getLastInsertedId());
 		assertEquals(m1, mDao.getById(1));
-		assertEquals(membros, mDao.getAll());
+		assertArrayEquals(membros.toArray(), mDao.getAll().toArray());
 
 		//Remove um
 		assertFalse(mDao.delete(0)); //Não existe
 		assertFalse(mDao.delete(10)); //Não existe
 		assertFalse(mDao.delete(-1)); //Não existe
 		assertTrue(mDao.delete(1));
-		membros.remove(m1);
+		membros = new ArrayList<>();
+		assertArrayEquals(membros.toArray(), mDao.getAll().toArray());
+		
 		
 		//Teste Randômico
 		int i;
-		int lastId;
+		int lastId = mDao.getLastInsertedId();
 		Random rand = new Random(new Date().getTime());
-		for (i = 0, lastId = 0; i < AbstractDaoTest.LIMITE_TESTES_DELETE; i++){
+		for (i = 0; i < AbstractDaoTest.LIMITE_TESTES_DELETE; i++){
+			
 			//Se random for par (metade das operações)
 			if ((rand.nextInt() % 2 == 0)){
 				//Insere
@@ -98,8 +105,7 @@ public class AbstractDaoTest {
 				assertTrue(mDao.insert(m));
 				assertEquals(lastId, mDao.getLastInsertedId());
 				assertEquals(m, mDao.getById(lastId));
-				assertEquals(membros, mDao.getAll());
-			}else{
+			}else if (lastId > 0){
 				//Escolhe elemento a remover
 				int randId = rand.nextInt() % lastId;
 				Membro randMembro = mDao.getById(randId);
@@ -127,6 +133,8 @@ public class AbstractDaoTest {
 				//Não pode mudar last inserted id
 				assertEquals(lastIdBefore, mDao.getLastInsertedId());
 			}
+
+			assertEquals(new HashSet<>(membros), new HashSet<>(mDao.getAll()));
 		}
 	}
 	
@@ -142,16 +150,16 @@ public class AbstractDaoTest {
 
 	@Test
 	public void testUpdate() {
-		MembroDao mDao = MembroDaoStub.getInstance();
+		MembroDao mDao = MembroDao.getInstance();
 		Membro m1 = new Membro("t1", "t1", "1234");
-		Membro m2 = new Membro("t2", "t2", "1234");
 		
 		//Test to pass - Uma inserção
 		assertTrue(mDao.insert(m1));
-		assertFalse(mDao.update(2, m2)); //Não existe id 2
-		assertTrue(mDao.update(1, m2));
-		assertEquals(mDao.getById(1), m2);
-		assertNotEquals(mDao.getById(1), m1);
+		Membro m2 = new Membro("t2", "t2", "1234");
+		assertFalse(mDao.update(m2.getId(), m2)); //Não existe id m2.getid() pois ele não foi inserido ainda
+		assertTrue(mDao.update(m1.getId(), m2));
+		assertEquals(mDao.getById(m1.getId()), m2);
+		assertNotEquals(mDao.getById(m1.getId()), m1);
 	}
 
 }
