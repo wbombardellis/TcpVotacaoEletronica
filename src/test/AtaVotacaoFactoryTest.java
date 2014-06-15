@@ -52,33 +52,29 @@ public class AtaVotacaoFactoryTest {
 		AtaVotacaoDao ataVotacaoDao = AtaVotacaoDao.getInstance();
 		
 		//Teste trivial primeira inserção
-		assertEquals(0, ataVotacaoDao.getLastInsertedId());
 		AtaVotacao ataVotacao1 = AtaVotacaoFactory.criaAtaVotacao(votacao1, votantes, naoVotantes);
 		assertNotNull(ataVotacao1);
-		assertEquals(1, ataVotacao1.getId());
+		assertEquals(ataVotacaoDao.getLastInsertedId()+1, ataVotacao1.getId());
 		
 		ataVotacaoDao.insert(ataVotacao1);
-		assertEquals(1, ataVotacaoDao.getLastInsertedId());
 		
 		//Teste segunda inserção
 		AtaVotacao ataVotacao2 = AtaVotacaoFactory.criaAtaVotacao(votacao2, votantes, naoVotantes);
-		assertEquals(2, ataVotacao2.getId());
+		assertEquals(ataVotacaoDao.getLastInsertedId()+1, ataVotacao2.getId());
 		
 		ataVotacaoDao.insert(ataVotacao2);
-		assertEquals(2, ataVotacaoDao.getLastInsertedId());
 		
 		//Inserção após remoção
 		ataVotacaoDao.delete(0);
 		AtaVotacao ataVotacao3 = AtaVotacaoFactory.criaAtaVotacao(votacao2, votantes, naoVotantes);
-		assertEquals(3, ataVotacao3.getId());
+		assertEquals(ataVotacaoDao.getLastInsertedId()+1, ataVotacao3.getId());
 		
 		ataVotacaoDao.insert(ataVotacao3);
-		assertEquals(3, ataVotacaoDao.getLastInsertedId());
 		
 		//Remove para que o Dao possa ser utilizado por outros testes
-		assertTrue(ataVotacaoDao.delete(1));
-		assertTrue(ataVotacaoDao.delete(2));
-		assertTrue(ataVotacaoDao.delete(3));
+		ataVotacaoDao.delete(ataVotacao1.getId());
+		ataVotacaoDao.delete(ataVotacao2.getId());
+		ataVotacaoDao.delete(ataVotacao3.getId());
 	}
 
 }

@@ -20,7 +20,7 @@ public class LiberarVotacaoControllerTest {
 
 	@Test
 	public void testLiberaVotacao() {
-		Votacao votacao = new Votacao(1, "teste", new Date(), new Date(115,0,1), Estado.Bloqueada,
+		Votacao votacao = new Votacao(1, "teste", new Date(114,11,15), new Date(115,0,1), Estado.Bloqueada,
 				new EstagioProbatorio(new HashMap<Integer,String>(), new HashMap<Integer,String>()),
 				new ArrayList<Voto>());
 		

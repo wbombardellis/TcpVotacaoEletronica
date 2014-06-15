@@ -37,12 +37,12 @@ public class VotacaoTest {
 		
 		votacao = new Votacao(1,
 				"teste",
-				(new Date()),
+				(new Date(114,11,15)),
 				(new Date(115,0,1)),
 				Estado.Autorizada,
 				new EstagioProbatorio(new HashMap<Integer,String>(), new HashMap<Integer,String>()),
 				new ArrayList<Voto>());
-		assertTrue(votacao.testaEstado(Estado.Bloqueada));
+		assertFalse(votacao.testaEstado(Estado.Bloqueada));
 		assertTrue(votacao.testaEstado(Estado.Autorizada));
 		assertFalse(votacao.testaEstado(Estado.Liberada));
 		assertFalse(votacao.testaEstado(Estado.Aberta));
@@ -50,7 +50,7 @@ public class VotacaoTest {
 		
 		votacao = new Votacao(1,
 				"teste",
-				(new Date()),
+				(new Date(114,11,15)),
 				(new Date(115,0,1)),
 				Estado.Liberada,
 				new EstagioProbatorio(new HashMap<Integer,String>(), new HashMap<Integer,String>()),
@@ -76,12 +76,12 @@ public class VotacaoTest {
 		
 		votacao = new Votacao(1,
 				"teste",
-				(new Date(114, 11,30)),
+				(new Date(114,11,15)),
 				(new Date(115,0,1)),
 				Estado.Aberta,
 				new EstagioProbatorio(new HashMap<Integer,String>(), new HashMap<Integer,String>()),
 				new ArrayList<Voto>());
-		assertTrue(votacao.testaEstado(Estado.Bloqueada));
+		assertFalse(votacao.testaEstado(Estado.Bloqueada));
 		assertFalse(votacao.testaEstado(Estado.Autorizada));
 		assertFalse(votacao.testaEstado(Estado.Liberada));
 		assertFalse(votacao.testaEstado(Estado.Aberta));
@@ -94,7 +94,7 @@ public class VotacaoTest {
 				Estado.Aberta,
 				new EstagioProbatorio(new HashMap<Integer,String>(), new HashMap<Integer,String>()),
 				new ArrayList<Voto>());
-		assertTrue(votacao.testaEstado(Estado.Bloqueada));
+		assertFalse(votacao.testaEstado(Estado.Bloqueada));
 		assertFalse(votacao.testaEstado(Estado.Autorizada));
 		assertFalse(votacao.testaEstado(Estado.Liberada));
 		assertFalse(votacao.testaEstado(Estado.Aberta));
@@ -109,7 +109,7 @@ public class VotacaoTest {
 				new ArrayList<Voto>());
 		assertFalse(votacao.testaEstado(Estado.Bloqueada));
 		assertFalse(votacao.testaEstado(Estado.Autorizada));
-		assertTrue(votacao.testaEstado(Estado.Liberada));
+		assertFalse(votacao.testaEstado(Estado.Liberada));
 		assertTrue(votacao.testaEstado(Estado.Aberta));
 		assertFalse(votacao.testaEstado(Estado.Finalizada));
 		
@@ -124,7 +124,7 @@ public class VotacaoTest {
 				new EstagioProbatorio(docsObrig, new HashMap<Integer,String>()),
 				new ArrayList<Voto>());
 		assertFalse(votacao.testaEstado(Estado.Bloqueada));
-		assertTrue(votacao.testaEstado(Estado.Autorizada));
+		assertFalse(votacao.testaEstado(Estado.Autorizada));
 		assertTrue(votacao.testaEstado(Estado.Liberada));
 		assertFalse(votacao.testaEstado(Estado.Aberta));
 		assertFalse(votacao.testaEstado(Estado.Finalizada));
@@ -137,8 +137,8 @@ public class VotacaoTest {
 				new EstagioProbatorio(docsObrig, new HashMap<Integer,String>()),
 				new ArrayList<Voto>());
 		assertFalse(votacao.testaEstado(Estado.Bloqueada));
-		assertTrue(votacao.testaEstado(Estado.Autorizada));
-		assertTrue(votacao.testaEstado(Estado.Liberada));
+		assertFalse(votacao.testaEstado(Estado.Autorizada));
+		assertFalse(votacao.testaEstado(Estado.Liberada));
 		assertTrue(votacao.testaEstado(Estado.Aberta));
 		assertFalse(votacao.testaEstado(Estado.Finalizada));
 		
@@ -151,7 +151,7 @@ public class VotacaoTest {
 				new ArrayList<Voto>());
 		assertFalse(votacao.testaEstado(Estado.Bloqueada));
 		assertFalse(votacao.testaEstado(Estado.Autorizada));
-		assertTrue(votacao.testaEstado(Estado.Liberada));
+		assertFalse(votacao.testaEstado(Estado.Liberada));
 		assertFalse(votacao.testaEstado(Estado.Aberta));
 		assertTrue(votacao.testaEstado(Estado.Finalizada));
 	}
@@ -183,7 +183,7 @@ public class VotacaoTest {
 		
 		votacao = new Votacao(1,
 				"teste",
-				(ini = new Date()),
+				(ini = new Date(114,11,15)),
 				(fim = new Date(115,0,1)),
 				Estado.Liberada,
 				new EstagioProbatorio(new HashMap<Integer,String>(), new HashMap<Integer,String>()),

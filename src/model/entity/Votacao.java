@@ -124,10 +124,12 @@ public class Votacao implements Imprimivel, Identificavel {
 	public boolean testaEstado(Estado estado) {
 		switch (estado) {
 		case Bloqueada:
-			return this.estadoExplicito.equals(Estado.Bloqueada);
+			return this.estadoExplicito.equals(Estado.Bloqueada)
+				&& (new Date()).before(this.dataFim);
 		case Autorizada:
 			return ! this.estaLiberada()
-				&& this.estadoExplicito.equals(Estado.Autorizada);
+				&& this.estadoExplicito.equals(Estado.Autorizada)
+				&& (new Date()).before(this.dataFim);
 		case Liberada:
 			return this.estaLiberada()
 				&& (new Date()).before(this.dataInicio);

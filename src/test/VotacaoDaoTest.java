@@ -33,7 +33,7 @@ public class VotacaoDaoTest {
 		listExpected.add(votacao);
 		VotacaoDao.getInstance().insert(votacao);
 		
-		votacao = new Votacao(3, "teste", new Date(), new Date(115,0,1), Estado.Liberada,
+		votacao = new Votacao(3, "teste", new Date(114,11,15), new Date(115,0,1), Estado.Liberada,
 				new EstagioProbatorio(new HashMap<Integer,String>(), new HashMap<Integer,String>()),
 				new ArrayList<Voto>());
 		VotacaoDao.getInstance().insert(votacao);
@@ -50,12 +50,13 @@ public class VotacaoDaoTest {
 		assertEquals(listExpected, result);
 		
 		
-		votacao = new Votacao(4, "teste", new Date(), new Date(115,0,1), Estado.Autorizada,
+		votacao = new Votacao(4, "teste", new Date(114,11,15), new Date(115,0,1), Estado.Autorizada,
 				new EstagioProbatorio(new HashMap<Integer,String>(), new HashMap<Integer,String>()),
 				new ArrayList<Voto>());
 		VotacaoDao.getInstance().insert(votacao);
 		
 		listExpected.add(votacao);
+		listEstados.add(Estado.Autorizada);
 		result = VotacaoDao.getInstance().getVotacoesByEstado(listEstados);
 		assertEquals(listExpected, result);
 		
@@ -80,7 +81,7 @@ public class VotacaoDaoTest {
 		listExpected.add(votacao);
 		VotacaoDao.getInstance().insert(votacao);
 		
-		votacao = new Votacao(3, "teste", new Date(), new Date(115,0,1), Estado.Liberada,
+		votacao = new Votacao(3, "teste", new Date(114,11,15), new Date(115,0,1), Estado.Liberada,
 				new EstagioProbatorio(new HashMap<Integer,String>(), new HashMap<Integer,String>()),
 				new ArrayList<Voto>());
 		listExpected.add(votacao);
