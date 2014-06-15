@@ -8,7 +8,6 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
-import model.AtaVotacaoFactory;
 import model.entity.AtaVotacao;
 import model.entity.Estado;
 import model.entity.EstagioProbatorio;
@@ -17,7 +16,6 @@ import model.entity.TipoVoto;
 import model.entity.Votacao;
 import model.entity.Voto;
 
-import org.junit.Before;
 import org.junit.Test;
 
 public class AtaVotacaoTest {

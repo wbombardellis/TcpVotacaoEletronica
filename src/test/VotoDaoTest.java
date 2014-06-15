@@ -1,7 +1,6 @@
 package test;
 
 import static org.junit.Assert.*;
-import model.dao.AtaDao;
 import model.dao.VotoDao;
 
 import org.junit.Test;
