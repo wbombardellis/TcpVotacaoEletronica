@@ -21,7 +21,7 @@ public class GerarAtaCommand extends Command {
 		List<Votacao> votacoes = VotacaoDao.getInstance().getVotacoesSemAtaByEstado(Estado.Finalizada);
 		
 		if (votacoes.isEmpty()){
-			SaidaHelper.imprimeLinhaFromResources("mensagem.ata.semAtas");
+			SaidaHelper.imprimeLinhaFromResources("mensagem.votacao.semVotacoes");
 			SaidaHelper.imprimeLinha("");
 		}else{
 			try{
