@@ -15,13 +15,13 @@ import model.entity.ViceChefe;
 public class Sessao {
 
 	private static Sessao instance;
-	private static Membro membroLogado;
-	private static View viewAtual;
+	private Membro membroLogado;
+	private View viewAtual;
 	
 	private Sessao()
 	{
-		membroLogado = null;
-		viewAtual = null;
+		this.membroLogado = null;
+		this.viewAtual = null;
 	}
 
 	public static Sessao getInstance()
@@ -35,35 +35,35 @@ public class Sessao {
 
 	public Membro getMembro()
 	{
-		return membroLogado;
+		return this.membroLogado;
 	}
 
 	public void setMembro(Membro membro) 
 	{
-		membroLogado = membro;
+		this.membroLogado = membro;
 		// Descobre o tipo de membro para atribuir a view correspondente.
-		if (membroLogado == null) // Se for null, descarta os dados atuais (operação de logout)
+		if (this.membroLogado == null) // Se for null, descarta os dados atuais (operação de logout)
 		{
-			viewAtual = new InicioView(); // View do menu inicial
-			membroLogado = null;
+			this.viewAtual = new InicioView(); // View do menu inicial
+			this.membroLogado = null;
 		}
-		else if (membroLogado instanceof Chefe || membroLogado instanceof ViceChefe)
+		else if (this.membroLogado instanceof Chefe || this.membroLogado instanceof ViceChefe)
 		{
-			viewAtual = new ChefiaEViceView();
+			this.viewAtual = new ChefiaEViceView();
 		}
-		else if (membroLogado instanceof Secretario)
+		else if (this.membroLogado instanceof Secretario)
 		{
-			viewAtual = new SecretariaView();
+			this.viewAtual = new SecretariaView();
 		}
-		else if (membroLogado instanceof Docente || membroLogado instanceof Discente)
+		else if (this.membroLogado instanceof Docente || this.membroLogado instanceof Discente)
 		{
-			viewAtual = new DocenteEDiscenteView();
+			this.viewAtual = new DocenteEDiscenteView();
 		}
 	}
 	
 	public View getView()
 	{
-		return viewAtual;
+		return this.viewAtual;
 	}
 
 }
