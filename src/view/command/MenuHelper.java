@@ -68,7 +68,7 @@ public abstract class MenuHelper {
 		{
 			SaidaHelper.imprimeLinha(opcao.getCodigoTela() + txtManager.getText("simbolo.menu.separadorCodigoDescricao") + opcao.getDescricaoTela());
 		}
-		SaidaHelper.imprimeLinha(codigoCancelar + " - " + txtManager.getText("simbolo.menu.opcao.cancelar"));
+		//SaidaHelper.imprimeLinha(codigoCancelar + " - " + txtManager.getText("simbolo.menu.opcao.cancelar"));
 	}
 	
 	public static <T extends Imprimivel> T leOpcao(List<T> opcoes) throws IOException{
@@ -97,7 +97,7 @@ public abstract class MenuHelper {
 		do
 		{
 			stringLida = reader.readLine();
-			if (!stringLida.isEmpty())
+			if (stringLida.isEmpty())
 			{
 				entradaInvalida = true;
 			}

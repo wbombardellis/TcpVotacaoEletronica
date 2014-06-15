@@ -1,5 +1,6 @@
 package view;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import view.command.AutorizarVotacaoCommand;
@@ -17,6 +18,8 @@ public class ChefiaEViceView extends View
 {
 	public ChefiaEViceView()
 	{
+		this.commandsPossiveis = new ArrayList<Command>();
+		
 		Sessao sessao = Sessao.getInstance();
 		this.commandsPossiveis.add(new CriarVotacaoCommand(sessao));
 		this.commandsPossiveis.add(new AutorizarVotacaoCommand(sessao));

@@ -1,5 +1,6 @@
 package view;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import view.command.Command;
@@ -16,6 +17,8 @@ public class SecretariaView extends View
 {
 	public SecretariaView()
 	{
+		this.commandsPossiveis = new ArrayList<Command>();
+
 		Sessao sessao = Sessao.getInstance();
 		this.commandsPossiveis.add(new CriarVotacaoCommand(sessao));
 		this.commandsPossiveis.add(new ListarVotacaoCommand(sessao));
