@@ -1,5 +1,3 @@
--Testes
-	AbstractDao -> inserir id nos membros
 -Relatorio
 	Falta de padrão de nomes em alguns lugares (comunicação equipe)
 	Alguns nomes de metodos e atributos nao muito bons (ver menu helper)
