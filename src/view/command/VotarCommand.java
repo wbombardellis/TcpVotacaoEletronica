@@ -60,6 +60,7 @@ public class VotarCommand extends Command {
 		assert addEstado;
 		
 		List<Votacao> votacoesDisponiveis = VotacaoDao.getInstance().getVotacoesByEstado(estadosVotacao);
+		
 		//Existem votações para serem votadas
 		if (votacoesDisponiveis != null && !votacoesDisponiveis.isEmpty()){
 			try{
