@@ -1,6 +1,8 @@
 package model.entity;
 
 import view.command.Imprimivel;
+import view.command.SaidaHelper;
+import view.command.TextManager;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -94,6 +96,10 @@ public class Votacao implements Imprimivel, Identificavel {
 	}
 
 	public Votacao(int id, String titulo, Date dataInicio, Date dataFim, Estado estado, Documentacao documentacao, List<Voto> votos) {
+		if (documentacao == null) {
+			TextManager txtManager = new TextManager(SaidaHelper.nomeRecursos);
+			throw new NullPointerException(txtManager.getText("mensagem.votacao.documentacao.nulo"));
+		}
 		this.id = id;
 		this.titulo = titulo;
 		this.dataInicio = (Date)dataInicio.clone();

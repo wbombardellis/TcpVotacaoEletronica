@@ -37,8 +37,11 @@ public class EstagioProbatorio extends Documentacao {
 			throw new IllegalArgumentException();
 		}
 		
-		this.relatorioProfessor = documentosObrigatoriosCaminhos.get(RELATORIO_PROFESSOR_ID);
-		this.relatorioProfessorTutor = documentosObrigatoriosCaminhos.get(RELATORIO_PROFESSOR_TUTOR_ID);
+		String relatorioProfessor = documentosObrigatoriosCaminhos.get(RELATORIO_PROFESSOR_ID);
+		this.relatorioProfessor = relatorioProfessor == null ? "" : relatorioProfessor;
+		
+		String relatorioProfessorTutor = documentosObrigatoriosCaminhos.get(RELATORIO_PROFESSOR_TUTOR_ID);
+		this.relatorioProfessorTutor = relatorioProfessorTutor == null ? "" : relatorioProfessorTutor;
 	}
 
 	@Override

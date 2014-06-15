@@ -54,10 +54,13 @@ public class AfastamentoPais extends Documentacao {
 			throw new IllegalArgumentException();
 		}
 		
-		this.cartaConvite = documentosObrigatoriosCaminhos.get(CARTA_CONVITE_ID);
-		this.cartaLinguaEstrangeira = documentosObrigatoriosCaminhos.get(CARTA_LINGUA_ESTRANGEIRA_ID);
+		String cartaConvite = documentosObrigatoriosCaminhos.get(CARTA_CONVITE_ID);
+		this.cartaConvite = cartaConvite == null ? "" : cartaConvite;
+		String cartaLinguaEstrangeira = documentosObrigatoriosCaminhos.get(CARTA_LINGUA_ESTRANGEIRA_ID);
+		this.cartaLinguaEstrangeira = cartaLinguaEstrangeira == null ? "" : cartaLinguaEstrangeira;
 		
-		this.passagemAerea = documentosNaoObrigatoriosCaminhos.get(PASSAGEM_AEREA_ID);
+		String passagemAerea = documentosNaoObrigatoriosCaminhos.get(PASSAGEM_AEREA_ID);
+		this.passagemAerea = passagemAerea == null ? "" : passagemAerea;
 	}
 
 	@Override

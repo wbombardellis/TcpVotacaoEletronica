@@ -50,9 +50,14 @@ public class ProgressaoFuncional extends Documentacao {
 			throw new IllegalArgumentException();
 		}
 		
-		this.memorialDescritivo = documentosObrigatoriosCaminhos.get(MEMORIAL_DESCRITIVO_ID);
-		this.planilhaPontuacao = documentosObrigatoriosCaminhos.get(PLANILHA_PONTUACAO_ID);
-		this.comprovantes = documentosObrigatoriosCaminhos.get(COMPROVANTE_ID);
+		String memorialDescritivo = documentosObrigatoriosCaminhos.get(MEMORIAL_DESCRITIVO_ID);
+		this.memorialDescritivo = memorialDescritivo == null ? "" : memorialDescritivo;
+		
+		String planilhaPontuacao = documentosObrigatoriosCaminhos.get(PLANILHA_PONTUACAO_ID);
+		this.planilhaPontuacao = planilhaPontuacao == null ? "" : planilhaPontuacao;
+		
+		String comprovantes = documentosObrigatoriosCaminhos.get(COMPROVANTE_ID);
+		this.comprovantes = comprovantes == null ? "" : comprovantes;
 	}
 
 	@Override
