@@ -11,10 +11,10 @@ public abstract class View
 	protected List<Command> commandsPossiveis;
 	
 	public abstract List<Command> getCommandsPossiveis();
+	private static final Boolean applicationRunning = true;
 
 	public void imprimeMenu()
 	{
-		Boolean commandExecutado = false;
 		do
 		{
 			Command opcao = null;
@@ -25,7 +25,6 @@ public abstract class View
 				if (opcao != null)
 				{
 					opcao.execute();
-					commandExecutado = true;
 				}
 			}
 			catch (IOException e)
@@ -33,6 +32,6 @@ public abstract class View
 				System.out.println(e.getMessage());
 			}
 		}
-		while (commandExecutado == false);
+		while (applicationRunning);
 	}
 }

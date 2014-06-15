@@ -1,6 +1,5 @@
 package test;
 
-import static org.junit.Assert.*;
 import junit.framework.TestCase;
 import model.dao.MembroDao;
 import model.entity.Chefe;
