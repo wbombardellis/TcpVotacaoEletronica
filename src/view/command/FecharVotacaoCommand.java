@@ -30,8 +30,12 @@ public class FecharVotacaoCommand extends VotacaoCommand {
 			}
 			
 			SaidaHelper.imprimeLinhaFromResources("fechar.votacao.sucesso");
+			SaidaHelper.imprimeLinhaFromResources("simbolo.linha.branco");
+
 		} else {
 			SaidaHelper.imprimeLinhaFromResources("mensagem.votacao.semVotacoes");
+			SaidaHelper.imprimeLinhaFromResources("simbolo.linha.branco");
+
 		}
 	}
 

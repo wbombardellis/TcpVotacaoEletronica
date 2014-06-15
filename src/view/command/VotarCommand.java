@@ -39,7 +39,7 @@ public class VotarCommand extends Command {
 		output.add(txtMngr.getText("voto.justificativa") + voto.getJustificativa());
 		
 		SaidaHelper.imprimeLinhas(output);
-		SaidaHelper.imprimeLinha("");
+		SaidaHelper.imprimeLinhaFromResources("simbolo.linha.branco");
 	}
 	
 	private Voto leVoto() throws IOException{
@@ -100,7 +100,7 @@ public class VotarCommand extends Command {
 			}
 		}else{
 			SaidaHelper.imprimeLinhaFromResources("mensagem.votacao.semVotacoes");
-			SaidaHelper.imprimeLinha("");
+			SaidaHelper.imprimeLinhaFromResources("simbolo.linha.branco");
 		}
 	}
 

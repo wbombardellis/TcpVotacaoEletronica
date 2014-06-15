@@ -1,6 +1,7 @@
 package view.command;
 
 import java.io.*;
+
 import controller.LoginController;
 
 public class LoginCommand extends Command {
@@ -34,10 +35,14 @@ public class LoginCommand extends Command {
 		if (loginController.autenticar() == true)
 		{
 			SaidaHelper.imprimeLinhaFromResources("login.sucesso");
+			SaidaHelper.imprimeLinhaFromResources("simbolo.linha.branco");
+
 		}
 		else
 		{
 			SaidaHelper.imprimeLinhaFromResources("login.erro");
+			SaidaHelper.imprimeLinhaFromResources("simbolo.linha.branco");
+
 		}
 		
 		// Imprime o menu da view atual (mesmo que o login não tenha sido feito com sucesso)

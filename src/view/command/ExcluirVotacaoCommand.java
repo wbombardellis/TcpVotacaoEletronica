@@ -32,12 +32,18 @@ public class ExcluirVotacaoCommand extends VotacaoCommand {
 				VotacaoDao.getInstance().delete(votacao.getId());
 				// Mensagens ao usuário
 				SaidaHelper.imprimeLinhaFromResources("excluir.sucesso");
+				SaidaHelper.imprimeLinhaFromResources("simbolo.linha.branco");
+
 			} else {
 				// Mensagens ao usuário
 				SaidaHelper.imprimeLinhaFromResources("excluir.falha");
+				SaidaHelper.imprimeLinhaFromResources("simbolo.linha.branco");
+
 			}
 		} else {
 			SaidaHelper.imprimeLinhaFromResources("mensagem.votacao.semVotacoes");
+			SaidaHelper.imprimeLinhaFromResources("simbolo.linha.branco");
+
 		}
 		
 	}

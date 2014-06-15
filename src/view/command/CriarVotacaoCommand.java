@@ -56,6 +56,8 @@ public class CriarVotacaoCommand extends VotacaoCommand {
 		
 		// Mensagens ao usuário
 		SaidaHelper.imprimeLinhaFromResources("criar.votacao.sucesso");
+		SaidaHelper.imprimeLinhaFromResources("simbolo.linha.branco");
+
 	}
 
 	@Override
