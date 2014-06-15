@@ -1,13 +1,16 @@
 package controller;
 
-import view.InicioView;
+import view.command.Sessao;
 import model.Inicializador;
 
 public class Main {
 
 	public static void main(String[] args) {
+		Sessao sessao = Sessao.getInstance();
+		sessao.setMembro(null);
+		
 		Inicializador.incializaDao();
 		
-		new InicioView().imprimeMenu();
+		sessao.getView().imprimeMenu();
 	}
 }
