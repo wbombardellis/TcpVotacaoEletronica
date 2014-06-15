@@ -22,11 +22,10 @@ public class VotacaoTest {
 
 	@Test
 	public void testTestaEstado() {
-		Date ini, fim;
 		Votacao votacao = new Votacao(1,
 				"teste",
-				(ini = new Date()),
-				(fim = new Date(115,0,1)),
+				(new Date()),
+				(new Date(115,0,1)),
 				Estado.Bloqueada,
 				new EstagioProbatorio(new HashMap<Integer,String>(), new HashMap<Integer,String>()),
 				new ArrayList<Voto>());
@@ -38,8 +37,8 @@ public class VotacaoTest {
 		
 		votacao = new Votacao(1,
 				"teste",
-				(ini = new Date()),
-				(fim = new Date(115,0,1)),
+				(new Date()),
+				(new Date(115,0,1)),
 				Estado.Autorizada,
 				new EstagioProbatorio(new HashMap<Integer,String>(), new HashMap<Integer,String>()),
 				new ArrayList<Voto>());
@@ -51,8 +50,8 @@ public class VotacaoTest {
 		
 		votacao = new Votacao(1,
 				"teste",
-				(ini = new Date()),
-				(fim = new Date(115,0,1)),
+				(new Date()),
+				(new Date(115,0,1)),
 				Estado.Liberada,
 				new EstagioProbatorio(new HashMap<Integer,String>(), new HashMap<Integer,String>()),
 				new ArrayList<Voto>());
@@ -64,8 +63,8 @@ public class VotacaoTest {
 		
 		votacao = new Votacao(1,
 				"teste",
-				(ini = new Date(114, 11,30)),
-				(fim = new Date(115,0,1)),
+				(new Date(114, 11,30)),
+				(new Date(115,0,1)),
 				Estado.Liberada,
 				new EstagioProbatorio(new HashMap<Integer,String>(), new HashMap<Integer,String>()),
 				new ArrayList<Voto>());
@@ -77,8 +76,8 @@ public class VotacaoTest {
 		
 		votacao = new Votacao(1,
 				"teste",
-				(ini = new Date(114, 11,30)),
-				(fim = new Date(115,0,1)),
+				(new Date(114, 11,30)),
+				(new Date(115,0,1)),
 				Estado.Aberta,
 				new EstagioProbatorio(new HashMap<Integer,String>(), new HashMap<Integer,String>()),
 				new ArrayList<Voto>());
@@ -90,8 +89,8 @@ public class VotacaoTest {
 		
 		votacao = new Votacao(1,
 				"teste",
-				(ini = new Date(114, 0,1)),
-				(fim = new Date(114,3,31)),
+				(new Date(114, 0,1)),
+				(new Date(114,3,31)),
 				Estado.Aberta,
 				new EstagioProbatorio(new HashMap<Integer,String>(), new HashMap<Integer,String>()),
 				new ArrayList<Voto>());
@@ -103,8 +102,8 @@ public class VotacaoTest {
 		
 		votacao = new Votacao(1,
 				"teste",
-				(ini = new Date(114, 0,1)),
-				(fim = new Date(114,10,30)),
+				(new Date(114, 0,1)),
+				(new Date(114,10,30)),
 				Estado.Liberada,
 				new EstagioProbatorio(new HashMap<Integer,String>(), new HashMap<Integer,String>()),
 				new ArrayList<Voto>());
@@ -119,8 +118,8 @@ public class VotacaoTest {
 		docsObrig.put(1, "Doc2");
 		votacao = new Votacao(1,
 				"teste",
-				(ini = new Date(115, 0,1)),
-				(fim = new Date(115,10,30)),
+				(new Date(115, 0,1)),
+				(new Date(115,10,30)),
 				Estado.Autorizada,
 				new EstagioProbatorio(docsObrig, new HashMap<Integer,String>()),
 				new ArrayList<Voto>());
@@ -132,8 +131,8 @@ public class VotacaoTest {
 		
 		votacao = new Votacao(1,
 				"teste",
-				(ini = new Date(114, 0,1)),
-				(fim = new Date(115,10,30)),
+				(new Date(114, 0,1)),
+				(new Date(115,10,30)),
 				Estado.Autorizada,
 				new EstagioProbatorio(docsObrig, new HashMap<Integer,String>()),
 				new ArrayList<Voto>());
@@ -145,8 +144,8 @@ public class VotacaoTest {
 		
 		votacao = new Votacao(1,
 				"teste",
-				(ini = new Date(113, 0,1)),
-				(fim = new Date(113,10,30)),
+				(new Date(113, 0,1)),
+				(new Date(113,10,30)),
 				Estado.Bloqueada,
 				new EstagioProbatorio(docsObrig, new HashMap<Integer,String>()),
 				new ArrayList<Voto>());
