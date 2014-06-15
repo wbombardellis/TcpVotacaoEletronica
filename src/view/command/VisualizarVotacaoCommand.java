@@ -1,6 +1,7 @@
 package view.command;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -44,11 +45,12 @@ public class VisualizarVotacaoCommand extends VotacaoCommand {
 			// Mostar dados da votação
 			List<String> output = new ArrayList<>();
 			TextManager txtMngr = new TextManager(SaidaHelper.nomeRecursos);
+			SimpleDateFormat formatter = new SimpleDateFormat(txtManager.getText("locale.date_format"));
 			
 			output.add(txtMngr.getText("votacao.id") + votacao.getId());
 			output.add(txtMngr.getText("votacao.titulo") + votacao.getTitulo());
-			output.add(txtMngr.getText("votacao.dataInicio") + votacao.getDataInicio());		
-			output.add(txtMngr.getText("votacao.dataFim") + votacao.getDataFim());		
+			output.add(txtMngr.getText("votacao.dataInicio") + formatter.format(votacao.getDataInicio()));
+			output.add(txtMngr.getText("votacao.dataFim") + formatter.format(votacao.getDataFim()));
 			output.add(txtMngr.getText("votacao.estado") + votacao.getEstado());
 			//// DOCUMENTAÇÃO DA VOTAÇÃO ////
 			Documentacao docs = votacao.getDocumentacao();
@@ -62,14 +64,18 @@ public class VisualizarVotacaoCommand extends VotacaoCommand {
 				output.add(nomeDocumentosNaoObrigatorios.get(documentoEntry.getKey()) +":"+ documentoEntry.getValue());
 			}
 			
+			SaidaHelper.imprimeLinhas(output);
+			output.clear();
 			// Perguntar se deve-se Listar os votos
 			SaidaHelper.imprimeLinhaFromResources("visualizar.votacao.mostrar.votos");
+			MenuHelper.leConfirmacao();
 			for (Voto voto : votacao.getVotos()) {
 				output.add(txtMngr.getText("titulo.voto"));
 				output.add(txtMngr.getText("voto.id") + voto.getId());
 				output.add(txtMngr.getText("voto.autor") + voto.getAutor().getNome());
 				output.add(txtMngr.getText("voto.tipo") + voto.getTipo());
 			}
+			SaidaHelper.imprimeLinhas(output);
 		} else {
 			SaidaHelper.imprimeLinhaFromResources("mensagem.votacao.semVotacoes");
 		}

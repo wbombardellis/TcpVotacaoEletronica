@@ -4,12 +4,16 @@ import java.io.IOException;
 import java.util.List;
 
 import controller.FecharVotacaoController;
+import model.entity.Estado;
 import model.entity.Votacao;
 
 public class FecharVotacaoCommand extends VotacaoCommand {
 
 	public FecharVotacaoCommand(Sessao sessao) {
 		super(sessao);
+		
+		// FIXME
+		this.listaEstados.add(Estado.Finalizada);
 	}
 
 	@Override
