@@ -19,20 +19,24 @@ public class ExcluirVotacaoCommand extends VotacaoCommand {
 	public void execute() throws IOException {
 		Votacao votacao = this.leOpcaoListaVotacao(this.listaEstados);
 		
-		boolean confirmadaExclusao = true;
-		if (! votacao.getVotos().isEmpty()) {
-			// Informa usuário e pede confirmação
-			SaidaHelper.imprimeLinhaFromResources("excluir.informar.votos");
-			confirmadaExclusao = MenuHelper.leConfirmacao();
-		}
-		
-		if (confirmadaExclusao) {
-			VotacaoDao.getInstance().delete(votacao.getId());
-			// Mensagens ao usuário
-			SaidaHelper.imprimeLinhaFromResources("excluir.sucesso");
+		if (votacao != null) {
+			boolean confirmadaExclusao = true;
+			if (! votacao.getVotos().isEmpty()) {
+				// Informa usuário e pede confirmação
+				SaidaHelper.imprimeLinhaFromResources("excluir.informar.votos");
+				confirmadaExclusao = MenuHelper.leConfirmacao();
+			}
+			
+			if (confirmadaExclusao) {
+				VotacaoDao.getInstance().delete(votacao.getId());
+				// Mensagens ao usuário
+				SaidaHelper.imprimeLinhaFromResources("excluir.sucesso");
+			} else {
+				// Mensagens ao usuário
+				SaidaHelper.imprimeLinhaFromResources("excluir.falha");
+			}
 		} else {
-			// Mensagens ao usuário
-			SaidaHelper.imprimeLinhaFromResources("excluir.falha");
+			SaidaHelper.imprimeLinhaFromResources("mensagem.votacao.semVotacoes");
 		}
 		
 	}

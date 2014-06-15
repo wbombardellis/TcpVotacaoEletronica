@@ -18,10 +18,14 @@ public class AutorizarVotacaoCommand extends VotacaoCommand {
 	public void execute() throws IOException {
 		Votacao votacao = leOpcaoListaVotacao(this.listaEstados);
 		
-		AutorizarVotacaoController.autorizaVotacao(votacao);
-		
-		// Mensagens ao usuário
-		SaidaHelper.imprimeLinhaFromResources("autorizar.votacao.sucesso");
+		if (votacao != null) {
+			AutorizarVotacaoController.autorizaVotacao(votacao);
+			
+			// Mensagens ao usuário
+			SaidaHelper.imprimeLinhaFromResources("autorizar.votacao.sucesso");
+		} else {
+			SaidaHelper.imprimeLinhaFromResources("mensagem.votacao.semVotacoes");
+		}
 	}
 
 	@Override

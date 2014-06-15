@@ -28,8 +28,10 @@ public class VotacaoDao extends AbstractDao<Votacao> {
 		
 		for (Votacao votacao : this.getAll()) {
 			for (Estado estado : estados) {
-				if (votacao.testaEstado(estado))
+				if (votacao.testaEstado(estado)) {
 					result.add(votacao);
+					break;	// Sendo adicionado por ser de algum estado, quebra o loop mais interno para evitar duplicatas
+				}
 			}
 		}
 		

@@ -19,13 +19,17 @@ public class AbrirVotacaoCommand extends VotacaoCommand {
 	public void execute() throws IOException {
 		Votacao votacao = this.leOpcaoListaVotacao(this.listaEstados);
 		
-		// Coloca a data atual na votação escolhida 
-		Votacao novaVotacao = new Votacao(votacao, new Date(), votacao.getDataFim());
-		
-		VotacaoDao.getInstance().update(votacao.getId(), novaVotacao);
-		
-		// Mensagens ao usuário
-		SaidaHelper.imprimeLinhaFromResources("abrir.votacao.sucesso");
+		if (votacao != null) {
+			// Coloca a data atual na votação escolhida 
+			Votacao novaVotacao = new Votacao(votacao, new Date(), votacao.getDataFim());
+			
+			VotacaoDao.getInstance().update(votacao.getId(), novaVotacao);
+			
+			// Mensagens ao usuário
+			SaidaHelper.imprimeLinhaFromResources("abrir.votacao.sucesso");
+		} else {
+			SaidaHelper.imprimeLinhaFromResources("mensagem.votacao.semVotacoes");
+		}
 	}
 
 	@Override

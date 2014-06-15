@@ -19,16 +19,20 @@ public class LiberarVotacaoCommand extends VotacaoCommand {
 	public void execute() throws IOException {
 		Votacao votacao = this.leOpcaoListaVotacao(this.listaEstados);
 		
-		List<String> warnings = LiberarVotacaoController.liberaVotacao(votacao);
-		
-		// Mensagens ao usuário
-		if (! warnings.isEmpty()) {
-			// Mostra os warnings
-			for (String warning : warnings)
-				SaidaHelper.imprimeLinha(warning);
+		if (votacao != null) {
+			List<String> warnings = LiberarVotacaoController.liberaVotacao(votacao);
+			
+			// Mensagens ao usuário
+			if (! warnings.isEmpty()) {
+				// Mostra os warnings
+				for (String warning : warnings)
+					SaidaHelper.imprimeLinha(warning);
+			}
+			
+			SaidaHelper.imprimeLinhaFromResources("liberar.votacao.sucesso");
+		} else {
+			SaidaHelper.imprimeLinhaFromResources("mensagem.votacao.semVotacoes");
 		}
-		
-		SaidaHelper.imprimeLinhaFromResources("liberar.votacao.sucesso");
 	}
 
 	@Override
