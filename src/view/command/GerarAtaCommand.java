@@ -25,7 +25,12 @@ public class GerarAtaCommand extends Command {
 			SaidaHelper.imprimeLinha("");
 		}else{
 			try{
+				SaidaHelper.imprimeLinhaFromResources("gerar.ata.votacoes.pendentes");
+				
 				GerarAtaController.criaAta( MenuHelper.leOpcoesMenu(votacoes) );
+				
+				SaidaHelper.imprimeLinhaFromResources("gerar.ata.sucesso");
+				SaidaHelper.imprimeLinha("");
 			}catch(IOException ex){
 				Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, ex.getMessage());
 			}

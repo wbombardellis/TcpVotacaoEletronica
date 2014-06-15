@@ -1,6 +1,7 @@
 package controller;
 
 import model.dao.VotacaoDao;
+import model.dao.VotoDao;
 import model.entity.Votacao;
 import model.entity.Voto;
 import model.entity.Membro;
@@ -19,6 +20,7 @@ public abstract class VotarController {
 		ArrayList<Voto> novosVotos = new ArrayList<>(votacao.getVotos());
 		//Adiciona novo voto
 		novosVotos.add(voto);
+		VotoDao.getInstance().insert(voto);
 		
 		//Atualiza a votação no DAO com uma nova instância. Faz isso pois Votacao é imutável
 		VotacaoDao.getInstance().update(votacao.getId(), new Votacao(votacao, novosVotos));
