@@ -8,6 +8,7 @@ import model.entity.Docente;
 import model.entity.Secretario;
 import model.entity.ViceChefe;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -26,11 +27,23 @@ private LoginCommand loginCommand;
 		
 		// Insere 5 membros (um de cada tipo) no MembroDao
 		MembroDao membroDao = MembroDao.getInstance();
-		membroDao.insert(new Chefe("Chefe Test","1","chefeum"));
+		membroDao.insert(Chefe.substituirChefe("Chefe Test","1","chefeum"));
 		membroDao.insert(new ViceChefe("ViceChefe Test","2","vicedois"));
 		membroDao.insert(new Secretario("Secretario Test","3","secretariotres"));
 		membroDao.insert(new Docente("Docente Test","4","docentequatro"));
 		membroDao.insert(new Discente("Discente Test","5","discentecinco"));
+	}
+	
+	@After
+	public void setDown()
+	{		
+		// Remove os 5 membros do dao, para utilizá-lo em outros testes
+		MembroDao membroDao = MembroDao.getInstance();
+		assertTrue(membroDao.delete(membroDao.getMembroByUsername("1").getId()));
+		membroDao.delete(membroDao.getMembroByUsername("2").getId());
+		membroDao.delete(membroDao.getMembroByUsername("3").getId());
+		membroDao.delete(membroDao.getMembroByUsername("4").getId());
+		membroDao.delete(membroDao.getMembroByUsername("5").getId());
 	}
 	
 	@Test

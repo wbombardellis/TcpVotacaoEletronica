@@ -6,16 +6,16 @@ public class Chefe extends Membro {
 
 	private static Chefe chefe;
 
-	public Chefe(String nome, String username, String password) {
+	protected Chefe(String nome, String username, String password) {
 		super(nome, username, password);
 	}
 	
-	public Chefe (String nome, String username, String password, Date dataInicio, Date dataFinal)
+	protected Chefe (String nome, String username, String password, Date dataInicio, Date dataFinal)
 	{
 		super(nome, username, password, dataInicio, dataFinal);
 	}
 
-	public Chefe getInstance()
+	protected Chefe getInstance()
 	{
 		return chefe;
 	}

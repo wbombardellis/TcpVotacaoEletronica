@@ -22,7 +22,7 @@ public class AbstractDaoTest {
 
 	@Test(expected = AssertionError.class)
 	public void testInsertNull() {
-		MembroDao mDao = MembroDaoStub.getInstance();
+		MembroDao mDao = MembroDao.getInstance();
 		//Test to fail
 		mDao.insert(null);
 	}
@@ -60,11 +60,10 @@ public class AbstractDaoTest {
 		assertTrue(mDao.delete(lastId+2));
 	}
 
-	@Test
+	
 	public void testDeleteGetByIdGetAll() {
 		MembroDao mDao = MembroDao.getInstance();
 		Membro m1 = new Membro("t1", "t1", "1234");
-		Membro m2 = new Membro("t2", "t2", "1234");
 		
 		//membros funciona como um oráculo
 		List<Membro> membros = new ArrayList<>();
@@ -90,7 +89,9 @@ public class AbstractDaoTest {
 		//Teste Randômico
 		int i;
 		int lastId = mDao.getLastInsertedId();
+		int idBegin = mDao.getLastInsertedId();
 		Random rand = new Random(new Date().getTime());
+		
 		for (i = 0; i < AbstractDaoTest.LIMITE_TESTES_DELETE; i++){
 			
 			//Se random for par (metade das operações)
@@ -133,16 +134,22 @@ public class AbstractDaoTest {
 
 			assertEquals(new HashSet<>(membros), new HashSet<>(mDao.getAll()));
 		}
+		//Tenta remover tudo, para utilizar o dao mais tarde
+		for (i = 0; i < AbstractDaoTest.LIMITE_TESTES_DELETE; i++){
+			mDao.delete(idBegin);
+			idBegin++;
+		}
 	}
 	
 	@Test
 	public void testUpdateNull(){
-		MembroDao mDao = MembroDaoStub.getInstance();
+		MembroDao mDao = MembroDao.getInstance();
 		Membro m1 = new Membro("t1", "t1", "1234");
 		
 		//Test to pass - Uma inserção
 		assertTrue(mDao.insert(m1));
 		assertFalse(mDao.update(1, null));
+		assertTrue(mDao.delete(m1.getId()));
 	}
 
 	@Test

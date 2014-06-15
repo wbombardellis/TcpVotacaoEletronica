@@ -3,7 +3,12 @@ package test;
 import junit.framework.TestCase;
 import model.dao.MembroDao;
 import model.entity.Chefe;
+import model.entity.Discente;
+import model.entity.Docente;
+import model.entity.Secretario;
+import model.entity.ViceChefe;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -22,7 +27,15 @@ public class LogoutCommandTest extends TestCase
 
 		// Insere um membro no MembroDao, para testar o logout.
 		MembroDao membroDao = MembroDao.getInstance();
-		membroDao.insert(new Chefe("Chefe Test","1","chefeum"));
+		membroDao.insert(Chefe.substituirChefe("Chefe Test","1","chefeum"));
+	}
+	
+	@After
+	public void setDown()
+	{		
+		// Remove os 5 membros do dao, para utilizá-lo em outros testes
+		MembroDao membroDao = MembroDao.getInstance();
+		assertTrue(membroDao.delete(membroDao.getMembroByUsername("1").getId()));
 	}
 	
 	@Test

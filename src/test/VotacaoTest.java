@@ -1,15 +1,17 @@
 package test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
-import model.entity.Chefe;
 import model.entity.Estado;
 import model.entity.EstagioProbatorio;
+import model.entity.Membro;
 import model.entity.TipoVoto;
 import model.entity.Votacao;
 import model.entity.Voto;
@@ -311,9 +313,9 @@ public class VotacaoTest {
 		
 		List<Voto> votos = new ArrayList<>();
 		Voto voto1, voto2, voto3;
-		votos.add(voto1 = new Voto(10, TipoVoto.Favoravel, new Chefe("Fernando", "fernando", "1234"), new Date(), "justificativa 1"));
-		votos.add(voto2 = new Voto(11, TipoVoto.Abstencao, new Chefe("Guilherme", "guilherme", "4321"), new Date(), "justificativa 2"));
-		votos.add(voto3 = new Voto(12, TipoVoto.NaoFavoravel, new Chefe("William", "william", "0000"), new Date(), "justificativa 3"));
+		votos.add(voto1 = new Voto(10, TipoVoto.Favoravel, new Membro("Fernando", "fernando", "1234"), new Date(), "justificativa 1"));
+		votos.add(voto2 = new Voto(11, TipoVoto.Abstencao, new Membro("Guilherme", "guilherme", "4321"), new Date(), "justificativa 2"));
+		votos.add(voto3 = new Voto(12, TipoVoto.NaoFavoravel, new Membro("William", "william", "0000"), new Date(), "justificativa 3"));
 		Votacao votacao = new Votacao(base,  votos);
 		
 		assertEquals(voto1, votacao.getVotos().get(0));

@@ -17,7 +17,7 @@ public class SessaoTest extends TestCase
 	public void setUp()
 	{
 		sessao = Sessao.getInstance();
-		chefe = new Chefe("Chefe Teste", "1", "testechefe");
+		chefe = Chefe.substituirChefe("Chefe Teste", "1", "testechefe");
 	}
 	
 	@Test

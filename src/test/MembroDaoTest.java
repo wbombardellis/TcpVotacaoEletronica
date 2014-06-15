@@ -21,6 +21,11 @@ public class MembroDaoTest extends TestCase
 	public void setUp()
 	{
 		membroDao = MembroDao.getInstance();
+		membroDao.delete(membroDao.getMembroByUsername("1").getId());
+		membroDao.delete(membroDao.getMembroByUsername("2").getId());
+		membroDao.delete(membroDao.getMembroByUsername("3").getId());
+		membroDao.delete(membroDao.getMembroByUsername("4").getId());
+		membroDao.delete(membroDao.getMembroByUsername("5").getId());
 		assertTrue(membroDao.insert(Chefe.substituirChefe("Chefe", "1", "chefe")));
 		assertTrue(membroDao.insert(new ViceChefe("Vice Chefe", "2", "viceChefe")));
 		assertTrue(membroDao.insert(new Secretario("Secretario", "3", "secretario")));
