@@ -12,8 +12,7 @@ public class FecharVotacaoCommand extends VotacaoCommand {
 	public FecharVotacaoCommand(Sessao sessao) {
 		super(sessao);
 		
-		// FIXME
-		this.listaEstados.add(Estado.Finalizada);
+		this.listaEstados.add(Estado.Aberta);
 	}
 
 	@Override
