@@ -23,8 +23,12 @@ public class AutorizarVotacaoCommand extends VotacaoCommand {
 			
 			// Mensagens ao usuário
 			SaidaHelper.imprimeLinhaFromResources("autorizar.votacao.sucesso");
+			SaidaHelper.imprimeLinhaFromResources("simbolo.linha.branco");
+
 		} else {
 			SaidaHelper.imprimeLinhaFromResources("mensagem.votacao.semVotacoes");
+			SaidaHelper.imprimeLinhaFromResources("simbolo.linha.branco");
+
 		}
 	}
 

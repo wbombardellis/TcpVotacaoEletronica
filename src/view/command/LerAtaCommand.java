@@ -56,8 +56,7 @@ public class LerAtaCommand extends Command {
 				}
 				
 				SaidaHelper.imprimeLinhas(relatorioTexto);
-				SaidaHelper.imprimeLinha("");
-				
+				SaidaHelper.imprimeLinhaFromResources("simbolo.linha.branco");				
 			}catch(IOException ex){
 				Logger.getLogger(LerAtaCommand.class.getName()).log(Level.SEVERE, ex.getMessage());
 			}

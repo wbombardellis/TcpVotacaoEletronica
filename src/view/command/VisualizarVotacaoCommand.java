@@ -77,9 +77,11 @@ public class VisualizarVotacaoCommand extends VotacaoCommand {
 					output.add(txtMngr.getText("voto.justificativa") + voto.getJustificativa());
 				}
 				SaidaHelper.imprimeLinhas(output);
+				SaidaHelper.imprimeLinhaFromResources("simbolo.linha.branco");
 			}
 		} else {
 			SaidaHelper.imprimeLinhaFromResources("mensagem.votacao.semVotacoes");
+			SaidaHelper.imprimeLinhaFromResources("simbolo.linha.branco");
 		}
 	}
 

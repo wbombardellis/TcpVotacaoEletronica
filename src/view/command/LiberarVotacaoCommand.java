@@ -30,8 +30,12 @@ public class LiberarVotacaoCommand extends VotacaoCommand {
 			}
 			
 			SaidaHelper.imprimeLinhaFromResources("liberar.votacao.sucesso");
+			SaidaHelper.imprimeLinhaFromResources("simbolo.linha.branco");
+
 		} else {
 			SaidaHelper.imprimeLinhaFromResources("mensagem.votacao.semVotacoes");
+			SaidaHelper.imprimeLinhaFromResources("simbolo.linha.branco");
+
 		}
 	}
 
