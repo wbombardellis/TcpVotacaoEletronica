@@ -37,6 +37,17 @@ public abstract class VotarController {
 		//Atualiza a votação no DAO com uma nova instância. Faz isso pois Votacao é imutável
 		VotacaoDao.getInstance().update(votacao.getId(), new Votacao(votacao, novosVotos));
 	}
+	
+	public static void alteraVoto(Votacao votacao, Voto votoAntigo, Voto votoNovo){
+		assert votacao != null;
+		assert votoAntigo != null;
+		assert votoNovo != null;
+		assert VotacaoDao.getInstance().getById(votacao.getId()) != null;
+		
+		VotarController.removeVoto(votacao, votoAntigo);
+		
+		VotarController.insereVoto(VotacaoDao.getInstance().getById(votacao.getId()), votoNovo);		
+	}
 
 	public static Voto getVotoByAutor(Votacao votacao, Membro autor) {
 		assert votacao != null;

@@ -20,9 +20,10 @@ public class GerarAtaCommand extends Command {
 	public void execute() {
 		List<Votacao> votacoes = VotacaoDao.getInstance().getVotacoesSemAtaByEstado(Estado.Finalizada);
 		
-		if (votacoes.isEmpty())
+		if (votacoes.isEmpty()){
 			SaidaHelper.imprimeLinhaFromResources("mensagem.ata.semAtas");
-		else{
+			SaidaHelper.imprimeLinha("");
+		}else{
 			try{
 				GerarAtaController.criaAta( MenuHelper.leOpcoesMenu(votacoes) );
 			}catch(IOException ex){

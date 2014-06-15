@@ -20,9 +20,10 @@ public class LerAtaCommand extends Command {
 	public void execute() {
 		Collection<Ata> atas = AtaDao.getInstance().getAll();
 		
-		if (atas.isEmpty())
+		if (atas.isEmpty()){
 			SaidaHelper.imprimeLinhaFromResources("mensagem.ata.semAtas");
-		else{
+			SaidaHelper.imprimeLinha("");
+		}else{
 			
 			try{
 				Ata ata = MenuHelper.leOpcaoMenu(new ArrayList<Ata>(atas));

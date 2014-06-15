@@ -24,6 +24,7 @@ public class VotarCommand extends Command {
 	private void imprimeComprovanteVotacao() {
 		SaidaHelper.imprimeLinhaFromResources("votar.titulo.comprovante");
 		SaidaHelper.imprimeLinhaFromResources("votar.sucesso");
+		SaidaHelper.imprimeLinha("");
 	}
 	
 	private void imprimeVoto(Voto voto){
@@ -38,6 +39,7 @@ public class VotarCommand extends Command {
 		output.add(txtMngr.getText("voto.justificativa") + voto.getJustificativa());
 		
 		SaidaHelper.imprimeLinhas(output);
+		SaidaHelper.imprimeLinha("");
 	}
 	
 	private Voto leVoto() throws IOException{
@@ -59,8 +61,9 @@ public class VotarCommand extends Command {
 		
 		List<Votacao> votacoesDisponiveis = VotacaoDao.getInstance().getVotacoesByEstado(estadosVotacao);
 		//Existem votações para serem votadas
-		if (votacoesDisponiveis != null){
+		if (votacoesDisponiveis != null && !votacoesDisponiveis.isEmpty()){
 			try{
+				SaidaHelper.imprimeLinhaFromResources("votar.info.votacoes");
 				Votacao votacao = MenuHelper.leOpcaoMenu(votacoesDisponiveis);
 
 				//Escolheu uma votação para votar
@@ -86,8 +89,7 @@ public class VotarCommand extends Command {
 						Voto novoVoto = leVoto();
 						
 						if (novoVoto != null){
-							VotarController.removeVoto(votacao, voto);
-							VotarController.insereVoto(votacao, novoVoto);
+							VotarController.alteraVoto(votacao, voto, novoVoto);
 							imprimeComprovanteVotacao();
 						}
 					}
@@ -96,8 +98,8 @@ public class VotarCommand extends Command {
 				Logger.getLogger(VotarCommand.class.getName()).log(Level.SEVERE, ex.getMessage());
 			}
 		}else{
-			TextManager txtManager = new TextManager(SaidaHelper.nomeRecursos);
-			SaidaHelper.imprimeLinhaFromResources(txtManager.getText("mensagem.votacao.semVotacoes"));
+			SaidaHelper.imprimeLinhaFromResources("mensagem.votacao.semVotacoes");
+			SaidaHelper.imprimeLinha("");
 		}
 	}
 
