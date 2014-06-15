@@ -279,7 +279,7 @@ public class VotacaoTest {
 		assertEquals(Estado.Bloqueada, votacao.getEstado());
 		
 		votacao = new Votacao(base, Estado.Aberta);
-		assertEquals(Estado.Bloqueada, votacao.getEstado());
+		assertEquals(Estado.Aberta, votacao.getEstado());
 	}
 
 	@Test

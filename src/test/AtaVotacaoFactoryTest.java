@@ -10,7 +10,6 @@ import java.util.HashMap;
 
 import model.AtaVotacaoFactory;
 import model.dao.AtaVotacaoDao;
-import model.dao.VotacaoDao;
 import model.entity.AtaVotacao;
 import model.entity.Estado;
 import model.entity.EstagioProbatorio;
@@ -51,7 +50,6 @@ public class AtaVotacaoFactoryTest {
 		
 		///Não utiliza o AtaVotacaoDaoStub aqui, pois o factory consulta o AtaVotacaoDao, então supõe que está vazio e que o lastInsertId é zero
 		AtaVotacaoDao ataVotacaoDao = AtaVotacaoDao.getInstance();
-		VotacaoDao votacaoDao = VotacaoDao.getInstance();
 		
 		//Teste trivial primeira inserção
 		assertEquals(0, ataVotacaoDao.getLastInsertedId());

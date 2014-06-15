@@ -25,6 +25,50 @@ public class Votacao implements Imprimivel, Identificavel {
 
 	private final List<Voto> votos;
 
+	public Votacao(int id, String titulo, Date dataInicio, Date dataFim, Estado estado, Documentacao documentacao, List<Voto> votos) {
+		if (documentacao == null) {
+			TextManager txtManager = new TextManager(SaidaHelper.nomeRecursos);
+			throw new NullPointerException(txtManager.getText("mensagem.votacao.documentacao.nulo"));
+		}
+		this.id = id;
+		this.titulo = titulo;
+		this.dataInicio = (Date)dataInicio.clone();
+		this.dataFim = (Date)dataFim.clone();
+		this.estadoExplicito = estado;
+		this.documentacao = documentacao;
+		this.votos = new ArrayList<>(votos);
+	}
+
+	public Votacao(Votacao votacaoBase, Estado estado) {
+		this.id = votacaoBase.getId();
+		this.titulo = votacaoBase.getTitulo();
+		this.dataInicio = votacaoBase.getDataInicio();
+		this.dataFim = votacaoBase.getDataFim();
+		this.estadoExplicito = estado;
+		this.documentacao = votacaoBase.getDocumentacao();
+		this.votos = new ArrayList<>(votacaoBase.getVotos());
+	}
+
+	public Votacao(Votacao votacaoBase, Date dataInicio, Date dataFim) {
+		this.id = votacaoBase.getId();
+		this.titulo = votacaoBase.getTitulo();
+		this.dataInicio = (Date)dataInicio.clone();
+		this.dataFim = (Date)dataFim.clone();
+		this.estadoExplicito = votacaoBase.getEstado();
+		this.documentacao = votacaoBase.getDocumentacao();
+		this.votos = new ArrayList<>(votacaoBase.getVotos());
+	}
+	
+	public Votacao(Votacao votacaoBase, List<Voto> votos) {
+		this.id = votacaoBase.getId();
+		this.titulo = votacaoBase.getTitulo();
+		this.dataInicio = votacaoBase.getDataInicio();
+		this.dataFim = votacaoBase.getDataFim();
+		this.estadoExplicito = votacaoBase.getEstado();
+		this.documentacao = votacaoBase.getDocumentacao();
+		this.votos = new ArrayList<>(votos);
+	}
+
 	public int getId() {
 		return this.id;
 	}
@@ -94,50 +138,6 @@ public class Votacao implements Imprimivel, Identificavel {
 			assert(false);
 			return false;
 		}
-	}
-
-	public Votacao(int id, String titulo, Date dataInicio, Date dataFim, Estado estado, Documentacao documentacao, List<Voto> votos) {
-		if (documentacao == null) {
-			TextManager txtManager = new TextManager(SaidaHelper.nomeRecursos);
-			throw new NullPointerException(txtManager.getText("mensagem.votacao.documentacao.nulo"));
-		}
-		this.id = id;
-		this.titulo = titulo;
-		this.dataInicio = (Date)dataInicio.clone();
-		this.dataFim = (Date)dataFim.clone();
-		this.estadoExplicito = estado;
-		this.documentacao = documentacao;
-		this.votos = new ArrayList<>(votos);
-	}
-
-	public Votacao(Votacao votacaoBase, Estado estado) {
-		this.id = votacaoBase.getId();
-		this.titulo = votacaoBase.getTitulo();
-		this.dataInicio = votacaoBase.getDataInicio();
-		this.dataFim = votacaoBase.getDataFim();
-		this.estadoExplicito = estado;
-		this.documentacao = votacaoBase.getDocumentacao();
-		this.votos = new ArrayList<>(votacaoBase.getVotos());
-	}
-
-	public Votacao(Votacao votacaoBase, Date dataInicio, Date dataFim) {
-		this.id = votacaoBase.getId();
-		this.titulo = votacaoBase.getTitulo();
-		this.dataInicio = (Date)dataInicio.clone();
-		this.dataFim = (Date)dataFim.clone();
-		this.estadoExplicito = votacaoBase.getEstado();
-		this.documentacao = votacaoBase.getDocumentacao();
-		this.votos = new ArrayList<>(votacaoBase.getVotos());
-	}
-	
-	public Votacao(Votacao votacaoBase, List<Voto> votos) {
-		this.id = votacaoBase.getId();
-		this.titulo = votacaoBase.getTitulo();
-		this.dataInicio = votacaoBase.getDataInicio();
-		this.dataFim = votacaoBase.getDataFim();
-		this.estadoExplicito = votacaoBase.getEstado();
-		this.documentacao = votacaoBase.getDocumentacao();
-		this.votos = new ArrayList<>(votos);
 	}
 
 	@Override
