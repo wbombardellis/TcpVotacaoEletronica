@@ -68,14 +68,15 @@ public class VisualizarVotacaoCommand extends VotacaoCommand {
 			output.clear();
 			// Perguntar se deve-se Listar os votos
 			SaidaHelper.imprimeLinhaFromResources("visualizar.votacao.mostrar.votos");
-			MenuHelper.leConfirmacao();
-			for (Voto voto : votacao.getVotos()) {
-				output.add(txtMngr.getText("titulo.voto"));
-				output.add(txtMngr.getText("voto.id") + voto.getId());
-				output.add(txtMngr.getText("voto.autor") + voto.getAutor().getNome());
-				output.add(txtMngr.getText("voto.tipo") + voto.getTipo());
+			if (MenuHelper.leConfirmacao()) {
+				for (Voto voto : votacao.getVotos()) {
+					output.add(txtMngr.getText("titulo.voto"));
+					output.add(txtMngr.getText("voto.id") + voto.getId());
+					output.add(txtMngr.getText("voto.autor") + voto.getAutor().getNome());
+					output.add(txtMngr.getText("voto.tipo") + voto.getTipo());
+				}
+				SaidaHelper.imprimeLinhas(output);
 			}
-			SaidaHelper.imprimeLinhas(output);
 		} else {
 			SaidaHelper.imprimeLinhaFromResources("mensagem.votacao.semVotacoes");
 		}
