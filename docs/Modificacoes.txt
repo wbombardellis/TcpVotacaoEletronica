@@ -3,3 +3,5 @@ VotarCommand:
 	novo metodo imprimemenu
 	novo metodo lemenu
 TextManager e SaidaHelper adicionado
+Factory
+Dao
