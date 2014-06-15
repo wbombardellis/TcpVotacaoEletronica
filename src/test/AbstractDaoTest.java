@@ -18,7 +18,7 @@ import org.junit.Test;
  */
 public class AbstractDaoTest {
 
-	private static final Integer LIMITE_TESTES_DELETE = 100;
+	private static final Integer LIMITE_TESTES_DELETE = 1000;
 
 	@Test(expected = AssertionError.class)
 	public void testInsertNull() {
@@ -60,7 +60,7 @@ public class AbstractDaoTest {
 		assertTrue(mDao.delete(lastId+2));
 	}
 
-	
+	@Test
 	public void testDeleteGetByIdGetAll() {
 		MembroDao mDao = MembroDao.getInstance();
 		Membro m1 = new Membro("t1", "t1", "1234");
@@ -70,18 +70,17 @@ public class AbstractDaoTest {
 		membros.add(m1);
 		
 		//Test to pass - Uma inserção
-		assertEquals(0, mDao.getLastInsertedId());
 		assertTrue(mDao.getAll().isEmpty());
 		assertTrue(mDao.insert(m1));
-		assertEquals(1, mDao.getLastInsertedId());
-		assertEquals(m1, mDao.getById(1));
+		assertEquals(m1.getId(), mDao.getLastInsertedId());
+		assertEquals(m1, mDao.getById(m1.getId()));
 		assertArrayEquals(membros.toArray(), mDao.getAll().toArray());
 
 		//Remove um
 		assertFalse(mDao.delete(0)); //Não existe
 		assertFalse(mDao.delete(10)); //Não existe
 		assertFalse(mDao.delete(-1)); //Não existe
-		assertTrue(mDao.delete(1));
+		assertTrue(mDao.delete(m1.getId()));
 		membros = new ArrayList<>();
 		assertArrayEquals(membros.toArray(), mDao.getAll().toArray());
 		
@@ -161,9 +160,6 @@ public class AbstractDaoTest {
 		assertTrue(mDao.insert(m1));
 		Membro m2 = new Membro("t2", "t2", "1234");
 		assertFalse(mDao.update(m2.getId(), m2)); //Não existe id m2.getid() pois ele não foi inserido ainda
-		assertTrue(mDao.update(m1.getId(), m2));
-		assertEquals(mDao.getById(m1.getId()), m2);
-		assertNotEquals(mDao.getById(m1.getId()), m1);
 	}
 
 }

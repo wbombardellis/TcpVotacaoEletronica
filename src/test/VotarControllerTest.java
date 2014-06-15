@@ -56,13 +56,13 @@ public class VotarControllerTest {
 		//Cria elementos apenas para popular a ata
 		MembroDao mDao = MembroDao.getInstance();
 		Membro membro1 = new Membro("membro1", "teste1", "1234");
-		mDao.insert(membro1);
+		assertTrue(mDao.insert(membro1));
 		Membro membro2 = new Membro("membro2", "teste2", "1234");
-		mDao.insert(membro2);
+		assertTrue(mDao.insert(membro2));
 		Membro membro3 = new Membro("membro3", "teste3", "1234");
-		mDao.insert(membro3);
+		assertTrue(mDao.insert(membro3));
 		Membro membro4 = new Membro("membro4", "teste4", "1234");
-		mDao.insert(membro4);
+		assertTrue(mDao.insert(membro4));
 		
 		ArrayList<Voto> votos = new ArrayList<>();
 		votos.add(new Voto(0, TipoVoto.Favoravel, membro1, new Date(), null));

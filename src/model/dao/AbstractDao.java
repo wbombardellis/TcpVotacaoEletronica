@@ -35,7 +35,7 @@ public abstract class AbstractDao<T extends Identificavel> {
 	public boolean update(int id, T record) {		
 		T recorded = this.data.get(id);
 		
-		if (recorded != null && record != null) {
+		if (recorded != null && record != null && id == record.getId()) {
 			this.data.put(id, record);
 			
 			return true;

@@ -1,5 +1,6 @@
 package test;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -21,16 +22,22 @@ public class MembroDaoTest extends TestCase
 	public void setUp()
 	{
 		membroDao = MembroDao.getInstance();
-		membroDao.delete(membroDao.getMembroByUsername("1").getId());
-		membroDao.delete(membroDao.getMembroByUsername("2").getId());
-		membroDao.delete(membroDao.getMembroByUsername("3").getId());
-		membroDao.delete(membroDao.getMembroByUsername("4").getId());
-		membroDao.delete(membroDao.getMembroByUsername("5").getId());
-		assertTrue(membroDao.insert(Chefe.substituirChefe("Chefe", "1", "chefe")));
+		membroDao.insert(Chefe.substituirChefe("Chefe", "1", "chefe"));
 		assertTrue(membroDao.insert(new ViceChefe("Vice Chefe", "2", "viceChefe")));
 		assertTrue(membroDao.insert(new Secretario("Secretario", "3", "secretario")));
 		assertTrue(membroDao.insert(new Docente("Docente", "4", "docente")));
 		assertTrue(membroDao.insert(new Discente("Discente", "5", "Discente")));
+	}
+	
+	@After
+	public void tearDown()
+	{
+		//Remove os 4 membros do dao, para utilizá-lo em outros testes. Chefe não pode ser removido
+		MembroDao membroDao = MembroDao.getInstance();
+		assertTrue(membroDao.delete(membroDao.getMembroByUsername("2").getId()));
+		assertTrue(membroDao.delete(membroDao.getMembroByUsername("3").getId()));
+		assertTrue(membroDao.delete(membroDao.getMembroByUsername("4").getId()));
+		assertTrue(membroDao.delete(membroDao.getMembroByUsername("5").getId()));
 	}
 	
 	@Test

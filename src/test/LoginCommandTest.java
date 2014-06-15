@@ -18,7 +18,7 @@ import view.command.Sessao;
 
 public class LoginCommandTest extends TestCase
 {
-private LoginCommand loginCommand;
+	private LoginCommand loginCommand;
 	
 	@Before
 	public void setUp()
@@ -35,15 +35,14 @@ private LoginCommand loginCommand;
 	}
 	
 	@After
-	public void setDown()
-	{		
-		// Remove os 5 membros do dao, para utilizá-lo em outros testes
+	public void tearDown()
+	{
+		//Remove os 4 membros do dao, para utilizá-lo em outros testes. Chefe não pode ser removido
 		MembroDao membroDao = MembroDao.getInstance();
-		assertTrue(membroDao.delete(membroDao.getMembroByUsername("1").getId()));
-		membroDao.delete(membroDao.getMembroByUsername("2").getId());
-		membroDao.delete(membroDao.getMembroByUsername("3").getId());
-		membroDao.delete(membroDao.getMembroByUsername("4").getId());
-		membroDao.delete(membroDao.getMembroByUsername("5").getId());
+		assertTrue(membroDao.delete(membroDao.getMembroByUsername("2").getId()));
+		assertTrue(membroDao.delete(membroDao.getMembroByUsername("3").getId()));
+		assertTrue(membroDao.delete(membroDao.getMembroByUsername("4").getId()));
+		assertTrue(membroDao.delete(membroDao.getMembroByUsername("5").getId()));
 	}
 	
 	@Test

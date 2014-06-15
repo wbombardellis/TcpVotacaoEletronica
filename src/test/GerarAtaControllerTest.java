@@ -34,11 +34,7 @@ public class GerarAtaControllerTest {
 		//Cria elementos apenas para popular a ata
 		MembroDao mDao = MembroDao.getInstance();
 		Membro membro1 = new Membro("membro1", "teste1", "1234");
-		System.out.println(membro1.getId());
-		System.out.println(mDao.getLastInsertedId());
 		assertTrue(mDao.insert(membro1));
-
-		System.out.println(mDao.getLastInsertedId());
 		Membro membro2 = new Membro("membro2", "teste2", "1234");
 		assertTrue(mDao.insert(membro2));
 		Membro membro3 = new Membro("membro3", "teste3", "1234");

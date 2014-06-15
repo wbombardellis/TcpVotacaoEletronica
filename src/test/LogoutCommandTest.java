@@ -30,14 +30,6 @@ public class LogoutCommandTest extends TestCase
 		membroDao.insert(Chefe.substituirChefe("Chefe Test","1","chefeum"));
 	}
 	
-	@After
-	public void setDown()
-	{		
-		// Remove os 5 membros do dao, para utilizá-lo em outros testes
-		MembroDao membroDao = MembroDao.getInstance();
-		assertTrue(membroDao.delete(membroDao.getMembroByUsername("1").getId()));
-	}
-	
 	@Test
 	public void testCodigo()
 	{
