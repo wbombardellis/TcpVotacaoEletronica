@@ -57,11 +57,11 @@ public class VisualizarVotacaoCommand extends VotacaoCommand {
 			
 			Map<Integer, String> nomeDocumentos = docs.getDescricaoDocumentosObrigatorios();
 			for (Entry<Integer, String> documentoEntry : docs.getDocumentosObrigatorios().entrySet()) {
-				output.add(nomeDocumentos.get(documentoEntry.getKey()) +":"+ documentoEntry.getValue());
+				output.add(nomeDocumentos.get(documentoEntry.getKey()) +": "+ documentoEntry.getValue());
 			}
 			Map<Integer, String> nomeDocumentosNaoObrigatorios = docs.getDescricaoDocumentosNaoObrigatorios();
 			for (Entry<Integer, String> documentoEntry : docs.getDocumentosNaoObrigatorios().entrySet()) {
-				output.add(nomeDocumentosNaoObrigatorios.get(documentoEntry.getKey()) +":"+ documentoEntry.getValue());
+				output.add(nomeDocumentosNaoObrigatorios.get(documentoEntry.getKey()) +": "+ documentoEntry.getValue());
 			}
 			
 			SaidaHelper.imprimeLinhas(output);

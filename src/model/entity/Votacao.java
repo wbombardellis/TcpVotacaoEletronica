@@ -85,7 +85,7 @@ public class Votacao implements Imprimivel, Identificavel {
 		case Liberada:
 			return this.estaLiberada();
 		case Aberta:
-			return this.estaLiberada()
+			return (this.estaLiberada() || this.estadoExplicito.equals(Estado.Aberta))
 				&& (new Date()).after(this.dataInicio)
 				&& (new Date()).before(this.dataFim);
 		case Finalizada:
