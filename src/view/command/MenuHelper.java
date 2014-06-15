@@ -10,8 +10,6 @@ import java.util.Date;
 import java.util.List;
 
 public abstract class MenuHelper {
-	
-	private static final String codigoCancelar = "C";
 
 	public static <T extends Imprimivel> T leOpcaoMenu(List<T> opcoes) throws IOException {
 		
@@ -68,7 +66,6 @@ public abstract class MenuHelper {
 		{
 			SaidaHelper.imprimeLinha(opcao.getCodigoTela() + txtManager.getText("simbolo.menu.separadorCodigoDescricao") + opcao.getDescricaoTela());
 		}
-		//SaidaHelper.imprimeLinha(codigoCancelar + " - " + txtManager.getText("simbolo.menu.opcao.cancelar"));
 	}
 	
 	public static <T extends Imprimivel> T leOpcao(List<T> opcoes) throws IOException{

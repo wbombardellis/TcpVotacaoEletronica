@@ -3,18 +3,12 @@ package view.command;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Date;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import controller.GerarAtaController;
 import model.dao.AtaDao;
 import model.entity.Ata;
 import model.entity.AtaVotacao;
-import model.entity.Membro;
-import model.entity.Votacao;
-import model.entity.Voto;
 
 public class LerAtaCommand extends Command {
 

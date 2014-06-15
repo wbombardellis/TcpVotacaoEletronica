@@ -18,7 +18,6 @@ import model.entity.Voto;
 
 import org.junit.Test;
 
-import controller.CriarVotacaoController;
 import controller.VotarController;
 
 public class VotarControllerTest {

@@ -2,7 +2,6 @@ package test;
 
 import static org.junit.Assert.*;
 
-import java.sql.Time;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashSet;
@@ -12,8 +11,6 @@ import java.util.Random;
 import model.dao.MembroDao;
 import model.entity.Membro;
 
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
 
 /**

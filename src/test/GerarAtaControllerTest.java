@@ -11,8 +11,6 @@ import java.util.List;
 import model.dao.AtaDao;
 import model.dao.AtaVotacaoDao;
 import model.dao.MembroDao;
-import model.dao.VotacaoDao;
-import model.entity.Ata;
 import model.entity.Estado;
 import model.entity.EstagioProbatorio;
 import model.entity.Membro;

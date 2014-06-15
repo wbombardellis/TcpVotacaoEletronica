@@ -14,7 +14,6 @@ import model.entity.Voto;
 
 import org.junit.Test;
 
-import controller.AutorizarVotacaoController;
 import controller.FecharVotacaoController;
 
 public class FecharVotacaoControllerTest {

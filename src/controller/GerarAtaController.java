@@ -9,10 +9,8 @@ import model.AtaVotacaoFactory;
 import model.dao.AtaDao;
 import model.dao.AtaVotacaoDao;
 import model.dao.MembroDao;
-import model.entity.Ata;
 import model.entity.AtaVotacao;
 import model.entity.Membro;
-import model.entity.TipoVoto;
 import model.entity.Votacao;
 import model.entity.Voto;
 
