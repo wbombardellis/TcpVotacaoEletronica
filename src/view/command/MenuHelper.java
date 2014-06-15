@@ -163,7 +163,7 @@ public abstract class MenuHelper {
 		do
 		{
 			stringLida = reader.readLine();
-			if (!stringLida.isEmpty())
+			if (stringLida.isEmpty())
 			{
 				entradaInvalida = true;
 			}
