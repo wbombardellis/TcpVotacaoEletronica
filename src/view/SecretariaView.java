@@ -19,6 +19,9 @@ import view.command.VisualizarVotacaoCommand;
 
 public class SecretariaView extends View
 {
+	/*
+	 * Para informações sobre o funcionamento dessa classe, consultar a classe view.View.
+	 */
 	public SecretariaView()
 	{
 		this.commandsPossiveis = new ArrayList<Command>();
@@ -29,7 +32,7 @@ public class SecretariaView extends View
 		this.commandsPossiveis.add(new AbrirVotacaoCommand(sessao));
 		this.commandsPossiveis.add(new ListarVotacaoCommand(sessao));
 		this.commandsPossiveis.add(new VisualizarVotacaoCommand(sessao));
-		this.commandsPossiveis.add(new LerAtaCommand(sessao)); // imprimir resultado da votação é isso?
+		this.commandsPossiveis.add(new LerAtaCommand(sessao));
 		this.commandsPossiveis.add(new FecharVotacaoCommand(sessao));
 		this.commandsPossiveis.add(new ExcluirVotacaoCommand(sessao));
 		this.commandsPossiveis.add(new GerarAtaCommand(sessao));

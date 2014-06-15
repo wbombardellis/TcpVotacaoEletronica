@@ -14,6 +14,12 @@ public class LoginCommand extends Command {
 		return false;
 	}
 
+	/*
+	 * O processo de login é feito da seguinte forma: após a validação das credenciais, o atributo "viewAtual", presente na
+	 * classe view.command.Sessao é atualizado para a view correspondente ao usuário que acabou de se logar no sistema.
+	 * Assim, da próxima vez que o menu for impresso, será possível visualizar as opções disponíveis para esse usuário.
+	 * Ainda, a classe view.command.Sessao também guarda a informação do membro que está logado (há um atributo para isso).
+	 */
 	@Override
 	public void execute() throws IOException
 	{		

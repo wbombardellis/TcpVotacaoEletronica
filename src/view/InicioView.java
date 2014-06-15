@@ -10,6 +10,9 @@ import view.command.Sessao;
 
 public class InicioView extends View
 {
+	/*
+	 * Para informações sobre o funcionamento dessa classe, consultar a classe view.View.
+	 */
 	public InicioView()
 	{
 		this.commandsPossiveis = new ArrayList<Command>();
