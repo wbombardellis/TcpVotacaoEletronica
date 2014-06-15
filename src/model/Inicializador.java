@@ -1,7 +1,6 @@
 package model;
 
 import model.dao.MembroDao;
-import model.dao.VotacaoDao;
 import model.entity.Chefe;
 import model.entity.Discente;
 import model.entity.Docente;
@@ -21,8 +20,8 @@ public abstract class Inicializador {
 		membroDao.insert(new Secretario("Donals Knuth","7","Art7"));
 		membroDao.insert(new Docente("Bertrand Meyer","8","Eiffel"));
 		membroDao.insert(new Docente("Linus Torvals","9","Linux"));
-		membroDao.insert(new Docente("Douglas Engelbart","10","Mouse"));
-		membroDao.insert(new Docente("Robert Dennard","11","raM"));
+		membroDao.insert(new Discente("Douglas Engelbart","10","Mouse"));
+		membroDao.insert(new Discente("Robert Dennard","11","raM"));
 		membroDao.insert(new Docente("Richard W. Hamming","12","theCode!"));
 		membroDao.insert(new Docente("Leslie Lamport","13","safety"));
 		

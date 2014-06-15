@@ -20,7 +20,7 @@ public class LoginCommand extends Command {
 		SaidaHelper.imprimeLinhaFromResources("login.pedir.username");
 		String username = MenuHelper.leString();
 			
-		SaidaHelper.imprimeLinhaFromResources("loign.pedir.senha");
+		SaidaHelper.imprimeLinhaFromResources("login.pedir.senha");
 		String password = MenuHelper.leString();
 		
 		LoginController loginController = new LoginController(username, password);

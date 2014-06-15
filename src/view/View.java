@@ -21,7 +21,7 @@ public abstract class View
 			try
 			{
 				// Imprime o menu e, caso a opção escolhida pelo usuário seja válida, executa a mesma.
-				opcao = MenuHelper.leOpcao(commandsPossiveis);
+				opcao = MenuHelper.leOpcaoMenu(commandsPossiveis);
 				if (opcao != null)
 				{
 					opcao.execute();
