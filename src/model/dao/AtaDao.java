@@ -9,6 +9,10 @@ import model.entity.Votacao;
 public class AtaDao extends AbstractDao<Ata> {
 
 	private static AtaDao instance = null;
+	
+	protected AtaDao(){
+		
+	}
 
 	public static AtaDao getInstance() {
 		if (instance == null) {

@@ -15,6 +15,11 @@ public class Voto implements Identificavel{
 	private Membro autor;
 
 	public Voto(int id, TipoVoto tipo, Membro autor, Date data, String justificativa) {
+		assert id >=0;
+		assert tipo != null;
+		assert autor != null;
+		assert data != null;
+		
 		this.id = id;
 		this.tipoVoto = tipo; //TipoVoto é imutável
 		this.autor = autor; //Supõe que autor é imutável

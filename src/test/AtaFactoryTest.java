@@ -8,6 +8,7 @@ import java.util.HashMap;
 
 import model.AtaFactory;
 import model.dao.AtaDao;
+import model.dao.AtaVotacaoDao;
 import model.entity.Ata;
 import model.entity.AtaVotacao;
 import model.entity.Estado;
@@ -59,25 +60,34 @@ public class AtaFactoryTest {
 		HashMap<Integer, AtaVotacao> atasVotacoes2 = new HashMap<>();
 		atasVotacoes2.put(0, ataVotacao2);
 		
+		///Não utiliza o AtaDaoStub aqui, pois o factory consulta o AtaDao, então supõe que está vazio e que o lastInsertId é zero
+		AtaDao ataDao = AtaDao.getInstance();
 		
 		//Teste trivial primeira inserção
-		assertEquals(0, AtaDao.getInstance().getLastInsertedId());
+		assertEquals(0, ataDao.getLastInsertedId());
 		Ata ata1 = AtaFactory.criaAta(atasVotacoes1);
 		assertNotNull(ata1);
-		assertEquals(1, AtaDao.getInstance().getLastInsertedId());
 		assertEquals(1, ata1.getId());
+		ataDao.insert(ata1);
+		assertEquals(1, ataDao.getLastInsertedId());
 		
 		//Teste segunda inserção
 		Ata ata2 = AtaFactory.criaAta(atasVotacoes2);
-		assertEquals(2, AtaDao.getInstance().getLastInsertedId());
 		assertEquals(2, ata2.getId());
+		ataDao.insert(ata2);
+		assertEquals(2, ataDao.getLastInsertedId());
 		
 		//Inserção após remoção
-		AtaDao.getInstance().delete(1);
+		ataDao.delete(1);
 		Ata ata3 = AtaFactory.criaAta(atasVotacoes2);
-		assertEquals(3, AtaDao.getInstance().getLastInsertedId());
 		assertEquals(3, ata3.getId());
+		ataDao.insert(ata3);
+		assertEquals(3, ataDao.getLastInsertedId());
 		
+		//Remove para que o Dao possa ser utilizado por outros testes
+		ataDao.delete(1);
+		ataDao.delete(2);
+		ataDao.delete(3);
 	}
 
 }

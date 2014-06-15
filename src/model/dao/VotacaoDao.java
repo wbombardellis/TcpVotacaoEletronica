@@ -11,6 +11,10 @@ import model.entity.Votacao;
 public class VotacaoDao extends AbstractDao<Votacao> {
 
 	private static VotacaoDao instance = null;
+	
+	protected VotacaoDao(){
+		
+	}
 
 	public static VotacaoDao getInstance() {
 		if (instance == null) {

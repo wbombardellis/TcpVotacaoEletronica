@@ -14,6 +14,8 @@ public abstract class AbstractDao<T extends Identificavel> {
 	private Map<Integer, T> data = new HashMap<>();
 
 	public boolean insert(T record) {
+		assert record != null;
+		
 		T recorded = this.data.get(record.getId());
 		
 		if (recorded == null) {
@@ -30,10 +32,10 @@ public abstract class AbstractDao<T extends Identificavel> {
 		return (this.data.remove(id) != null);
 	}
 
-	public boolean update(int id, T record) {
+	public boolean update(int id, T record) {		
 		T recorded = this.data.get(id);
 		
-		if (recorded != null) {
+		if (recorded != null && record != null) {
 			this.data.put(id, record);
 			
 			return true;

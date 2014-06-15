@@ -49,10 +49,14 @@ public class GerarAtaControllerTest {
 		List<Votacao> votacoes = new ArrayList<>();
 		votacoes.add(votacao1);
 		
+		////Supõe que AtaDao e AtaVotação estão vazios (sem elementos) e que os lastInsertedIds são zeros
 		GerarAtaController.criaAta(votacoes);
-		
+		//Portanto pode utilizar o AtaDao e AtaVotacaoDao nas versões originais, sem stub
 		assertEquals(votacoes, AtaDao.getInstance().getAll());
-		assertEquals(votacao1, AtaVotacaoDao.getInstance().getById(1));		
+		assertEquals(votacao1, AtaVotacaoDao.getInstance().getById(1));	
+		//Apaga o que foi inserido, para que o objeto singleton seja utilizado mais tarde
+		AtaVotacaoDao.getInstance().delete(0);
+		AtaDao.getInstance().delete(0);
 	}
 
 }

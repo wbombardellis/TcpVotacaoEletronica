@@ -8,7 +8,7 @@ public class MembroDao extends AbstractDao<Membro>
 {
 	private static MembroDao instance = null;
 
-	private MembroDao()
+	protected MembroDao()
 	{
 		
 	}
