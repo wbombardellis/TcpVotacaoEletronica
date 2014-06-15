@@ -64,7 +64,6 @@ public class AbstractDaoTest {
 	public void testDeleteGetByIdGetAll() {
 		MembroDao mDao = MembroDao.getInstance();
 		Membro m1 = new Membro("t1", "t1", "1234");
-		Membro m2 = new Membro("t2", "t2", "1234");
 		
 		//membros funciona como um oráculo
 		List<Membro> membros = new ArrayList<>();

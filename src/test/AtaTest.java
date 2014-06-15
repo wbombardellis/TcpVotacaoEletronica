@@ -52,7 +52,6 @@ public class AtaTest {
 		Date dtFim1 = cal.getTime(); 
 		
 		Votacao votacao1 = new Votacao(0, "teste1", dtIni1, dtFim1, Estado.Aberta, new EstagioProbatorio(new HashMap<Integer, String>(), new HashMap<Integer, String>()), votos);		
-		AtaVotacao ataV1 = AtaVotacaoFactory.criaAtaVotacao(votacao1, votantes, naoVotantes);
 		
 		HashMap<Integer, AtaVotacao> atas = new HashMap<Integer, AtaVotacao>(); 
 		atas.put(0, AtaVotacaoFactory.criaAtaVotacao(votacao1, votantes, naoVotantes));
