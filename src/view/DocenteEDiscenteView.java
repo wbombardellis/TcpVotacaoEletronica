@@ -9,6 +9,7 @@ import view.command.LogoutCommand;
 import view.command.SairCommand;
 import view.command.Sessao;
 import view.command.VisualizarVotacaoCommand;
+import view.command.VotarCommand;
 
 public class DocenteEDiscenteView extends View
 {
@@ -19,7 +20,7 @@ public class DocenteEDiscenteView extends View
 		Sessao sessao = Sessao.getInstance();
 		this.commandsPossiveis.add(new ListarVotacaoCommand(sessao));
 		this.commandsPossiveis.add(new VisualizarVotacaoCommand(sessao));
-		// this.commandsPossiveis.add(new ...(sessao)); Alterar Voto Command? Como é implementado?
+		this.commandsPossiveis.add(new VotarCommand(sessao));
 		this.commandsPossiveis.add(new LogoutCommand(sessao));
 		this.commandsPossiveis.add(new SairCommand(sessao));
 	}
