@@ -35,7 +35,11 @@ public class ListarVotacaoCommand extends VotacaoCommand {
 			votacoes = VotacaoDao.getInstance().getVotacoesByEstado(this.listaEstados);
 		}
 		
-		MenuHelper.imprimeOpcoes(votacoes);
+		if (! votacoes.isEmpty())
+			MenuHelper.imprimeOpcoes(votacoes);
+		else
+			SaidaHelper.imprimeLinhaFromResources("mensagem.votacao.semVotacoes");
+		
 	}
 
 	@Override

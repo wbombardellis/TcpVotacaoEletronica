@@ -16,16 +16,20 @@ public class FecharVotacaoCommand extends VotacaoCommand {
 	public void execute() throws IOException {
 		Votacao votacao = this.leOpcaoListaVotacao(this.listaEstados);
 		
-		List<String> warnings = FecharVotacaoController.fechaVotacao(votacao);
-		
-		// Mensagens ao usuário
-		if (! warnings.isEmpty()) {
-			// Mostra os warnings
-			for (String warning : warnings)
-				SaidaHelper.imprimeLinha(warning);
+		if (votacao != null) {
+			List<String> warnings = FecharVotacaoController.fechaVotacao(votacao);
+			
+			// Mensagens ao usuário
+			if (! warnings.isEmpty()) {
+				// Mostra os warnings
+				for (String warning : warnings)
+					SaidaHelper.imprimeLinha(warning);
+			}
+			
+			SaidaHelper.imprimeLinhaFromResources("fechar.votacao.sucesso");
+		} else {
+			SaidaHelper.imprimeLinhaFromResources("mensagem.votacao.semVotacoes");
 		}
-		
-		SaidaHelper.imprimeLinhaFromResources("fechar.votacao.sucesso");
 	}
 
 	@Override

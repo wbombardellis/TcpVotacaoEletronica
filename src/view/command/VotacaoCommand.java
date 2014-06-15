@@ -19,7 +19,10 @@ public abstract class VotacaoCommand extends Command {
 
 	protected Votacao leOpcaoListaVotacao(List<Estado> estados) throws IOException {
 		List<Votacao> votacoes = VotacaoDao.getInstance().getVotacoesByEstado(estados);
-		return MenuHelper.leOpcaoMenu(votacoes);
+		if (votacoes.isEmpty())
+			return null;
+		else
+			return MenuHelper.leOpcaoMenu(votacoes);
 	}
 
 }
