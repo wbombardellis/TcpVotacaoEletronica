@@ -1,4 +1,4 @@
 TcpVotacaoEletronica
 ====================
 
-Sistema de Votação Eletrônica do Colêgiado do Inf-UFRGS
+Sistema de Votação Eletrônica do Colegiado do Inf-UFRGS
