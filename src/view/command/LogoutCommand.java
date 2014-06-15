@@ -11,6 +11,10 @@ public class LogoutCommand extends Command {
 
 	}
 
+	/*
+	 * Caso a opção de logout seja confirmada pelo usuário, é feita uma alteração na classe view.command.Sessao, de forma
+	 * que o atributo "membroLogado" seja definido como null e o atributo "viewAtual" receba um objeto do tipo "InicioView"
+	 */
 	@Override
 	public void execute()
 	{

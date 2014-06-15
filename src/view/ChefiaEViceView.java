@@ -21,6 +21,9 @@ import view.command.VotarCommand;
 
 public class ChefiaEViceView extends View 
 {
+	/*
+	 * Para informações sobre o funcionamento dessa classe, consultar a classe view.View.
+	 */
 	public ChefiaEViceView()
 	{
 		this.commandsPossiveis = new ArrayList<Command>();
@@ -33,7 +36,7 @@ public class ChefiaEViceView extends View
 		this.commandsPossiveis.add(new ListarVotacaoCommand(sessao));
 		this.commandsPossiveis.add(new VisualizarVotacaoCommand(sessao));
 		this.commandsPossiveis.add(new VotarCommand(sessao));
-		this.commandsPossiveis.add(new LerAtaCommand(sessao)); // imprimir resultado da votação é isso?
+		this.commandsPossiveis.add(new LerAtaCommand(sessao));
 		this.commandsPossiveis.add(new FecharVotacaoCommand(sessao));
 		this.commandsPossiveis.add(new ExcluirVotacaoCommand(sessao));
 		this.commandsPossiveis.add(new GerarAtaCommand(sessao));

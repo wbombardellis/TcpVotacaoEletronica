@@ -24,7 +24,7 @@ public class ExcluirVotacaoCommand extends VotacaoCommand {
 			if (! votacao.getVotos().isEmpty()) {
 				// Informa usuário e pede confirmação
 				SaidaHelper.imprimeLinhaFromResources("excluir.informar.votos");
-				SaidaHelper.imprimeLinhaFromResources("excluir.confirmar");
+				SaidaHelper.imprimeLinhaFromResources("excluir.pedir.confirmacao");
 				confirmadaExclusao = MenuHelper.leConfirmacao();
 			}
 			

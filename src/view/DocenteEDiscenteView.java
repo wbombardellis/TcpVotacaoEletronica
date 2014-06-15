@@ -13,6 +13,9 @@ import view.command.VotarCommand;
 
 public class DocenteEDiscenteView extends View
 {
+	/*
+	 * Para informações sobre o funcionamento dessa classe, consultar a classe view.View.
+	 */
 	public DocenteEDiscenteView()
 	{
 		this.commandsPossiveis = new ArrayList<Command>();
